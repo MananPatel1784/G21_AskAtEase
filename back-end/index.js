@@ -9,9 +9,6 @@ connectToMongoDB("mongodb://localhost:27017/user").then(() => {
     console.log("MongoDB connected successfully!!");
 });
 
-
-
-
 app.use(express.json());
 
 app.use("/signup", userRoute);
