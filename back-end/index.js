@@ -1,11 +1,11 @@
 const express = require("express");
-const {connectToMongoDB} = require("./connection");
-const userRoute = require("./server/routes/user");
+const {connectToMongoDB} = require("./manualSignUp/connection");
+const userRoute = require("./manualSignUp/server/routes/user");
 
 const app = express();
 const PORT = 8000;
 
-connectToMongoDB("mongodb://localhost:27017/user").then(() => {
+connectToMongoDB("mongodb+srv://202201310:AskAtEase1234@askatease.rysvf.mongodb.net/?retryWrites=true&w=majority&appName=AskAtEase").then(() => {
     console.log("MongoDB connected successfully!!");
 });
 
