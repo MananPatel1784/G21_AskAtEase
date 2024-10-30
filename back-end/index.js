@@ -19,7 +19,7 @@ app.use(session({
 })); //Manan
 
 app.set('view engine', 'ejs'); //Manan 
-const userRoutes = require('./routes/userRoute');//Manan
+const userRoutes = require('./server/routes/userRoute');//Manan
 app.use('/',userRoutes); //Manan
 
 app.use(express.json());
