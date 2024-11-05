@@ -5,11 +5,11 @@ export const createUsingEmailandPassword=async(email,password)=>{
     return createUsingEmailandPassword(auth,email,password);
 };
 
-export const signInWithEmailandPassword=async(email,password)=>{
-    return signInWithEmailandPassword(auth,email,password);
+export const doSignInWithEmailandPassword=async(email,password)=>{
+    return doSignInWithEmailandPassword(auth,email,password);
 };
 
-export const signInWithGoogle=async()=>{
+export const doSignInWithGoogle=async()=>{
     const provider= new GoogleAuthProvider();
     const result=await signInWithPopup(auth,provider);
 };
