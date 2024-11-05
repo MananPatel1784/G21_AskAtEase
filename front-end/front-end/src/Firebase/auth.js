@@ -1,5 +1,13 @@
-import { GoogleAuthProvider } from 'firebase/auth/web-extension';
-import {auth} from './firebase'
+import { auth } from "./firebase";
+import {
+//   createUserWithEmailAndPassword,
+//   signInWithEmailAndPassword,
+//   sendPasswordResetEmail,
+//   sendEmailVerification,
+//   updatePassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 
 export const createUsingEmailandPassword=async(email,password)=>{
     return createUsingEmailandPassword(auth,email,password);
