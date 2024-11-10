@@ -7,11 +7,8 @@ import password from '../Assets/password.png'
 
 export const LoginSignup = () => {
     const[action,setAction] = useState("Sign Up");
-  
-  
-  
     return (
-     
+     <>
      <div className='container'>
         <div className="header">
             <div className="text">{action}</div>
@@ -39,5 +36,6 @@ export const LoginSignup = () => {
             <div className= {action === "Login" ? "submit gray" : "submit"} onClick={()=>{setAction("Login")}} >Login</div>
         </div>
     </div>
+    </>
    )
  }
