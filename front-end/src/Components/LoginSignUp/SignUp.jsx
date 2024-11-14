@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import AskAtEase from '../Assets/AskAtEase.png'
 
 const SignUp = () => {
   const { userLoggedIn } = useAuth();
@@ -40,7 +41,7 @@ const SignUp = () => {
             {/* Left Side Image */}
           <div className="w-full md:w-1/2 flex justify-center items-center">
             <img
-              src="../Assets/AskAtEase.png" // Replace with your image URL
+              src={AskAtEase} // Replace with your image URL
               alt="Sign Up Illustration"
               className="w-full h-full object-cover rounded-2xl shadow-md"
             />
