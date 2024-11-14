@@ -1,13 +1,19 @@
 import './App.css';
+import QuoraBox from './QuoraBox';  // Import QuoraBox component
+import { Provider } from 'react-redux'; // Import Provider from react-redux
+import store from './store'; // Correct path for store.js
 import Login from './Components/LoginSignUp/Login';
-import SignUp from './Components/LoginSignUp/SignUp'; // It's fine to import but not necessary unless you use it
-import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
-    <div>
-      <SignUp />     
-    </div>
+    <>
+      <Login /> {/* Render Login component */}
+      <Provider store={store}>  {/* Wrap app with Provider to access Redux store */}
+        <div>
+          <QuoraBox />  {/* QuoraBox will now have access to Redux store */}
+        </div>
+      </Provider>
+    </>
   );
 }
 
