@@ -7,8 +7,7 @@ import { AuthProvider } from './contexts/AuthContext';
 function App() {
   return (
     <div>
-      {/* <Login />       */}
-      {/* <Gemini/> */}
+      <Login />      
     </div>
   );
 }
