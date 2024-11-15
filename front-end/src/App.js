@@ -5,12 +5,15 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
 // import WidgetContent from './Components/WidgetContent';
-
+import Gemini from "./Components/Gemini"
 function App() {
-  return (
-    <>
+  return (<>
       <div>
-        <Sidebar />
+        {/* <Sidebar /> */}
+       {/* <Gemini/> */}
+       {/* <Login></Login> */}
+       {/* <Login/> */}
+       <SignUp/>
       </div>
     </>
   );
