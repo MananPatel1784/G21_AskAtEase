@@ -15,7 +15,7 @@ const Gemini = () => {
     setAnswer(response["data"]["candidates"][0]["content"]["parts"][0]["text"]);
   }
   return (
-    <div className=" font-lexend flex-col m-4 gap-4 bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-2">
+    <div className="font-lexend flex-col w-1/5 m-4 gap-4 bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-2">
       <h1 className="flex font-bold text-2xl place-self-center">
         Gemini AI by Google
       </h1>
@@ -23,7 +23,7 @@ const Gemini = () => {
         <textarea
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          className="p-2 mt-4 mb-2 border-4 size-full border-gray-700 hover:border-customGradient1 rounded-md bg-gray-300 hover:bg-customGradient1 transition-colors duration-300"
+          className="p-2 mt-4 mb-2 border-4 w-full border-gray-700 hover:border-customGradient1 rounded-md bg-gray-300 hover:bg-customGradient1 transition-colors duration-300"
         ></textarea>
       </div>
       <div>
@@ -35,7 +35,7 @@ const Gemini = () => {
         </button>
       </div>
       <div className="size-full">
-        <p className="p-2 mt-2 mb-4 border-4 border-gray-700 hover:border-customGradient1 rounded-md bg-slate-200 hover:bg-customGradient1 transition-colors duration-300">
+        <p className="p-2 mt-2 mb-4 border-4 w-full border-gray-700 hover:border-customGradient1 rounded-md bg-slate-200 hover:bg-customGradient1 transition-colors duration-300">
           {answer}
         </p>
       </div>
