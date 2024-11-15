@@ -1,12 +1,12 @@
 // src/Components/Header.js
 
-import React from 'react';
+import React from "react";
 // import { Link } from 'react-router-dom';
-import AskAtEaseLogo from './Assets/AskAtEase.png';
+import AskAtEaseLogo from "./Assets/AskAtEase.png";
 
 const Header = () => {
   return (
-    <div className="qHeader sticky w-full bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] shadow-custom flex items-center justify-evenly">
+    <div className="qHeader sticky w-full bg-customGradient1 shadow-custom flex items-center justify-evenly">
       {/* Logo */}
       <div className="qHeader__logo flex items-center space-x-2">
         <img src={AskAtEaseLogo} alt="Logo" className="h-20 w-30 m-2" />
@@ -15,7 +15,12 @@ const Header = () => {
       {/* Icons Section */}
       <div className="qHeader__icons flex space-x-16">
         <span>
-          <svg className="h-8 w-8 text-button" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg
+            className="h-8 w-8 text-button"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"

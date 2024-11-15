@@ -8,7 +8,9 @@ const bodyParser = require('body-parser');
 // const { connectToMongoDB } = require("./connection");
 const session = require('express-session');
 const path = require('path');
+const user = require('./server/routes/user');
 const userRoute = require('./server/routes/userRoute');
+const adminRoute = require("./server/routes/adminRoutes");
 const PORT = process.env.PORT || 8000;
 
 const db = require('./db');
@@ -64,8 +66,9 @@ app.set('view engine', 'ejs');
 
 // Routes
 app.use("/", userRoute);
-app.use("/signup", userRoute);
+app.use("/signup", user);
 app.use("/login", userRoute);
+app.use("/admin", adminRoute);
 
 // Start server
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));

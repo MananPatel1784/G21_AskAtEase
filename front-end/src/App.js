@@ -5,13 +5,21 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
 import Gemini from "./Components/Gemini";
+
 import QHeader from "./Components/QHeader";
+
+import AddPost from "./Components/AddPost";
+import Header from "./Components/MainHeader";
+import LeftSection from "./Components/mainleftpart";
+import ProfilePage from "./Components/ProfilePage";
+
 // import WidgetContent from './Components/WidgetContent';
 
 
 function App() {
   return (
     <>
+
       <div>
         {/* <Sidebar /> */}
         {/* <Gemini /> */}
@@ -20,6 +28,9 @@ function App() {
         {/* <SignUp /> */}
         <QHeader />
       </div>
+
+//       <ProfilePage />
+
     </>
   );
 }
