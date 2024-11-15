@@ -1,3 +1,5 @@
+// Whole done by Dishant and Sunay
+
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
