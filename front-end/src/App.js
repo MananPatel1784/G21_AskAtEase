@@ -4,19 +4,19 @@ import SignUp from "./Components/LoginSignUp/SignUp"; // It's fine to import but
 import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
-// import WidgetContent from './Components/WidgetContent';
 import Gemini from "./Components/Gemini"
-function App() {
-  return (<>
-      <div>
-        {/* <Sidebar /> */}
-       {/* <Gemini/> */}
-       {/* <Login></Login> */}
-       {/* <Login/> */}
-       <SignUp/>
-      </div>
-    </>
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+const App = () => {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Login />} /> {/* Default Route */}
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/gemini" element={<Gemini />} />
+      </Routes>
+    </div>
   );
-}
+};
 
 export default App;
