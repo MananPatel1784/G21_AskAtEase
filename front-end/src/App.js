@@ -5,18 +5,16 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
 import Gemini from "./Components/Gemini";
+import AddPost from "./Components/AddPost";
+import Header from "./Components/MainHeader";
+import LeftSection from "./Components/mainleftpart";
+import ProfilePage from "./Components/ProfilePage";
 // import WidgetContent from './Components/WidgetContent';
 
 function App() {
   return (
     <>
-      <div>
-        {/* <Sidebar /> */}
-        <Gemini />
-        {/* <Login></Login> */}
-        {/* <Login/> */}
-        {/* <SignUp /> */}
-      </div>
+      <ProfilePage />
     </>
   );
 }
