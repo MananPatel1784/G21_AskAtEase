@@ -2,7 +2,7 @@
 
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import AskAtEaseLogo from './Assets/AskAtEase.png';
+import AskAtEaseLogo from './Assets/logo.png';
 
 const QHeader = () => {
   return (
