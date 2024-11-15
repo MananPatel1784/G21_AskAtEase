@@ -5,6 +5,8 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
 import Gemini from "./Components/Gemini";
+import MainComponent from "./Components/maincomponent";
+import MainHeader from "./Components/MainHeader";
 // import WidgetContent from './Components/WidgetContent';
 
 function App() {
@@ -12,10 +14,12 @@ function App() {
     <>
       <div>
         {/* <Sidebar /> */}
-        <Gemini />
+        {/* <Gemini /> */}
         {/* <Login></Login> */}
         {/* <Login/> */}
         {/* <SignUp /> */}
+        <MainHeader/>
+        <MainComponent/>
       </div>
     </>
   );
