@@ -35,14 +35,14 @@ const vectorize = (terms, document, idf) => {
 // Find similar questions using TF-IDF and cosine similarity
 const findSimilarQuestions = async (req, res) => {
   try {
-    const { query } = req.body;
+    const { questionName } = req.body;
 
-    if (!query) {
+    if (!questionName) {
       return res.status(400).json({ message: 'Query is required' });
     }
 
     // Tokenize and preprocess query
-    const queryTokens = tokenizer.tokenize(query.toLowerCase());
+    const queryTokens = tokenizer.tokenize(questionName.toLowerCase());
 
     // Fetch all questions from the database
     const questions = await Question.find();

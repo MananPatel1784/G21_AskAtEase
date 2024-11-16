@@ -11,6 +11,6 @@ router.get("/", (req, res) => {
 
 router.use("/questions", questionRouter);
 router.use("/answers", answerRouter);
-router.post('/search',findSimilarQuestions); 
+router.use('/search',findSimilarQuestions); 
 
 module.exports = router;
