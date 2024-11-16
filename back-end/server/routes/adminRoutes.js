@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const authenticateAdmin = require("../controllers/authenticateAdmin");
 const authorizeAdmin = require("../MiddleWare/authorizeAdmin");
 const user = require("./user");
+const sponsorRoute = require("./sponsor");
 
 // Generate a token for an admin user
 function generateAdminToken(adminUser) {
@@ -107,6 +108,9 @@ router.get("/analytics", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch analytics" });
     }
 });
+
+// managing Sponsors
+router.use("/sponsors", sponsorRoute);
 
 router.delete("/questions/:id", authorizeAdmin, (req, res) => {
     const questionId = req.response.id;
