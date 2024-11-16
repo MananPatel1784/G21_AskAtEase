@@ -4,6 +4,7 @@ import SignUp from "./Components/LoginSignUp/SignUp"; // It's fine to import but
 import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
+<<<<<<< HEAD
 import Gemini from "./Components/Gemini"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -16,6 +17,20 @@ const App = () => {
         <Route path="/gemini" element={<Gemini />} />
       </Routes>
     </div>
+=======
+import Gemini from "./Components/Gemini";
+import AddPost from "./Components/AddPost";
+import Header from "./Components/MainHeader";
+import LeftSection from "./Components/mainleftpart";
+import ProfilePage from "./Components/ProfilePage";
+// import WidgetContent from './Components/WidgetContent';
+
+function App() {
+  return (
+    <>
+      <ProfilePage />
+    </>
+>>>>>>> 2a4065cf3eacab144c50d5e8a5b5cd981d2b0353
   );
 };
 
