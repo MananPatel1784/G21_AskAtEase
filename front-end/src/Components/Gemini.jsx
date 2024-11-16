@@ -15,7 +15,7 @@ const Gemini = () => {
     setAnswer(response["data"]["candidates"][0]["content"]["parts"][0]["text"]);
   }
   return (
-    <div className="font-lexend flex-col w-1/5 m-4 gap-4 bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-2">
+    <div className="font-lexend flex-col w-1/5  bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-8" style={{width:"100%"}}>
       <h1 className="flex font-bold text-2xl place-self-center">
         Gemini AI by Google
       </h1>
