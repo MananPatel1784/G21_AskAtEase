@@ -1,6 +1,6 @@
 import "./App.css";
-import Login from "./Components/LoginSignUp/Login";
-import SignUp from "./Components/LoginSignUp/SignUp";
+// import Login from "./LoginSignup//LoginSignUp/Login";
+// import SignUp from "../src/Components/LoginSignUp/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
 import Leftpart from "./Components/mainleftpart";
 import Sidebar from "./Components/Sidebar";
@@ -36,15 +36,15 @@ function App() {
         <Routes>
               <Route path="/" element={<MainComponent />}/>
               <Route path="Answer" element={<AnswerPage/>}/> 
-              <Route path="ReturnHome" element={<MainComponent/>}/>  
+              <Route path="ReturnHome" element={<MainComponent/>}/>
+              {/* <Route path="/signup" element={<SignUp />} />
+              <Route path ="/login" element={<Login/>}/> */}
+              <Route path="/gemini" element={<Gemini />} /> 
+
               
         </Routes>
       </div>
     </>
   );
-}
-
+};
 export default App;
-
-
-

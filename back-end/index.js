@@ -8,13 +8,15 @@ const bodyParser = require('body-parser');
 // const { connectToMongoDB } = require("./connection");
 const session = require('express-session');
 const path = require('path');
+const user = require('./server/routes/user');
 const userRoute = require('./server/routes/userRoute');
+const adminRoute = require("./server/routes/adminRoutes");
 const PORT = process.env.PORT || 8000;
 
 const db = require('./db');
 const router = require('./server/routes');
 
-// Connect to MongoDB
+// MongoDB connection
 db.connect();
 
 // Middleware
@@ -37,13 +39,13 @@ app.use('/uploads', express.static(path.join(__dirname, "../uploads")));
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // Catch-all route to serve frontend's index.html
-app.get("*", (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-    } catch (e) {
-        res.send("Oops! unexpected Error");
-    }
-});
+// app.get("*", (req, res) => {
+//     try {
+//         res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+//     } catch (e) {
+//         res.send("Oops! unexpected Error");
+//     }
+// });
 
 app.use(cors()); // Use cors middleware for CORS handling
 
@@ -64,7 +66,8 @@ app.set('view engine', 'ejs');
 
 // Routes
 app.use("/", userRoute);
-app.use("/signup", userRoute);
+app.use("/admin", adminRoute);
+app.use("/signup", user);
 app.use("/login", userRoute);
 
 // Start server
