@@ -5,6 +5,7 @@ import {
   doSignInWithGoogle,
 } from "../../Firebase/auth";
 import AskAtEase from "../Assets/AskAtEase.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { userLoggedIn } = useAuth();
@@ -40,7 +41,10 @@ const Login = () => {
       }
     }
   };
-
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+      navigate("/signup"); // Replace "/signup" with your desired route
+  };
   return (
     <main className="font-lexend flex justify-center items-center bg-gradient-to-b from-customGradient1 to-customGradient2 min-h-screen w-full p-6">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg flex flex-col md:flex-row p-8 space-y-6 md:space-y-0 md:space-x-8">
@@ -99,6 +103,8 @@ const Login = () => {
               >
                 {isSigningIn ? "Signing in..." : "Sign in with Google"}
               </button>
+              {/* // added new user option that will direct it to the sign up page */}
+              <button onClick={handleRedirect}>New User?</button>
             </form>
           )}
         </div>
