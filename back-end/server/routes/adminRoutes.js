@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
@@ -14,7 +16,7 @@ function generateAdminToken(adminUser) {
     };
 
     // Sign the token with a secret key
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h"});
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
     return token;
 }
 
@@ -32,7 +34,7 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.post("/signup", user);
+router.use("/signup", user);
 
 router.get("/users", authorizeAdmin, (req, res) => {
     // Logic to retrieve all users
