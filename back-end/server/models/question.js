@@ -10,9 +10,14 @@ const QuestionSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    answers: {
+    answers: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Answers"
+        ref: "answers"
+    }],
+    spaceId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "spaces",
+        required: true
     }
 });
 
