@@ -39,13 +39,13 @@ app.use('/uploads', express.static(path.join(__dirname, "../uploads")));
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // Catch-all route to serve frontend's index.html
-app.get("*", (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-    } catch (e) {
-        res.send("Oops! unexpected Error");
-    }
-});
+// app.get("*", (req, res) => {
+//     try {
+//         res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+//     } catch (e) {
+//         res.send("Oops! unexpected Error");
+//     }
+// });
 
 app.use(cors()); // Use cors middleware for CORS handling
 
@@ -66,9 +66,9 @@ app.set('view engine', 'ejs');
 
 // Routes
 app.use("/", userRoute);
+app.use("/admin", adminRoute);
 app.use("/signup", user);
 app.use("/login", userRoute);
-app.use("/admin", adminRoute);
 
 // Start server
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));
