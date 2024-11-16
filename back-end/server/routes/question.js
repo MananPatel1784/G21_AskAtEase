@@ -3,7 +3,7 @@ const router = express.Router();
 
 const questionDB = require('../models/question');
 
-router.post('/', async (req, res) => {
+router.post("/add", async (req, res) => {
     try {
         await questionDB.create({
             questionName: req.body.questionName,
@@ -28,17 +28,17 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         await questionDB.aggregate([
             {
-                $l00kup: {
+                $lookup: {
                     from: "answers", // collection to join
                     localField: "_id", // field from input document
-                    foreignField: "questionID",
-                    as: "allAnswers"
-                }
-            }
+                    foreignField: "questionId",
+                    as: "allAnswers",
+                },
+            },
         ]).exec().then((doc) => {
             res.status(200).send(doc);
         }).catch((error) => {

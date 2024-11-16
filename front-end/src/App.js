@@ -4,35 +4,21 @@ import SignUp from "./Components/LoginSignUp/SignUp"; // It's fine to import but
 import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
-import Gemini from "./Components/Gemini";
 
-import QHeader from "./Components/QHeader";
+import Gemini from "./Components/Gemini"
 
-import AddPost from "./Components/AddPost";
-import Header from "./Components/MainHeader";
-import LeftSection from "./Components/mainleftpart";
-import ProfilePage from "./Components/ProfilePage";
-
-// import WidgetContent from './Components/WidgetContent';
-
-
-function App() {
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+const App = () => {
   return (
-    <>
+    <div>
+      <Routes>
+        <Route path="/" element={<Login />} /> {/* Default Route */}
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/gemini" element={<Gemini />} />
+      </Routes>
+    </div>
 
-      <div>
-        {/* <Sidebar /> */}
-        {/* <Gemini /> */}
-        {/* <Login></Login> */}
-        {/* <Login/> */}
-        {/* <SignUp /> */}
-        <QHeader />
-      </div>
-
-//       <ProfilePage />
-
-    </>
   );
-}
+};
 
 export default App;
