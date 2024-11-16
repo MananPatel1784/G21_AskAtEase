@@ -23,12 +23,13 @@ import AddPost from "./Components/AddPost";
 import Header from "./Components/MainHeader";
 import LeftSection from "./Components/mainleftpart";
 import ProfilePage from "./Components/ProfilePage";
+import SettingsButton from "./Components/settingsbutton";
 // import WidgetContent from './Components/WidgetContent';
 
 function App() {
   return (
     <>
-      <ProfilePage />
+      <SettingsButton />
     </>
 >>>>>>> 2a4065cf3eacab144c50d5e8a5b5cd981d2b0353
   );
