@@ -25,12 +25,12 @@ router.post("/login", async (req, res) => {
 
     const isAdminAuthenticated = await authenticateAdmin(username, password);
 
-    if(isAdminAuthenticated) {
+    if (isAdminAuthenticated) {
         const token = generateAdminToken({ id: isAdminAuthenticated.id });
         res.json({ token });
     }
     else {
-        res.status(401).json({ message: "Invalid admin credentials!!"});
+        res.status(401).json({ message: "Invalid admin credentials!!" });
     }
 });
 
@@ -52,7 +52,7 @@ router.get("/users/:id", authorizeAdmin, async (req, res) => {
     try {
         const userById = await user.findById(req.params.id);
 
-        if(!userById) return res.status(404).json({ error: "User not found!!" });
+        if (!userById) return res.status(404).json({ error: "User not found!!" });
 
         res.json(userById);
     }
@@ -66,7 +66,7 @@ router.put("/users/:id", authorizeAdmin, async (req, res) => {
     try {
         const updatedUser = await user.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
-        if(!updatedUser) return res.status(404).json({ error: "User not found!!" });
+        if (!updatedUser) return res.status(404).json({ error: "User not found!!" });
 
         res.json(updatedUser);
     }
@@ -80,12 +80,31 @@ router.delete("/users/:id", authorizeAdmin, async (req, res) => {
     try {
         const deletedUser = await user.findByIdAndDelete(req.params.id);
 
-        if(!deletedUser) return res.status(404).json({ error: "User not found!!" });
+        if (!deletedUser) return res.status(404).json({ error: "User not found!!" });
 
-        res.json({ message: "User deleted successfully!!"});
+        res.json({ message: "User deleted successfully!!" });
     }
     catch (err) {
         res.status(500).json({ error: "Failed to delete user!!" });
+
+    }
+});
+
+// Get analytics about platform usage
+router.get("/analytics", async (req, res) => {
+    try {
+        const totalUsers = await User.countDocuments();
+        const totalQuestions = await Question.countDocuments(); // Replace with your Question model
+        const totalAnswers = await Answer.countDocuments(); // Replace with your Answer model
+
+        res.json({
+            totalUsersRegistered: totalUsers,
+            totalQuestionsAsked: totalQuestions,
+            totalAnswersGiven: totalAnswers
+        });
+    }
+    catch (err) {
+        res.status(500).json({ error: "Failed to fetch analytics" });
     }
 });
 
