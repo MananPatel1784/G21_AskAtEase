@@ -1,24 +1,50 @@
 import "./App.css";
 import Login from "./Components/LoginSignUp/Login";
-import SignUp from "./Components/LoginSignUp/SignUp"; // It's fine to import but not necessary unless you use it
+import SignUp from "./Components/LoginSignUp/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
+import Leftpart from "./Components/mainleftpart";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
 import Gemini from "./Components/Gemini";
+import ProfilePage from "./Components/ProfilePage";
+import AddPost from "./Components/AddPost";
+import MainComponent from "./Components/maincomponent";
+import Header from "./Components/MainHeader";
+import QuestionSidebar from "./Components/QuestionsSidebar"
+import AnswerPage from "./Components/Answerpage";
+import { BrowserRouter , Routes , Route } from "react-router-dom";
 // import WidgetContent from './Components/WidgetContent';
+
 
 function App() {
   return (
     <>
       <div>
+        {/* Login */}
+        {/* SignUp */}
         {/* <Sidebar /> */}
-        <Gemini />
-        {/* <Login></Login> */}
+        {/* <Gemini /> */}
+        {/* <ProfilePage/> */}
+        {/* <MainComponent/> */}
+        {/* <AnswerPage/> */}
+        {/* <QuestionSidebar/>
+        <Leftpart/> */}
         {/* <Login/> */}
         {/* <SignUp /> */}
+
+
+        <Routes>
+              <Route path="/" element={<MainComponent />}/>
+              <Route path="Answer" element={<AnswerPage/>}/> 
+              <Route path="ReturnHome" element={<MainComponent/>}/>  
+              
+        </Routes>
       </div>
     </>
   );
 }
 
 export default App;
+
+
+

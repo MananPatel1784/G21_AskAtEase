@@ -1,5 +1,6 @@
 // post component for the main page 
 import React from "react";
+import { BrowserRouter , Routes , Route} from "react-router-dom";
 
 const Post = ({ profileImg, name, date, question, description, postImg }) => {
   return (
