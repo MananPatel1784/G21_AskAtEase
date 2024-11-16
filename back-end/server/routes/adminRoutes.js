@@ -36,10 +36,59 @@ router.post("/login", async (req, res) => {
 
 router.use("/signup", user);
 
-router.get("/users", authorizeAdmin, (req, res) => {
-    // Logic to retrieve all users
-    res.send("This is the admin-only users list.");
+// Get all users
+router.get("/users", authorizeAdmin, async (req, res) => {
+    try {
+        const allUsers = await user.find();
+        res.json(allUsers);
+    }
+    catch (err) {
+        res.status(500).json({ error: "Failed to fetch users!!" });
+    }
 });
+
+// Get a specific user by ID
+router.get("/users/:id", authorizeAdmin, async (req, res) => {
+    try {
+        const userById = await user.findById(req.params.id);
+
+        if(!userById) return res.status(404).json({ error: "User not found!!" });
+
+        res.json(userById);
+    }
+    catch (err) {
+        res.status(500).json({ error: "Failed to fetch user!!" });
+    }
+});
+
+// Update user details
+router.put("/users/:id", authorizeAdmin, async (req, res) => {
+    try {
+        const updatedUser = await user.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+        if(!updatedUser) return res.status(404).json({ error: "User not found!!" });
+
+        res.json(updatedUser);
+    }
+    catch (err) {
+        res.status(500).json({ error: "Failed to update user!!" });
+    }
+});
+
+// Delete a user by ID
+router.delete("/users/:id", authorizeAdmin, async (req, res) => {
+    try {
+        const deletedUser = await user.findByIdAndDelete(req.params.id);
+
+        if(!deletedUser) return res.status(404).json({ error: "User not found!!" });
+
+        res.json({ message: "User deleted successfully!!"});
+    }
+    catch (err) {
+        res.status(500).json({ error: "Failed to delete user!!" });
+    }
+});
+
 router.delete("/questions/:id", authorizeAdmin, (req, res) => {
     const questionId = req.response.id;
     // Logic to delete the question

@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8000;
 const db = require('./db');
 const router = require('./server/routes');
 
-// Connect to MongoDB
+// MongoDB connection
 db.connect();
 
 // Middleware
