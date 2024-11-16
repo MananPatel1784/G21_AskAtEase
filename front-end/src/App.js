@@ -4,7 +4,8 @@ import SignUp from "./Components/LoginSignUp/SignUp"; // It's fine to import but
 import { AuthProvider } from "./contexts/AuthContext";
 import Sidebar from "./Components/Sidebar";
 import Widget from "./Components/Widget";
-import Gemini from "./Components/Gemini"
+import Gemini from "./Components/Gemini";
+import Questionsforyou from "./Components/Questionsforyou";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const App = () => {
