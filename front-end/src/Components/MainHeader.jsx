@@ -1,37 +1,42 @@
 // src/Components/Header.js
 
 import React from "react";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AskAtEaseLogo from "./Assets/AskAtEase.png";
 
 const Header = () => {
   return (
     <div className="qHeader sticky w-full bg-customGradient1 shadow-custom flex items-center justify-evenly">
       {/* Logo */}
-      <div className="qHeader__logo flex items-center space-x-2">
-        <img src={AskAtEaseLogo} alt="Logo" className="h-20 w-30 m-2" />
-      </div>
+      <Link to="/ReturnHome">
+        <div className="qHeader__logo flex items-center space-x-2">
+          <img src={AskAtEaseLogo} alt="Logo" className="h-20 w-30 m-2" />
+        </div>
+      </Link>
 
       {/* Icons Section */}
       <div className="qHeader__icons flex space-x-16">
+
+        <Link to="/ReturnHome">
+            <span>
+              <svg
+                className="h-8 w-8 text-button cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                ></path>
+              </svg>
+            </span>
+        </Link>
         <span>
           <svg
-            className="h-8 w-8 text-button"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-            ></path>
-          </svg>
-        </span>
-        <span>
-          <svg
-            className="h-8 w-8 text-button"
+            className="h-8 w-8 text-button cursor-pointer"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -47,7 +52,7 @@ const Header = () => {
         </span>
         <span>
           <svg
-            className="h-8 w-8 text-button"
+            className="h-8 w-8 text-button cursor-pointer"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -64,7 +69,7 @@ const Header = () => {
         </span>
         <span>
           <svg
-            className="h-8 w-8 text-button"
+            className="h-8 w-8 text-button cursor-pointer"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -83,32 +88,22 @@ const Header = () => {
 
       {/* Search Section */}
       <div className="qHeader__input flex items-center px-2 ml-2">
-        {/* <span
-          className="material-icons w-32 h-10 font-mullish text-white border-lightBlue
-                    rounded-md text-sm font-bold mx-auto flex items-center justify-center bg-button">
-                Search
-        </span> */}
         <input
           type="text"
           placeholder="Search"
-          className="input-custom p-2 border-none rounded-md"
+          className="input-custom p-2 border-button border-4 rounded-md"
           id="searching"
         />
       </div>
 
       {/* Right Section */}
-      <div className="qHeader__Rem flex items-center space-x-4 ml-4">
-        <button
-          className="text-black font-mullish py-1 hover:text-button cursor-pointer font-bold
-                    transition-all duration-200 relative group hidden lg:block hover:scale-125"
-        >
-          Add Question
-          <div
-            className="absolute bottom-0 w-full h-1 bg-button hidden group-hover:block
-                transition-all duration-200"
-          ></div>
-        </button>
-      </div>
+      <button className="qHeader__Rem flex items-center space-x-4 ml-4">
+          <img
+            src={AskAtEaseLogo}
+            alt="Logo"
+            className="h-16 w-16 m-2 border-button border-4 rounded-full"
+          />
+      </button>
     </div>
   );
 };
