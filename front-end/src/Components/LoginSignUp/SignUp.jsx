@@ -94,7 +94,7 @@ const SignUp = () => {
             </form>
             <div className="text-sm text-center mt-4">
               Already have an account?{' '}
-              <Link to="/Login" className="text-emerald-600 font-bold hover:underline">
+              <Link to="/login" className="text-emerald-600 font-bold hover:underline">
                 Continue
               </Link>
             </div>
