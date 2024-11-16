@@ -7,6 +7,7 @@ import Widget from "./Components/Widget";
 import Gemini from "./Components/Gemini"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainComponent from "./Components/maincomponent";
 const App = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<Login />} /> 
          <Route path="/signup" element={<SignUp />} />
           <Route path ="/login" element={<Login/>}/>
+          <Route path ='/mainpage' element={<MainComponent/>}/>
         <Route path="/gemini" element={<Gemini />} /> 
       </Routes>
     </div>

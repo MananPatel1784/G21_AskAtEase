@@ -7,6 +7,7 @@ import eyeopen from "./Assets/eye-open.png";
 import friedick from '../Components/Assets/friedick.jpeg';
 import CR7 from '../Components/Assets/cr7.jpg';
 import Sidebar from "../Components/mainleftpart";
+import { useNavigate } from "react-router-dom";
 
 // Import your other assets here
 
