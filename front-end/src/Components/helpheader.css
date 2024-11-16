@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, #F0D9C4, #FF9797); /* Gradient background */
+    padding: 10px 20px;
+    border-bottom: 2px solid #FF0000; 
+  }
+  
+  .quora-icon {
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .header-buttons button {
+    margin: 0 10px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #AD3B29; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .header-buttons button:hover {
+    background-color: #FF9797; 
+  }
+  
+  
