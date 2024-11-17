@@ -8,7 +8,7 @@ import ProfilePage from "./Components/ProfilePage";
 import AddPost from "./Components/AddPost";
 import MainComponent from "./Components/maincomponent";
 import Header from "./Components/MainHeader";
-import QuestionSidebar from "./Components/QuestionsSidebar"
+// import QuestionSidebar from "./Components/QuestionsSidebar"
 import AnswerPage from "./Components/Answerpage";
 import { BrowserRouter , Routes , Route } from "react-router-dom";
 import QuestionsAndAnswers from "./Components/QuestionAnswer";
@@ -26,8 +26,8 @@ function App() {
         {/* <Sidebar /> */}
           
         {/* <ProfilePage/> */}
-        {/* <MainComponent/> */}
-        {/* <AnswerPage/> */}
+        {/* <MainComponent/>
+        <AnswerPage/> */}
         {/* <QuestionSidebar/> */}
         {/* <Leftpart/>  */}
         {/* <Login/>  */}
