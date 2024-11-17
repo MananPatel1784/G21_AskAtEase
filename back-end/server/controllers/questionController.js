@@ -1,7 +1,6 @@
-const Question = require('../models/question')
+const Question = require('../models/question');
 const natural = require('natural');
 const cosineSimilarity = require('cosine-similarity');
-
 
 // Tokenizer for preprocessing
 const tokenizer = new natural.WordTokenizer();
@@ -34,6 +33,7 @@ const vectorize = (terms, document, idf) => {
 
 // Find similar questions using TF-IDF and cosine similarity
 const findSimilarQuestions = async (req, res) => {
+  console.log(req.body);
   try {
     const { questionName } = req.body;
 
@@ -71,9 +71,9 @@ const findSimilarQuestions = async (req, res) => {
     // Sort results by similarity score
     similarities.sort((a, b) => b.similarity - a.similarity);
 
-    // Filter results with significant similarity (threshold = 0.2)
+    // Filter results with significant similarity (threshold = 0.4)
     const relevantQuestions = similarities
-      .filter((result) => result.similarity > 0.2)
+      .filter((result) => result.similarity > 0.4)  // Updated threshold to 0.4
       .map((result) => ({
         question: result.question,
         similarity: result.similarity,

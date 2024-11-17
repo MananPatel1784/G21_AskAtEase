@@ -7,7 +7,7 @@ import QuestionsAndAnswers from "./QuestionAnswer"; // Assuming this is your com
 export default function AddPost() {
   const [modal, setModal] = useState(false);
   const [activeTab, setActiveTab] = useState("post");
-  const [questionTitle, setQuestionTitle] = useState("");
+  const [questionName, setquestionName] = useState("");
   const [questionDetails, setQuestionDetails] = useState("");
   const [postContent, setPostContent] = useState("");
   const navigate = useNavigate(); // Use useNavigate to navigate to a different page
@@ -24,7 +24,7 @@ export default function AddPost() {
 
   const clearInputs = () => {
     setPostContent("");
-    setQuestionTitle("");
+    setquestionName("");
     setQuestionDetails("");
   };
 
@@ -47,14 +47,14 @@ export default function AddPost() {
 
   // Handle question submission
   const handleQuestionSubmit = async () => {
-    if (!questionTitle.trim()) {
+    if (!questionName.trim()) {
       alert("Question title is required!");
       return;
     }
 
     try {
       const body = {
-        questionName: questionTitle.trim()
+        questionName: questionName.trim()
       };
 
       const response = await axios.post(`${API_URL}/api/questions/add`, body);
@@ -68,12 +68,12 @@ export default function AddPost() {
 
   // Redirect to the QuestionsAndAnswers component with the question
   const handleAskQuestionRedirect = () => {
-    if (!questionTitle.trim()) {
+    if (!questionName.trim()) {
       alert("Question title cannot be empty!");
       return;
     }
 
-    navigate("/questions-and-answers", { state: { questionTitle } });
+    navigate("/questions-and-answers", { state: { questionName } });
   };
 
   return (
@@ -171,8 +171,8 @@ export default function AddPost() {
                     type="text"
                     className="w-full border rounded-lg p-3 mb-4 text-gray-700 focus:outline-red-500 focus:ring-red-500 focus:border-red-500"
                     placeholder="Question Title"
-                    value={questionTitle}
-                    onChange={(e) => setQuestionTitle(e.target.value)}
+                    value={questionName}
+                    onChange={(e) => setquestionName(e.target.value)}
                   />
                   <textarea
                     className="w-full border rounded-lg p-3 text-gray-700 focus:outline-red-500 focus:ring-red-500 focus:border-red-500"
@@ -190,7 +190,7 @@ export default function AddPost() {
                     </button>
                     <button
                       className="bg-button text-white px-4 py-2 rounded"
-                      onClick={handleQuestionSubmit}
+                      onClick={handleAskQuestionRedirect}
                     >
                       Ask
                     </button>
