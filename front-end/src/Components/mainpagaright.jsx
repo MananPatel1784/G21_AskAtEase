@@ -58,7 +58,8 @@ function SpacesToFollow() {
             <div className="bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] border rounded-2xl mb-8" style={{width:"100%"}}>
                 <Gemini/>
             </div>
-            <div className="right_values bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] rounded-lg shadow">
+            <div className="right_values bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] rounded-lg shadow" >
+               
                 <h2 className="text-2xl font-bold p-4 text-button border-b-2 border-gray-400 text-center">
                     Spaces To Follow
                 </h2>
