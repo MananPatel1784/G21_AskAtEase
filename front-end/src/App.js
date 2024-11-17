@@ -3,8 +3,6 @@ import "./App.css";
 // import SignUp from "../src/Components/LoginSignUp/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
 import Leftpart from "./Components/mainleftpart";
-import Sidebar from "./Components/Sidebar";
-import Widget from "./Components/Widget";
 import Gemini from "./Components/Gemini";
 import ProfilePage from "./Components/ProfilePage";
 import AddPost from "./Components/AddPost";
