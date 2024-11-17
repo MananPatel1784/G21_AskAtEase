@@ -19,30 +19,29 @@ function App() {
   return (
     <>
       <div>
-        {/* Login */}
-        {/* SignUp */}
-        {/* <Sidebar /> */}
-        {/* <Gemini /> */}
-        {/* <ProfilePage/> */}
-        {/* <MainComponent/> */}
-        {/* <AnswerPage/> */}
-        {/* <QuestionSidebar/>
-        <Leftpart/> */}
-        {/* <Login/> */}
+        {/* <Login />  */}
         {/* <SignUp /> */}
-
-
-        <Routes>
+        {/* <Sidebar /> */}
+          
+        {/* <ProfilePage/> */}
+        <MainComponent/>
+        <AnswerPage/>
+        {/* <QuestionSidebar/> */}
+        {/* <Leftpart/>  */}
+        {/* <Login/>  */}
+        {/* <SignUp />  */}
+        <Questionsforyou />
+        {/* <Routes>
               <Route path="/" element={<MainComponent />}/>
               <Route path="Answer" element={<AnswerPage/>}/> 
               <Route path="ReturnHome" element={<MainComponent/>}/>
               {/* <Route path="/signup" element={<SignUp />} />
               <Route path ="/login" element={<Login/>}/> */}
-              <Route path="/gemini" element={<Gemini />} /> 
+              {/* <Route path="/gemini" element={<Gemini />} /> 
 
               
-        </Routes>
-      </div>
+        </Routes> */} 
+        </div>
     </>
   );
 };
