@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const QuestionsAndAnswers = () => {
   const [data, setData] = useState([]);
