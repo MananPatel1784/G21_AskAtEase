@@ -63,5 +63,6 @@ async function handleSignUp(req, res) {
 }
 
 module.exports = {
-    handleSignUp
+    handleSignUp,
+    validatePassword
 };
