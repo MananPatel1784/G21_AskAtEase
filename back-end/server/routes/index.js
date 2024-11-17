@@ -4,6 +4,7 @@ const router = express.Router();
 const questionRouter = require('./question');
 const answerRouter = require('./answer');
 const spaceRouter = require("./spaceRoutes");
+const replyRouter = require("./reply");
 const { findSimilarQuestions } = require('../controllers/questionController');
 
 router.get("/", (req, res) => {
@@ -12,6 +13,7 @@ router.get("/", (req, res) => {
 
 router.use("/questions", questionRouter);
 router.use("/answers", answerRouter);
+router.use("/reply", replyRouter);
 router.get('/search', findSimilarQuestions); 
 router.use("/spaces", spaceRouter);
 
