@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Test = () => {
+const SearchQuestion = () => {
   const [question, setQuestion] = useState("");
   const [submittedQuestion, setSubmittedQuestion] = useState("");
   const [data, setData] = useState([]);
@@ -24,15 +24,18 @@ const Test = () => {
       setError(null);
 
       try {
-        console.log(submittedQuestion)
+        console.log(submittedQuestion);
         // Fetch data from the backend with the submitted question
-        const response = await axios.post('http://localhost:8000/api/search', {
-           questionName: submittedQuestion ,  // Send in the body, though it's not typical for GET
+        const response = await axios.post("http://localhost:8000/api/search", {
+          questionName: submittedQuestion, // Send in the body, though it's not typical for GET
         });
 
         setData(response.data); // Update state with fetched data
       } catch (err) {
-        console.error("Error fetching data:", err.response?.data || err.message);
+        console.error(
+          "Error fetching data:",
+          err.response?.data || err.message
+        );
         setError("Failed to fetch questions. Please try again later.");
       } finally {
         setLoading(false);
@@ -43,83 +46,61 @@ const Test = () => {
   }, [submittedQuestion]);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Ask a Question</h1>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Ask a Question</h1>
       <textarea
         placeholder="Enter your question here..."
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
-        style={{
-          width: "100%",
-          height: "100px",
-          marginBottom: "10px",
-          padding: "10px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-        }}
+        className="w-full h-24 mb-4 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
       />
-      <br />
       <button
         onClick={handleSubmit}
-        style={{
-          backgroundColor: "#007BFF",
-          color: "#fff",
-          border: "none",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
+        className="bg-button text-white px-4 py-2 rounded-md hover:bg-red-800"
       >
         Ask
       </button>
 
       {/* Render Questions and Answers */}
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {loading && <p className="mt-4 text-gray-500">Loading...</p>}
+      {error && <p className="mt-4 text-red-500">{error}</p>}
       {submittedQuestion && !loading && !error && (
-        <div>
-          <h1>Questions and Answers</h1>
-          <div
-            style={{
-              marginBottom: "20px",
-              border: "1px solid #007BFF",
-              padding: "15px",
-              borderRadius: "5px",
-              backgroundColor: "#E9F7FE",
-            }}
-          >
-            <h2>Your Question:</h2>
-            <p>{submittedQuestion}</p>
+        <div className="mt-6">
+          <h1 className="text-xl font-semibold mb-4">Questions and Answers</h1>
+          <div className="mb-6 border border-red-600 p-4 rounded-md bg-red-50">
+            <h2 className="text-lg font-bold mb-2">Your Question:</h2>
+            <p className="text-gray-700">{submittedQuestion}</p>
           </div>
           {data.length > 0 ? (
             data.map((item) => (
               <div
                 key={item.question._id}
-                style={{
-                  marginBottom: "20px",
-                  border: "1px solid #ccc",
-                  padding: "15px",
-                  borderRadius: "5px",
-                }}
+                className="mb-6 border border-gray-300 p-4 rounded-md"
               >
-                <h2>{item.question.questionName}</h2>
-                <p><strong>Similarity:</strong> {item.similarity.toFixed(2)}</p>
-                <h3>Answers:</h3>
+                <h2 className="text-lg font-semibold">
+                  {item.question.questionName}
+                </h2>
+                {/* <p className="text-gray-600">
+                  <strong>Similarity:</strong> {item.similarity.toFixed(2)}
+                </p> */}
+                <h3 className="text-md font-bold mt-4">Answers:</h3>
                 {item.question.answers.length > 0 ? (
-                  <ul>
+                  <ul className="list-disc list-inside">
                     {item.question.answers.map((answer, idx) => (
-                      <li key={idx} style={{ marginBottom: "10px" }}>
+                      <li key={idx} className="mb-2 text-gray-700">
                         {answer}
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <p>No answers available for this question.</p>
+                  <p className="text-gray-500">
+                    No answers available for this question.
+                  </p>
                 )}
               </div>
             ))
           ) : (
-            <p>No similar questions found.</p>
+            <p className="text-gray-500">No similar questions found.</p>
           )}
         </div>
       )}
@@ -127,4 +108,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default SearchQuestion;
