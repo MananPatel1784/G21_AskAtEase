@@ -64,7 +64,7 @@ exports.reactivateAccount =  async (req, res) => {
     // Update user status to "active"
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { status: "active" },
+      { isActive: true },
       { new: true }
     );
 
