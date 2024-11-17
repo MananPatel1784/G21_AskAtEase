@@ -4,18 +4,53 @@ import { useState } from "react";
 const Gemini = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [error, setError] = useState("");
+  
   async function GenerateAnswer() {
-    const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA9CZJmEIUHBuRmuCFOk_iDFW5e8f1FBso",
-      method: "post",
-      data: {
-        contents: [{ parts: [{ text: question }] }],
-      },
-    });
-    setAnswer(response["data"]["candidates"][0]["content"]["parts"][0]["text"]);
+    try {
+      setError(""); // Clear any previous errors
+      const response = await axios({
+        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA9CZJmEIUHBuRmuCFOk_iDFW5e8f1FBso",
+        method: "post",
+        data: {
+          contents: [{ parts: [{ text: question }] }],
+        },
+      });
+  
+      if (
+        response.data &&
+        response.data.candidates &&
+        response.data.candidates.length > 0 &&
+        response.data.candidates[0].content &&
+        response.data.candidates[0].content.parts &&
+        response.data.candidates[0].content.parts.length > 0
+      ) {
+        setAnswer(response.data.candidates[0].content.parts[0].text);
+      } else {
+        setAnswer("No valid response received.");
+      }
+    } catch (err) {
+      console.error("Error generating answer:", err);
+      if (err.response) {
+        // Errors from the API response
+        setError(
+          `Error: ${err.response.status} - ${err.response.data.error.message}`
+        );
+      } else if (err.request) {
+        // No response received
+        setError("Error: No response from Gemini. Please try again later.");
+      } else {
+        // Other errors
+        setError(`Error: ${err.message}`);
+      }
+    }
   }
+  
   return (
-    <div className="font-lexend flex-col w-1/5 m-4 gap-4 bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-2">
+    <div
+      className="font-lexend flex-col w-1/5  bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-8"
+      style={{ width: "100%" }}
+    >
       <h1 className="flex font-bold text-2xl place-self-center">
         Gemini AI by Google
       </h1>

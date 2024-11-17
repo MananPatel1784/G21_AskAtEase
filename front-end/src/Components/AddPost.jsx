@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 export default function AddPost() {
   const [modal, setModal] = useState(false);
   const [activeTab, setActiveTab] = useState("post");
+
+  // State for inputs
+  const [postContent, setPostContent] = useState("");
+  const [questionTitle, setQuestionTitle] = useState("");
+  const [questionDetails, setQuestionDetails] = useState("");
 
   const openModal = (tab) => {
     setActiveTab(tab); // Set the active tab based on the button clicked
@@ -11,6 +18,51 @@ export default function AddPost() {
 
   const closeModal = () => {
     setModal(false);
+    clearInputs(); // Reset the input fields when closing the modal
+  };
+
+  const clearInputs = () => {
+    setPostContent("");
+    setQuestionTitle("");
+    setQuestionDetails("");
+  };
+
+  // Handle post submission
+  const handlePostSubmit = async () => {
+    if (!postContent.trim()) {
+      alert("Post content cannot be empty!");
+      return;
+    }
+
+    try {
+      const response = await axios.post("/api/posts", { content: postContent });
+      alert(response.data.message || "Post created successfully!");
+      closeModal();
+    } catch (error) {
+      console.error("Error creating post:", error);
+      alert("Failed to create post. Please try again.");
+    }
+  };
+
+  // Handle question submission
+  const handleQuestionSubmit = async () => {
+    if (!questionTitle.trim()) {
+      alert("Question title is required!");
+      return;
+    }
+
+    try {
+      const body = {
+        questionName: questionTitle.trim()
+      };
+
+      const response = await axios.post(`${API_URL}/api/questions/add`, body);
+      alert(response.data.message || "Question added successfully!");
+      closeModal();
+    } catch (error) {
+      console.error("Error adding question:", error);
+      alert("Failed to add question. Please try again.");
+    }
   };
 
   return (
@@ -46,7 +98,7 @@ export default function AddPost() {
                 className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
                 onClick={closeModal}
               >
-                ✖
+                ✕
               </button>
 
               {/* Tabs */}
@@ -81,6 +133,8 @@ export default function AddPost() {
                     className="w-full border rounded-lg p-3 text-gray-700 focus:outline-red-500 focus:ring-red-500 focus:border-red-500"
                     rows="5"
                     placeholder="What's on your mind?"
+                    value={postContent}
+                    onChange={(e) => setPostContent(e.target.value)}
                   ></textarea>
                   <div className="mt-4 flex justify-end">
                     <button
@@ -89,7 +143,10 @@ export default function AddPost() {
                     >
                       Cancel
                     </button>
-                    <button className="bg-button text-white px-4 py-2 rounded">
+                    <button
+                      className="bg-button text-white px-4 py-2 rounded"
+                      onClick={handlePostSubmit}
+                    >
                       Post
                     </button>
                   </div>
@@ -103,11 +160,15 @@ export default function AddPost() {
                     type="text"
                     className="w-full border rounded-lg p-3 mb-4 text-gray-700 focus:outline-red-500 focus:ring-red-500 focus:border-red-500"
                     placeholder="Question Title"
+                    value={questionTitle}
+                    onChange={(e) => setQuestionTitle(e.target.value)}
                   />
                   <textarea
                     className="w-full border rounded-lg p-3 text-gray-700 focus:outline-red-500 focus:ring-red-500 focus:border-red-500"
                     rows="5"
                     placeholder="Provide more details (optional)"
+                    value={questionDetails}
+                    onChange={(e) => setQuestionDetails(e.target.value)}
                   ></textarea>
                   <div className="mt-4 flex justify-end">
                     <button
@@ -116,7 +177,10 @@ export default function AddPost() {
                     >
                       Cancel
                     </button>
-                    <button className="bg-button text-white px-4 py-2 rounded">
+                    <button
+                      className="bg-button text-white px-4 py-2 rounded"
+                      onClick={handleQuestionSubmit}
+                    >
                       Ask
                     </button>
                   </div>
