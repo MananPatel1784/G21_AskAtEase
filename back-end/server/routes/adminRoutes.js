@@ -7,6 +7,9 @@ const jwt = require("jsonwebtoken");
 const authenticateAdmin = require("../controllers/authenticateAdmin");
 const authorizeAdmin = require("../MiddleWare/authorizeAdmin");
 const user = require("./user");
+const User = require("../models/user");
+const Question = require("../models/question");
+const Answer = require("../models/answer");
 const sponsorRoute = require("./sponsor");
 
 // Generate a token for an admin user
@@ -95,8 +98,8 @@ router.delete("/users/:id", authorizeAdmin, async (req, res) => {
 router.get("/analytics", async (req, res) => {
     try {
         const totalUsers = await User.countDocuments();
-        const totalQuestions = await Question.countDocuments(); // Replace with your Question model
-        const totalAnswers = await Answer.countDocuments(); // Replace with your Answer model
+        const totalQuestions = await Question.countDocuments();
+        const totalAnswers = await Answer.countDocuments();
 
         res.json({
             totalUsersRegistered: totalUsers,
