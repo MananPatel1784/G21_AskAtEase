@@ -25,7 +25,7 @@ exports.deactivateAccount = async (req, res) => {
         // Update user status to "deactivated"
         const updatedUser = await User.findByIdAndUpdate(
             userId,
-            { status: "deactivated" },
+            { isActive: false },
             { new: true }
         );
 
