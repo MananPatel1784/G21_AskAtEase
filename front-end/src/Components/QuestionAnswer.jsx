@@ -85,4 +85,8 @@ const QuestionAnswer = ({ questionName }) => {
   );
 };
 
+<<<<<<< HEAD
 export default QuestionAnswer;
+=======
+export default QuestionsAndAnswers;
+>>>>>>> 7f41930f0d59289fd9398813bff0478b6e5d38f8

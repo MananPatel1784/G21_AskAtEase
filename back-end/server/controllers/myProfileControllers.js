@@ -1,4 +1,6 @@
+const bcrypt=require("bcrypt");
 const User = require("../models/user");
+const { handleSignUp, validatePasswords } = require("./signup");
 
 exports.showProfileAnalytics = async (req, res) => {
     const _id = req.params.id;
@@ -37,7 +39,8 @@ exports.deactivateAccount = async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: "Failed to deactivate user account" });
     }
-}
+};
+
 exports.deleteAccount = async (req, res) => {
     try {
         const userId = req.params.id;
@@ -57,23 +60,49 @@ exports.deleteAccount = async (req, res) => {
         res.status(500).json({ error: "Failed to delete user account" });
     }
 };
-exports.reactivateAccount =  async (req, res) => {
-  try {
-    const userId = req.params.id;
 
-    // Update user status to "active"
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { status: "active" },
-      { new: true }
-    );
+exports.reactivateAccount = async (req, res) => {
+    try {
+        const userId = req.params.id;
 
-    if (!updatedUser) {
-      return res.status(404).json({ message: "User not found" });
+        // Update user status to "active"
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { isActive: true },
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ message: "User account reactivated", user: updatedUser });
+    } catch (err) {
+        res.status(500).json({ error: "Failed to reactivate user account" });
     }
+};
+//change password
+exports.changePassword = async (req, res) => {
+    try {
+        const { newPassword } = req.body; // Get the new password from the request body
+        const _id = req.params.id; // Get the user ID from the decoded token
 
-    res.status(200).json({ message: "User account reactivated", user: updatedUser });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to reactivate user account" });
-  }
+        if (!newPassword) {
+            return res.status(400).json({ error: "New Password is required!!" });
+        }
+
+        if (!validatePassword(newPassword)) {
+            return res.status(400).json({
+                error: "Password should be at least 8 characters and contain atleast one uppercase letter, one lowercase letter, one numerical value and one special character!!"
+            });
+        }
+        const user = await user.findById(_id);
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        user.save();
+
+        res.status(200).json({ message: "Password updated successfully" });
+    } catch (error) {
+        res.status(500).json({ error: "Failed to update password", details: error.message });
+    }
 };
