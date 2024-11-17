@@ -10,7 +10,11 @@ const AnswerSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
-    }
+    },
+    replies: [{
+        type: String,
+        ref: "replies"
+    }]
 });
 
 const Answer = mongoose.model("Answers", AnswerSchema);
