@@ -38,3 +38,22 @@ exports.deactivateAccount = async (req, res) => {
         res.status(500).json({ error: "Failed to deactivate user account" });
     }
 }
+exports.deleteAccount = async (req, res) => {
+    try {
+        const userId = req.params.id;
+
+        // Delete associated data (questions, answers)
+        await Question.deleteMany({ userId });
+        await Answer.deleteMany({ userId });
+
+        // Delete the user
+        const deletedUser = await User.findByIdAndDelete(userId);
+        if (!deletedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ message: "User account deleted permanently" });
+    } catch (err) {
+        res.status(500).json({ error: "Failed to delete user account" });
+    }
+};
