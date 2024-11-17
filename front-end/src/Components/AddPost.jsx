@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
+import QuestionsAndAnswers from "./QuestionAnswer"; // Assuming this is your component
 
 export default function AddPost() {
   const [modal, setModal] = useState(false);
   const [activeTab, setActiveTab] = useState("post");
-
-  // State for inputs
-  const [postContent, setPostContent] = useState("");
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionDetails, setQuestionDetails] = useState("");
+  const [postContent, setPostContent] = useState("");
+  const navigate = useNavigate(); // Use useNavigate to navigate to a different page
 
   const openModal = (tab) => {
     setActiveTab(tab); // Set the active tab based on the button clicked
@@ -65,6 +66,16 @@ export default function AddPost() {
     }
   };
 
+  // Redirect to the QuestionsAndAnswers component with the question
+  const handleAskQuestionRedirect = () => {
+    if (!questionTitle.trim()) {
+      alert("Question title cannot be empty!");
+      return;
+    }
+
+    navigate("/questions-and-answers", { state: { questionTitle } });
+  };
+
   return (
     <>
       <div className="flex m-2 gap-5 font-lexend">
@@ -75,7 +86,7 @@ export default function AddPost() {
           Create Post
         </button>
         <button
-          onClick={() => openModal("question")}
+          onClick={handleAskQuestionRedirect}
           className="btn-modal bg-button text-white px-4 py-2 rounded"
         >
           Ask Question
