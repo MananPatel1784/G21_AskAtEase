@@ -7,6 +7,7 @@ const {
     deleteAccount,
     reactivateAccount,
     changePassword,
+    followUser
 } = require("../controllers/myProfileControllers");
 
 router.get("/:id/myProfile", showProfileAnalytics);
@@ -20,7 +21,10 @@ router.delete("/:id/myprofile/delete",deleteAccount);
 // Reactivate account
 router.put("/:id/myprofile/reactivate",reactivateAccount);
 
-//change password
+// Change password
 router.put("/:id/myprofile/changepassword",changePassword);
+
+// Follow user
+router.put("/:followerId/:followingId/follow", followUser);
 
 module.exports = router;

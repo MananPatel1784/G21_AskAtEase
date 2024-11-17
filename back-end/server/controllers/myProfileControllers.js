@@ -1,6 +1,6 @@
 const bcrypt=require("bcrypt");
 const User = require("../models/user");
-const { handleSignUp, validatePasswords } = require("./signup");
+const { handleSignUp, validatePassword } = require("./signup");
 
 exports.showProfileAnalytics = async (req, res) => {
     const _id = req.params.id;
@@ -104,5 +104,26 @@ exports.changePassword = async (req, res) => {
         res.status(200).json({ message: "Password updated successfully" });
     } catch (error) {
         res.status(500).json({ error: "Failed to update password", details: error.message });
+    }
+};
+
+exports.followUser = async (req, res) => {
+    try {
+        const { followerId, followingId } = req.params;
+        
+        const user = await User.findById(followerId);
+        const userToFollow = await User.findById(followingId);
+
+        if(!user) return res.status(404).json({ status: false, error: "Follower user not found" });
+
+        if(!userToFollow) return res.status(404).json({ status: false, error: "Following user not found" });
+
+        user.following.push(followingId);
+        userToFollow.followers.push(followerId);
+
+        res.json({ status: true, message: "User followed successfully" });
+    }
+    catch (err) {
+        res.status(500).json({ status: false, error: "Failed to follow user"});
     }
 };
