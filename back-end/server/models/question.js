@@ -21,6 +21,10 @@ const QuestionSchema = new mongoose.Schema({
     ref: "spaces",
     // required: true
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users"
+  }
 });
 
 const Question = mongoose.model("Questions", QuestionSchema);

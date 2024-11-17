@@ -31,7 +31,11 @@ const userSchema = new mongoose.Schema({
         default: true
     },
     bookmarkedPost: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
+        ref: "questions"
+    }],
+    questionsAsked: [{
+        type: String,
         ref: "questions"
     }]
 }, {timestamps: true});
