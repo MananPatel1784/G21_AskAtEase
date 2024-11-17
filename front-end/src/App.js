@@ -30,18 +30,17 @@ function App() {
         <Leftpart/> */}
         {/* <Login/> */}
         {/* <SignUp /> */}
-
-
-        <Routes>
+        <Questionsforyou />
+        {/* <Routes>
               <Route path="/" element={<MainComponent />}/>
               <Route path="Answer" element={<AnswerPage/>}/> 
               <Route path="ReturnHome" element={<MainComponent/>}/>
               {/* <Route path="/signup" element={<SignUp />} />
               <Route path ="/login" element={<Login/>}/> */}
-              <Route path="/gemini" element={<Gemini />} /> 
+              {/* <Route path="/gemini" element={<Gemini />} /> 
 
               
-        </Routes>
+        </Routes> */} 
       </div>
     </>
   );
