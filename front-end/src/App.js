@@ -4,6 +4,7 @@ import "./App.css";
 import { AuthProvider } from "./contexts/AuthContext";
 import Leftpart from "./Components/mainleftpart";
 import Gemini from "./Components/Gemini";
+import Questionsforyou from "./Components/Questionsforyou";
 import ProfilePage from "./Components/ProfilePage";
 import AddPost from "./Components/AddPost";
 import MainComponent from "./Components/maincomponent";
