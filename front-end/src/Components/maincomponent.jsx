@@ -79,7 +79,12 @@ const MainComponent = () => {
         </div>
 
         {/* Right Section (30%) */}
-        <div className="w-3/10 bg-white p-10 rounded-2xl">
+        <div className="w-3/10 bg-white p-10 rounded-2xl"
+            style={{
+              maxWidth: "30%", // Ensures it doesn't expand beyond 30% of the parent
+              height: "100%", // Ensures it takes the full height of the parent
+              overflow: "hidden", // Prevents content from overflowing outside the container
+            }}>
           <SpacesToFollow />
         </div>
       </div>

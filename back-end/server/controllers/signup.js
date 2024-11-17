@@ -22,7 +22,7 @@ function validatePassword(password) {
 
 async function handleSignUp(req, res) {
 
-    const {username, password, emailId} = req.body;
+    const {username, password, emailId, role} = req.body;
     
     if(!req.body || !username || !password || !emailId) {
         return res.status(400).json({error: "All fields are required!!"});
@@ -46,18 +46,23 @@ async function handleSignUp(req, res) {
         });
     }
 
+    const userRole = "user";
+    if(role === "admin") userRole = "admin";
+    
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(password, salt);
 
     await User.create({
         username: username,
         password: secPass,
-        emailId: emailId
+        emailId: emailId,
+        role: userRole
     });
 
     return res.status(201).json({msg: "Successfully signed up!!"});
 }
 
 module.exports = {
-    handleSignUp
+    handleSignUp,
+    validatePassword
 };
