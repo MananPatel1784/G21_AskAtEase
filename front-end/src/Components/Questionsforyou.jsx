@@ -52,7 +52,7 @@ const Questionsforyou = () => {
     marginTop: '20px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    display: 'flex', height: '75vh' }}>
+    display: 'flex', height: '75vh',justifyContent: 'space-between' }}>
             <div
                 //className="flex-col gap-y-10 bg-gradient-to-b from-[#F0D9C4] to-[#ff9797] font-lexend rounded-xl"
                 // style={{

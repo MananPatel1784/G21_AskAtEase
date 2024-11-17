@@ -18,18 +18,21 @@ import { BrowserRouter , Routes , Route } from "react-router-dom";
 function App() {
   return (
     <>
+      <div className="scrollable">
+   
       <div>
-        {/* Login */}
-        {/* SignUp */}
-        {/* <Sidebar /> */}
-        {/* <Gemini /> */}
-        {/* <ProfilePage/> */}
-        {/* <MainComponent/> */}
-        {/* <AnswerPage/> */}
-        {/* <QuestionSidebar/>
-        <Leftpart/> */}
-        {/* <Login/> */}
+        {/* <Login />  */}
         {/* <SignUp /> */}
+        {/* <Sidebar /> */}
+          <Gemini />
+          
+        <ProfilePage/>
+        <MainComponent/>
+        <AnswerPage/>
+        {/* <QuestionSidebar/> */}
+        <Leftpart/> 
+        {/* <Login/>  */}
+        {/* <SignUp />  */}
         <Questionsforyou />
         {/* <Routes>
               <Route path="/" element={<MainComponent />}/>
@@ -41,7 +44,8 @@ function App() {
 
               
         </Routes> */} 
-      </div>
+        </div>
+         </div>
     </>
   );
 };

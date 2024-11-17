@@ -43,4 +43,10 @@
 html,
 body {
   @apply overflow-x-hidden;
+  
+}
+
+.scrollable{
+  scroll-behavior: smooth;
+  overflow-y: auto;
 }
