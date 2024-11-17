@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 
 router.use("/questions", questionRouter);
 router.use("/answers", answerRouter);
-router.use('/search', findSimilarQuestions); 
+router.get('/search', findSimilarQuestions); 
 router.use("/spaces", spaceRouter);
 
 module.exports = router;
