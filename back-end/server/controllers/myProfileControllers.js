@@ -1,4 +1,6 @@
+const bcrypt=require("bcrypt");
 const User = require("../models/user");
+const { handleSignUp, validatePasswords } = require("./signup");
 
 exports.showProfileAnalytics = async (req, res) => {
     const _id = req.params.id;
@@ -80,20 +82,27 @@ exports.reactivateAccount = async (req, res) => {
     }
 };
 //change password
-exports.changePassword=async (req, res) => {
+exports.changePassword = async (req, res) => {
     try {
-      const { newPassword } = req.body; // Get the new password from the request body
-      const uid = req.user.uid; // Get the user ID from the decoded token
-  
-      if (!newPassword || newPassword.length < 6) {
-        return res.status(400).json({ error: "Password must be at least 6 characters long" });
-      }
-  
-      // Update the user's password in Firebase
-      await admin.auth().updateUser(uid, { password: newPassword });
-  
-      res.status(200).json({ message: "Password updated successfully" });
+        const { newPassword } = req.body; // Get the new password from the request body
+        const _id = req.params.id; // Get the user ID from the decoded token
+
+        if (!newPassword) {
+            return res.status(400).json({ error: "New Password is required!!" });
+        }
+
+        if (!validatePassword(newPassword)) {
+            return res.status(400).json({
+                error: "Password should be at least 8 characters and contain atleast one uppercase letter, one lowercase letter, one numerical value and one special character!!"
+            });
+        }
+        const user = await user.findById(_id);
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        user.save();
+
+        res.status(200).json({ message: "Password updated successfully" });
     } catch (error) {
-      res.status(500).json({ error: "Failed to update password", details: error.message });
+        res.status(500).json({ error: "Failed to update password", details: error.message });
     }
-  };
+};

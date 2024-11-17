@@ -12,14 +12,15 @@ const {
 router.get("/:id/myProfile", showProfileAnalytics);
 
 // Deactivate user account
-router.put("/:id/deactivate", deactivateAccount);
+router.put("/:id/myProfile/deactivate", deactivateAccount);
 
 // Delete user account
-router.delete("/:id/myprofile",deleteAccount);
+router.delete("/:id/myprofile/delete",deleteAccount);
 
 // Reactivate account
-router.post("/:id/myprofile",reactivateAccount);
+router.put("/:id/myprofile/reactivate",reactivateAccount);
 
-router.post("/:id/myprofile",changePassword);
+//change password
+router.put("/:id/myprofile/changepassword",changePassword);
 
 module.exports = router;
