@@ -57,3 +57,23 @@ exports.deleteAccount = async (req, res) => {
         res.status(500).json({ error: "Failed to delete user account" });
     }
 };
+exports.reactivateAccount =  async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // Update user status to "active"
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { status: "active" },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "User account reactivated", user: updatedUser });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to reactivate user account" });
+  }
+};
