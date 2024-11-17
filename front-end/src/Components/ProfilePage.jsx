@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ProfilePage.css';
+import Header from './MainHeader';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaCamera, FaEdit, FaSave, FaBirthdayCake, FaPhone, FaMapMarkerAlt, FaLanguage, FaHeart, FaTransgender, FaEnvelope, FaUsers, FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
 const ProfilePage = () => {
@@ -51,6 +52,10 @@ const ProfilePage = () => {
     };
 
     return (
+
+        <div className="flex flex-col gap-y-4">
+            <Header/>
+
         <div className="profile-page bg-gradient-to-b from-[#F0D9C4] to-[#FF9797]">
             {/* Cover Photo */}
             <div className="cover-photo-container bg-gradient-to-b from-[#F0D9C4] to-[#FF9797]">
@@ -271,6 +276,8 @@ const ProfilePage = () => {
                 )}
             </div>
         </div>
+
+        </div> 
     );
   }
 export default ProfilePage;

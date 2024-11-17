@@ -35,9 +35,7 @@ const Header = () => {
             </span>
         </Link>
 
-
-        <Link to="/Answer">
-            <span>
+          <span>
               <svg
                 className="h-8 w-8 text-button cursor-pointer"
                 viewBox="0 0 24 24"
@@ -52,26 +50,29 @@ const Header = () => {
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
-            </span>
+          </span>
+
+        
+        <Link to="/Answer">
+          <span>
+            <svg
+              className="h-8 w-8 text-button cursor-pointer"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z"></path>
+              <polyline points="9 11 12 14 20 6"></polyline>
+              <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+            </svg>
+          </span>
         </Link>
         
-        <span>
-          <svg
-            className="h-8 w-8 text-button cursor-pointer"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z"></path>
-            <polyline points="9 11 12 14 20 6"></polyline>
-            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
-          </svg>
-        </span>
         <span>
           <svg
             className="h-8 w-8 text-button cursor-pointer"
@@ -102,13 +103,16 @@ const Header = () => {
       </div>
 
       {/* Right Section */}
-      <button className="qHeader__Rem flex items-center space-x-4 ml-4">
-          <img
-            src={AskAtEaseLogo}
-            alt="Logo"
-            className="h-16 w-16 m-2 border-button border-4 rounded-full"
-          />
-      </button>
+      <Link to="/GoToSettings">
+            <button className="qHeader__Rem flex items-center space-x-4 ml-4">
+                <img
+                  src={AskAtEaseLogo}
+                  alt="Logo"
+                  className="h-16 w-16 m-2 border-button border-4 rounded-full"
+                />
+            </button>
+      </Link>
+      
     </div>
   );
 };

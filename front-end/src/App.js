@@ -13,6 +13,8 @@ import AnswerPage from "./Components/Answerpage";
 import { BrowserRouter , Routes , Route } from "react-router-dom";
 import QuestionsAndAnswers from "./Components/QuestionAnswer";
 import Login from "./Components/LoginSignUp/Login";
+import Settingsbutton from "./Components/settingsbutton";
+import SettingsPage from "./Components/SettingsPage";
 // import WidgetContent from './Components/WidgetContent';
 
 
@@ -41,6 +43,8 @@ function App() {
               <Route path ="/login" element={<Login/>}/> 
                <Route path="/gemini" element={<Gemini />} /> 
                <Route path="questions-and-answers" element={<QuestionsAndAnswers/>}/>
+               <Route path="GoToSettings" element={<SettingsPage/>}/>
+               <Route path="CheckProfile" element={<ProfilePage/>}/>
           </Routes>  
         </div>
     </>
