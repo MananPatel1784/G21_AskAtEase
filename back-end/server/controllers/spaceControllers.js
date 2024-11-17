@@ -17,13 +17,15 @@ exports.createSpace = async (req, res) => {
 
 // Add a question to a space
 exports.addQuestionToSpace = async (req, res) => {
-    const { spaceId } = req.params.id;
+    const _id = req.params.spaceId;
     const { questionName, questionUrl } = req.body;
 
     try {
-        const space = await Space.findById(spaceId);
+        const space = await Space.findById(_id);
         
         if(!space) return res.status(404).json({ error: "Space not found!!" });
+
+        const spaceId = _id;
 
         const newQuestion = new Question({ questionName, questionUrl, spaceId });
         const savedQuestion = await newQuestion.save();
@@ -40,10 +42,10 @@ exports.addQuestionToSpace = async (req, res) => {
 
 // Get all questions in a space
 exports.getSpaceQuestions = async (req, res) => {
-    const { spaceId } = req.params.id;
+    const _id = req.params.spaceId;
 
     try {
-        const space = await Space.findById(spaceId).populate("questions");
+        const space = await Space.findById(_id);
 
         if(!space) return res.status(404).json({ error: "Space not found!!" });
 
