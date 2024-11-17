@@ -6,4 +6,6 @@ const sponsorSchema = new mongoose.Schema({
     website: String,
 });
 
-module.exports = mongoose.model("Sponsor", sponsorSchema);
+const Sponsor = mongoose.model("Sponsor", sponsorSchema);
+
+module.exports = Sponsor;
