@@ -14,7 +14,26 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    role: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user"
+    },
+    followers: [{
+        type: mongoose.Schema.Types.ObjectId
+    }],
+    following: [{
+        type: mongoose.Schema.Types.ObjectId
+    }],
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    bookmarkedPost: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "questions"
+    }]
 }, {timestamps: true});
 
 const User = mongoose.model("users", userSchema);
