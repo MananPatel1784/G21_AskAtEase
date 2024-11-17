@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
 
-const QuestionsAndAnswers = () => {
+const QuestionAnswer = ({ questionName }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,17 +10,28 @@ const QuestionsAndAnswers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/search`);
-        setData(response.data); // Assuming this matches the provided JSON format
+        if (!questionName) {
+          setError("No question provided.");
+          setLoading(false);
+          return;
+        }
+
+        // Fetch data with the provided questionName
+        const response = await axios.get(`${API_URL}/api/search`, {
+          params: { questionName },
+        });
+
+        setData(response.data); // Update state with fetched data
         setLoading(false);
       } catch (err) {
+        console.error("Error fetching data:", err.response?.data || err.message);
         setError("Failed to fetch questions. Please try again later.");
         setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+  }, [questionName]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -28,6 +39,18 @@ const QuestionsAndAnswers = () => {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Questions and Answers</h1>
+      <div
+        style={{
+          marginBottom: "20px",
+          border: "1px solid #007BFF",
+          padding: "15px",
+          borderRadius: "5px",
+          backgroundColor: "#E9F7FE",
+        }}
+      >
+        <h2>Your Question:</h2>
+        <p>{questionName}</p>
+      </div>
       {data.length > 0 ? (
         data.map((item) => (
           <div
@@ -40,15 +63,7 @@ const QuestionsAndAnswers = () => {
             }}
           >
             <h2>{item.question.questionName}</h2>
-            {item.question.questionUrl && (
-              <a href={item.question.questionUrl} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={item.question.questionUrl}
-                  alt="Question related"
-                  style={{ maxWidth: "100%", height: "auto", marginBottom: "10px" }}
-                />
-              </a>
-            )}
+            <p><strong>Similarity:</strong> {item.similarity.toFixed(2)}</p>
             <h3>Answers:</h3>
             {item.question.answers.length > 0 ? (
               <ul>
@@ -64,10 +79,10 @@ const QuestionsAndAnswers = () => {
           </div>
         ))
       ) : (
-        <p>No questions found.</p>
+        <p>No similar questions found.</p>
       )}
     </div>
   );
 };
 
-export default QuestionsAndAnswers;
+export default QuestionAnswer;

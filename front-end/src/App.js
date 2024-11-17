@@ -13,6 +13,8 @@ import AnswerPage from "./Components/Answerpage";
 import { BrowserRouter , Routes , Route } from "react-router-dom";
 import QuestionsAndAnswers from "./Components/QuestionAnswer";
 import Login from "./Components/LoginSignUp/Login";
+import Test from "./Components/Test";
+import QuestionAnswer from "./Components/QuestionAnswer";
 // import WidgetContent from './Components/WidgetContent';
 
 
@@ -33,6 +35,9 @@ function App() {
         {/* <Login/>  */}
         {/* <SignUp />  */}
         {/* <Questionsforyou /> */}
+  
+        {/* <QuestionAnswer questionName="Are you testing?" /> */}
+        {/* <Test/> */}
          <Routes>
               <Route path="/" element={<MainComponent />}/>
               <Route path="Answer" element={<AnswerPage/>}/> 
@@ -40,7 +45,8 @@ function App() {
                <Route path="/signup" element={<SignUp />} />
               <Route path ="/login" element={<Login/>}/> 
                <Route path="/gemini" element={<Gemini />} /> 
-               <Route path="questions-and-answers" element={<QuestionsAndAnswers/>}/>
+               <Route path="/questions-and-answers" element={<QuestionAnswer/>}/>
+               <Route path='/test' element ={<Test/>}/>
           </Routes>  
         </div>
     </>
