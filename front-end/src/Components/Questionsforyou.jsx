@@ -45,14 +45,14 @@ const StyledButton = styled.button`
 
 const Questionsforyou = () => {
     return (
-  <div className="flex-col gap-y-10 bg-gradient-to-b from-[#F0D9C4] to-[#ff9797] font-lexend rounded-xl"
-  style={{
-    width: '55%', 
-    maxWidth: '600px', 
-    marginTop: '20px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    display: 'flex', height: '75vh',justifyContent: 'space-between' }}>
+        <div className="flex-col gap-y-10 bg-gradient-to-b from-[#F0D9C4] to-[#ff9797] font-lexend rounded-xl"
+            style={{
+                width: '55%', 
+                maxWidth: '600px', 
+                marginTop: '20px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                display: 'flex', height: '70vh',justifyContent: 'space-between' }}>
             <div
                 //className="flex-col gap-y-10 bg-gradient-to-b from-[#F0D9C4] to-[#ff9797] font-lexend rounded-xl"
                 // style={{
@@ -81,89 +81,79 @@ const Questionsforyou = () => {
                         paddingBottom: '5px',
                         marginTop: '0',
                     }}
-                ></div>
-                <div style={{fontSize:'20px',marginLeft: '15px', marginTop: '10px',display: 'flex', justifyContent: 'space-between'}}>
-                <h1>What is 1 * 2 * 3 * 15 = ?</h1>
-                <Button>
-    <img src={cross} width={15} alt="icon" />
-  </Button>
+                >
                 </div>
-                <div style={{fontSize:'12px',marginLeft: '15px',}}>
-                    <p>No answer yet</p>
-                    <p>Last followed 51m</p>
-            </div>
-                <div style={{ fontSize: '18px',marginLeft:'2px',}}>
-                <StyledButton>Answer</StyledButton>
-                <StyledButton style={{marginLeft: '20px'}}>Follow</StyledButton>
-                <StyledButton style={{marginLeft: '20px'}}>Pass</StyledButton>
-            </div>
+                <div style={{ fontSize: '20px', marginLeft: '15px', marginTop: '10px', display: 'flex', justifyContent: 'space-between' }}>
+                    <h1>What is 1 * 2 * 3 * 15 = ?</h1>
+                    <Button>
+                        <img src={cross} width={15} alt="icon" />
+                    </Button>
+                </div>
+                <div style={{ fontSize: '18px', marginLeft: '30px', paddingBottom: '10px' }}>
+                    <StyledButton>Answer</StyledButton>
+                    <StyledButton style={{marginLeft: '100px'}}>Follow</StyledButton>
+                </div>
                 <div
                     style={{
                         marginTop: '5px',
                         borderBottom: '1px solid gray',
                         display: 'flex',
                     }} 
-                ></div>
+                >
+                </div>
                 <div>
                     <div style={{fontSize:'20px',marginLeft: '15px',display: 'flex', justifyContent: 'space-between',marginTop:'10px', }}>
                         <h1>What is -13-6-2+5*4 = ?</h1>
-                       <Button>
-    <img src={cross} width={15} alt="icon" />
-  </Button>
+                        <Button>
+                            <img src={cross} width={15} alt="icon" />
+                        </Button>
                     </div>
-                    <p style={{fontSize:'12px',marginLeft: '15px',}}>1 answer</p>
-                    <p style={{fontSize:'12px',marginLeft: '15px',}}>Last followed 1h</p>
-            </div>
-            <div style={{fontSize: '18px',marginLeft:'2px'}}>
-                <StyledButton>Answer</StyledButton>
-                <StyledButton style={{marginLeft: '20px'}}>Follow</StyledButton>
-                <StyledButton style={{marginLeft: '20px'}}>Pass</StyledButton>
-            </div>
-            <div
+                    <div style={{fontSize: '18px',marginLeft:'30px',paddingBottom: '10px'}}>
+                        <StyledButton>Answer</StyledButton>
+                        <StyledButton style={{marginLeft: '100px'}}>Follow</StyledButton>
+                    </div>
+                    <div
                     style={{
                         marginTop: '5px',
                         borderBottom: '1px solid gray',
                         display: 'flex',
                     }}
-                ></div>
-                <div>
-                    <div style={{fontSize:'20px',marginLeft: '15px',display: 'flex', justifyContent: 'space-between',marginTop:'10px', }}>
-                        <h1>What is the diversity at LPU in all aspects?</h1>
-                        <Button>
-    <img src={cross} width={15} alt="icon" />
-    </Button>
+                    >
                     </div>
-                    <p style={{fontSize:'12px',marginLeft: '15px',}}>No answer yet</p>
-                    <p style={{fontSize:'12px',marginLeft: '15px',}}>Last followed 1h</p>
+                    <div>
+                <div style={{fontSize:'20px',marginLeft: '15px',display: 'flex', justifyContent: 'space-between',marginTop:'10px', }}>
+                    <h1>What is the diversity at LPU in all aspects?</h1>
+                            <Button>
+                                <img src={cross} width={15} alt="icon" />
+                            </Button>
+                </div>
+                <div style={{fontSize: '18px',marginLeft:'30px',paddingBottom: '10px'}}>
+                    <StyledButton>Answer</StyledButton>
+                    <StyledButton style={{marginLeft: '100px'}}>Follow</StyledButton>
+                </div>
+                <div style={{ display: 'flex', borderBottom: "2px solid #000", paddingBottom: "8px" }}>
+                    </div>
+                    <div>
+                        <h1 style={{display:'flex', justifyContent: 'center'}}>More</h1>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button><img src={arrow} width={10}/></Button>
+                    </div>
+                    <div style={{ display:'flex',borderBottom: "2px solid #000", paddingBottom: "8px" }}>
+                    </div>
+                    <div style={{fontSize:'20px',marginLeft: '15px',marginTop:'15px'}}>
+                        <h1>Add 5 topics you know about</h1>
+                    </div>
+                    <div style={{fontSize: '12px',marginLeft: '15px'}}>
+                        <p>You'll get better questions if you add more specific topics.</p>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '25px'}}>
+                        <StyledButton>Add topics</StyledButton>
+                    </div>
+                </div>
             </div>
-            <div style={{fontSize: '18px',marginLeft:'2px'}}>
-                <StyledButton>Answer</StyledButton>
-                <StyledButton style={{marginLeft: '20px'}}>Follow</StyledButton>
-                <StyledButton style={{marginLeft: '20px'}}>Pass</StyledButton>
-            </div>
-
-        <div style={{ display:'flex',borderBottom: "2px solid #000", paddingBottom: "8px" }}>
-                </div>
-                <div>
-                    <h1 style={{display:'flex', justifyContent: 'center'}}>More</h1>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button><img src={arrow} width={10}/></Button>
-                </div>
-
-                <div style={{ display:'flex',borderBottom: "2px solid #000", paddingBottom: "8px" }}>
-                </div>
-                <div style={{fontSize:'20px',marginLeft: '15px'}}>
-                    <h1>Add 5 topics you know about</h1>
-                </div>
-                <div style={{fontSize: '12px',marginLeft: '15px'}}>
-                    <p>You'll get better questions if you add more specific topics.</p>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', }}>
-                    <StyledButton>Add topics</StyledButton>
-                </div>
         </div>
-   </div>
+    </div>
     );
 };
 

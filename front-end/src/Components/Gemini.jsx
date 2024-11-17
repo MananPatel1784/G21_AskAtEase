@@ -49,7 +49,7 @@ const Gemini = () => {
   return (
     <div
       className="font-lexend flex-col w-1/5  bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-8"
-      style={{ width: "100%",overflowY: 'scroll', maxHeight: '100vh' }}>
+      style={{ width: "100%",overflowY: 'scroll', maxHeight: '100vh',display: 'flex' }}>
 
     
       <h1 className="flex font-bold text-2xl place-self-center">
