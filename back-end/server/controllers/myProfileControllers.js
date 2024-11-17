@@ -79,3 +79,21 @@ exports.reactivateAccount = async (req, res) => {
         res.status(500).json({ error: "Failed to reactivate user account" });
     }
 };
+//change password
+exports.changePassword=async (req, res) => {
+    try {
+      const { newPassword } = req.body; // Get the new password from the request body
+      const uid = req.user.uid; // Get the user ID from the decoded token
+  
+      if (!newPassword || newPassword.length < 6) {
+        return res.status(400).json({ error: "Password must be at least 6 characters long" });
+      }
+  
+      // Update the user's password in Firebase
+      await admin.auth().updateUser(uid, { password: newPassword });
+  
+      res.status(200).json({ message: "Password updated successfully" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update password", details: error.message });
+    }
+  };

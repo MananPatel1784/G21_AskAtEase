@@ -65,6 +65,7 @@ router.get("/users/:id", authorizeAdmin, async (req, res) => {
     }
 });
 
+
 // Update user details
 router.put("/users/:id", authorizeAdmin, async (req, res) => {
     try {
