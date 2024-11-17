@@ -1,19 +1,28 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const QuestionSchema = new mongoose.Schema({
-    questionName: {
-        type: String,
-        required: true
+  questionName: {
+    type: String,
+    required: true,
+  },
+  questionUrl: String,
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  answers: [
+    {
+      type: String,
+      ref: "answers",
     },
-    questionUrl: String,
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    },
-    answers: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Answers"
-    }
+  ],
+  spaceId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "spaces",
+    // required: true
+  },
 });
 
-module.exports = mongoose.model("Questions", QuestionSchema);
+const Question = mongoose.model("Questions", QuestionSchema);
+
+module.exports = Question;
