@@ -7,9 +7,14 @@ const {
     deleteAccount,
     reactivateAccount,
     changePassword,
-    followUser
+    followUser,
+    getTheFeed
 } = require("../controllers/myProfileControllers");
 
+// Get the Feed
+router.get("/:id", getTheFeed);
+
+// Show profile analytics
 router.get("/:id/myProfile", showProfileAnalytics);
 
 // Deactivate user account

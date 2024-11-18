@@ -14,6 +14,8 @@ exports.replyToAnswer = async (req, res) => {
 
         const _id = answerId;
         const answer = await Answer.findById(_id);
+        if(!answer) return res.status(404).json({ message: "Answer not found!!" });
+        
         answer.replies.push(reply);
         answer.save();
 

@@ -1,5 +1,6 @@
 const bcrypt=require("bcrypt");
 const User = require("../models/user");
+const Question = require("../models/question");
 const { handleSignUp, validatePassword } = require("./signup");
 
 exports.showProfileAnalytics = async (req, res) => {
@@ -96,7 +97,11 @@ exports.changePassword = async (req, res) => {
                 error: "Password should be at least 8 characters and contain atleast one uppercase letter, one lowercase letter, one numerical value and one special character!!"
             });
         }
-        const user = await user.findById(_id);
+        const user = await User.findById(_id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         user.password = hashedPassword;
         user.save();
@@ -125,5 +130,30 @@ exports.followUser = async (req, res) => {
     }
     catch (err) {
         res.status(500).json({ status: false, error: "Failed to follow user"});
+    }
+};
+
+exports.getTheFeed = async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findById({ _id: userId }).populate("following");
+
+        if(!user) return res.status(404).json({ status: false, error: "User not found!!" });
+
+        const followedUserIds = user.following;
+
+        if(!followedUserIds.length) {
+            return res.status(200).json({ status: true, message: "No posts to display!!"});
+        }
+
+        const followingQuestions = followedUserIds.map((followedUser) => followedUser.questionsAsked).flat();
+
+        const questionsWithAnswers = await Question.find({ questionName: { $in: followingQuestions } }).sort({ createdAt: -1 });
+
+        res.json({ feed: questionsWithAnswers });
+    }
+    catch (err) {
+        res.status(500).json({ status: false, error: "Failed to get the feed!!"});
     }
 };
