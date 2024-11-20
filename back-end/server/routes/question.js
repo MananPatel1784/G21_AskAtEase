@@ -15,19 +15,19 @@ router.post("/:userId/add", async (req, res) => {
             const user = User.findById(_id);
             user.questionsAsked.push(req.body.questionName);
 
-            res.status(201).send({
+            res.status(201).json({
                 status: true,
                 message: "Question added successfully"
             });
         }).catch((err) => {
-            res.status(400).send({
+            res.status(400).json({
                 status: false,
                 message: "Bad format",
             });
         });
     }
     catch (e) {
-        res.status(500).send({
+        res.status(500).json({
             status: false,
             message: "Error while adding question"
         })
@@ -48,7 +48,7 @@ router.get("/", async (req, res) => {
         ]).exec().then((doc) => {
             res.status(200).send(doc);
         }).catch((error) => {
-            res.status(500).send({
+            res.status(500).json({
                 status: false,
                 message: "Unable to get the question details"
             });
@@ -67,12 +67,12 @@ router.get("/:userId", async (req, res) => {
         const _id = req.params.userId;
         const user = await User.findById(_id);
 
-        if(!user) return res.status(404).send({ status: false, message: "User not found" });
+        if(!user) return res.status(404).json({ status: false, message: "User not found" });
 
         res.json({ status: true, questionsAsked: user.questionsAsked });
     }
     catch (err) {
-        res.status(500).send({ status: false, error: "Unexpected error" });
+        res.status(500).json({ status: false, error: "Unexpected error" });
     }
 });
 
@@ -89,6 +89,8 @@ router.put("/:userId/:questionId", async (req, res) => {
         if(newQuestionName) {
             const userId = req.params.userId;
             const user = await User.findById({ _id: userId });
+            if(!user) return res.status(404).json({ error: "User not found" });
+            
             const index = user.questionsAsked.indexOf(question.questionName);
 
             question.questionName = newQuestionName;
@@ -100,7 +102,7 @@ router.put("/:userId/:questionId", async (req, res) => {
         res.json({ status: true, message: "Question updated successfully" });
     }
     catch (err) {
-        res.status(500).send({ status: false, error: "Error updating question!!" });
+        res.status(500).json({ status: false, error: "Error updating question!!" });
     }
 })
 
@@ -111,17 +113,18 @@ router.delete("/:userId/:questionId", async (req, res) => {
         await questionDB.deleteOne({ _id: _id }).then((doc) => {
             const userId = req.params.userId;
             const user = User.findById({ _id: userId });
+            if(!user) return res.status(404).json({ error: "User not found" });
+
             const index = user.questionsAsked.indexOf(doc.questionName);
-            
             if(index !== -1) user.questionsAsked.splice(index, 1);
             
-            res.status(200).send({ status: true, message: "Question deleted successfully!!" });
+            res.status(200).json({ status: true, message: "Question deleted successfully!!" });
         }).catch((err) => {
-            res.status(400).send({ status: false, message: "No quesion found.." });
+            res.status(400).json({ status: false, message: "No quesion found.." });
         });
     }
     catch (err) {
-        res.status(500).send({ status: false, error: "Unexpected error" });
+        res.status(500).json({ status: false, error: "Unexpected error" });
     }
 });
 

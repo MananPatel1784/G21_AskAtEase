@@ -18,23 +18,23 @@ router.post('/', async (req, res) => {
             question.answers.push(req.body.answer);
             question.save();
             
-            res.status(201).send({
+            res.status(201).json({
                 status: true,
                 message: "Answer added successfully"
             });
         }).catch((e) => {
-            res.status(400).send({
+            res.status(400).json({
                 status: false, 
                 message: "Bad request"
             })
         })
     }
     catch (e) {
-        res.status(500).send({
+        res.status(500).json({
             status: false,
             message: "Error while adding answer"
         })
     }
 });
 
-module. exports = router;
+module.exports = router;
