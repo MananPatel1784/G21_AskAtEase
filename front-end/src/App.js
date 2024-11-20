@@ -35,9 +35,9 @@ function App() {
         {/* <Questionsforyou /> */}
 
         {/* <QuestionAnswer questionName="Are you testing?" /> */}
-        <Header />
+        {/* <Header /> */}
         {/* <Test /> */}
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<MainComponent />} />
           <Route path="Answer" element={<AnswerPage />} />
           <Route path="ReturnHome" element={<MainComponent />} />
@@ -45,8 +45,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/gemini" element={<Gemini />} />
           <Route path="/questions-and-answers" element={<QuestionAnswer />} />
-          <Route path="/test" element={<Test />} />
-        </Routes> */}
+          {/* <Route path="/test" element={<Test />} /> */}
+        </Routes>
       </div>
     </>
   );
