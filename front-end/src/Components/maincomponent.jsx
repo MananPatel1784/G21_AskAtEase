@@ -18,7 +18,7 @@ const MainComponent = () => {
       <MainHeader />
 
       {/* Main content below the Header */}
-      <div className="flex justify-between w-full space-x-6 p-2">
+      <div className="flex justify-evenly w-full space-x-6 p-2">
         {/* Left Section (20%) */}
         <div className="w-1/5 bg-white p-2 rounded-2xl">
           <LeftSection />
@@ -84,7 +84,7 @@ const MainComponent = () => {
 
         {/* Right Section (30%) */}
         <div
-          className="w-1/5 bg-white p-2 rounded-2xl"
+          className="w-3/10 bg-white p-2 rounded-2xl"
           style={{
             maxWidth: "30%", // Ensures it doesn't expand beyond 30% of the parent
             height: "100%", // Ensures it takes the full height of the parent

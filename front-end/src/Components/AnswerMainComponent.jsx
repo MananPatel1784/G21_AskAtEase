@@ -12,7 +12,7 @@ import AddPost from "../Components/AddPost"; // Import the AddPost component
 
 const AnswerMainComponent = () => {
   return (
-    <div className="flex justify-evenly w-full gap-20 bg-white p-2">
+    <div className="flex justify-evenly w-full gap-2 bg-white p-2">
       {/* Left Section (20%) */}
       <div className="w-1/5 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-2 m-2 rounded-2xl h-max">
         <AnswerLeftSection />
