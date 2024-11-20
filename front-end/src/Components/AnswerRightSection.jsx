@@ -2,7 +2,7 @@ import React from "react";
 
 const AnswerRightSection = () => {
   return (
-    <div className="bg-white p-10" style={{ width: "100%" }}>
+    <div className="bg-white p-2" style={{ width: "100%" }}>
       {/* Right section content with padding */}
       <div className="right_values bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] rounded-lg shadow">
         <h2 className="text-2xl font-bold p-4 text-button border-b-2 border-gray-400 text-center">
