@@ -19,7 +19,7 @@ const AnswerRightSection = () => {
 
           <button
             id="login-button"
-            className="py-3 px-6 w-32 h-10 font-mullish text-white rounded-md text-sm font-bold hover:scale-125 transition-all duration-300 mx-auto border-white border bg-button"
+            className="py-3 px-6 w-32 h-10 font-lexend text-white rounded-md text-sm font-bold hover:scale-125 transition-all duration-300 mx-auto border-white border bg-button"
           >
             Add Topics
           </button>
