@@ -116,10 +116,14 @@ router.get("/analytics", async (req, res) => {
 // managing Sponsors
 router.use("/sponsors", sponsorRoute);
 
-router.delete("/questions/:id", authorizeAdmin, (req, res) => {
+router.delete("/questions/:id", authorizeAdmin, async (req, res) => {
     const questionId = req.response.id;
     // Logic to delete the question
-    res.send(`Question with ID ${questionId} has been deleted by admin.`);
+    await Question.deleteOne({ _id: questionId }).then((doc) => {
+        res.json({ message: "Question deleted successfully!!" });
+    }).catch((err) => {
+        res.status(404).json({ error: "Question not found!!" });
+    });
 });
 
 module.exports = router;

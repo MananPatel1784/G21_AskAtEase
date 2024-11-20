@@ -1,15 +1,15 @@
 import React from "react";
-import Post from "./mainpagepost"; 
+import Post from "./mainpagepost";
 import SpacesToFollow from "./mainpagaright";
 import myphoto from "./Assets/myphoto.jpg";
 import TCS from "./Assets/download.png";
 import eyeopen from "./Assets/eye-open.png";
-import friedick from '../Components/Assets/friedick.jpeg';
-import CR7 from '../Components/Assets/cr7.jpg';
-import Sidebar from "../Components/mainleftpart";
+import friedick from "../Components/Assets/friedick.jpeg";
+import CR7 from "../Components/Assets/cr7.jpg";
+import LeftSection from "../Components/mainleftpart";
 import AddPost from "../Components/AddPost"; // Import the AddPost component
 import MainHeader from "../Components/MainHeader";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MainComponent = () => {
   return (
@@ -18,18 +18,22 @@ const MainComponent = () => {
       <MainHeader />
 
       {/* Main content below the Header */}
-      <div className="flex justify-between w-full space-x-6 p-10">
+      <div className="flex justify-evenly w-full space-x-6 p-2">
         {/* Left Section (20%) */}
-        <div className="w-1/5 bg-white p-10 rounded-2xl">
-          <Sidebar />
+        <div className="w-1/5 bg-white p-2 rounded-2xl">
+          <LeftSection />
         </div>
 
         {/* Center Section (50%) */}
-        <div className="w-1/2 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-10 rounded-2xl">
+        <div className="w-2/3 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-2 rounded-2xl">
           {/* User Input Section */}
           <div className="bg-white rounded-lg shadow-lg p-6 space-y-4 mb-6">
             <div className="flex items-center space-x-4">
-              <img src={myphoto} alt="User Name" className="h-12 w-12 rounded-full" />
+              <img
+                src={myphoto}
+                alt="User Name"
+                className="h-12 w-12 rounded-full"
+              />
               <h3 className="font-semibold">JIMIT MEHTA</h3>
             </div>
             <p className="text-xl font-semibold mt-4">Ask Anything!</p>
@@ -42,13 +46,13 @@ const MainComponent = () => {
 
             {/* Buttons Row */}
             <div className="flex justify-around items-center mt-4 space-x-4">
-              <AddPost /> {/* Renders the Create Post and Ask Question buttons */}
+              <AddPost />{" "}
+              {/* Renders the Create Post and Ask Question buttons */}
               <Link to="/Answer">
-                  <button className="bg-button text-white py-2 px-4 rounded-lg hover:bg-button">
-                    Answer
-                  </button>
+                <button className="bg-button text-white py-2 px-4 rounded-lg hover:bg-button">
+                  Answer
+                </button>
               </Link>
-              
             </div>
           </div>
 
@@ -79,12 +83,14 @@ const MainComponent = () => {
         </div>
 
         {/* Right Section (30%) */}
-        <div className="w-3/10 bg-white p-10 rounded-2xl"
-            style={{
-              maxWidth: "30%", // Ensures it doesn't expand beyond 30% of the parent
-              height: "100%", // Ensures it takes the full height of the parent
-              overflow: "hidden", // Prevents content from overflowing outside the container
-            }}>
+        <div
+          className="w-3/10 bg-white p-2 rounded-2xl"
+          style={{
+            maxWidth: "30%", // Ensures it doesn't expand beyond 30% of the parent
+            height: "100%", // Ensures it takes the full height of the parent
+            overflow: "hidden", // Prevents content from overflowing outside the container
+          }}
+        >
           <SpacesToFollow />
         </div>
       </div>
