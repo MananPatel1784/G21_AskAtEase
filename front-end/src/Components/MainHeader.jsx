@@ -110,7 +110,7 @@ const Header = () => {
               className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
               onClick={closeSearchBar}
             >
-              &times;
+              ✕
             </button>
             {/* Render Settings Page */}
             <SearchQuestion />
@@ -139,7 +139,7 @@ const Header = () => {
               className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
               onClick={closeSettingsPopup}
             >
-              &times;
+              ✕
             </button>
             {/* Render Settings Page */}
             <SettingsPage />

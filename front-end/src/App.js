@@ -8,7 +8,7 @@ import Gemini from "./Components/Gemini";
 import ProfilePage from "./Components/ProfilePage2";
 // if profile page not working then you may use the following command in your terminal
 // npm install @emotion/styled @mui/icons-material @radix-ui/react-dialog @radix-ui/react-scroll-area @radix-ui/react-tabs
-import AddPost from "./Components/AddPost";
+import AddPost from "./Components/AddQuestion";
 import MainComponent from "./Components/maincomponent";
 import Header from "./Components/MainHeader";
 import QuestionSidebar from "./Components/QuestionsSidebar";
@@ -19,6 +19,7 @@ import Login from "./Components/LoginSignUp/Login";
 import CreateSpace from "./Components/CreateSpace";
 // import Test from "./Components/Test";
 import QuestionAnswer from "./Components/QuestionAnswer";
+import AddQuestion from "./Components/AddQuestion";
 // import CreateSpace from "./Components/CreateSpace";
 // import WidgetContent from './Components/WidgetContent';
 
@@ -53,6 +54,7 @@ function App() {
           <Route path="/questions-and-answers" element={<QuestionAnswer />} />
         </Routes>
         {/* <CreateSpace /> */}
+        {/* <AddQuestion /> */}
       </div>
     </>
   );

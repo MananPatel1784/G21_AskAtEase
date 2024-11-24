@@ -8,7 +8,7 @@ import friedick from "../Components/Assets/friedick.jpeg";
 import CR7 from "../Components/Assets/cr7.jpg";
 import AnswerLeftSection from "../Components/AnswerLeftSection";
 import AnswerRightSection from "./AnswerRightSection";
-import AddPost from "../Components/AddPost"; // Import the AddPost component
+import AddQuestion from "./AddQuestion";
 
 const AnswerMainComponent = () => {
   return (
@@ -30,20 +30,11 @@ const AnswerMainComponent = () => {
             />
             <h3 className="font-semibold">JIMIT MEHTA</h3>
           </div>
-          <p className="text-xl font-semibold mt-4">Ask Anything!</p>
-
-          <textarea
-            className="w-full mt-4 p-4 border border-gray-300 rounded-lg"
-            rows="4"
-            placeholder="Type your question or link here..."
-          ></textarea>
 
           {/* Buttons Row */}
-          <div className="font-lexend flex justify-around items-center mt-4 space-x-4">
-            <AddPost /> {/* Renders the Create Post and Ask Question buttons */}
-            <button className="bg-button text-white py-2 px-4 rounded-lg hover:bg-button">
-              Answer
-            </button>
+          <div className="flex-col justify-around items-center mt-4 space-x-4">
+            <AddQuestion />
+            {/* Renders the Create Post and Ask Question buttons */}
           </div>
         </div>
 
