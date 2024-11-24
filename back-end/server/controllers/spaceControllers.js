@@ -15,6 +15,17 @@ exports.createSpace = async (req, res) => {
     }
 };
 
+// Get all spaces
+exports.getAllSpaces = async (req, res) => {
+    try {
+        const spaces = await Space.find();
+        res.status(200).json(spaces);
+    }
+    catch (err) {
+        res.status(500).json({ error: "Error fetching spaces!!" });
+    }
+};
+
 // Add a question to a space
 exports.addQuestionToSpace = async (req, res) => {
     const _id = req.params.spaceId;
@@ -49,7 +60,14 @@ exports.getSpaceQuestions = async (req, res) => {
 
         if(!space) return res.status(404).json({ error: "Space not found!!" });
 
-        res.json({ space, questions: space.questions });
+        const spaceWithQueAns = space.populate({
+            path: 'questions',
+            populate: {
+                path: 'answers'
+            }
+        });
+
+        res.json({ spaceWithQueAns });
     }
     catch (err) {
         res.status(500).json({ error: "Error fetching questions from space!!" });
