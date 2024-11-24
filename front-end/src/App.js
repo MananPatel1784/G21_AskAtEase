@@ -4,7 +4,10 @@ import SignUp from "../src/Components/LoginSignUp/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
 import Leftpart from "./Components/mainleftpart";
 import Gemini from "./Components/Gemini";
-import ProfilePage from "./Components/ProfilePage";
+// import ProfilePage from "./Components/ProfilePage";
+import ProfilePage from "./Components/ProfilePage2";
+// if profile page not working then you may use the following command in your terminal
+// npm install @emotion/styled @mui/icons-material @radix-ui/react-dialog @radix-ui/react-scroll-area @radix-ui/react-tabs
 import AddPost from "./Components/AddPost";
 import MainComponent from "./Components/maincomponent";
 import Header from "./Components/MainHeader";
@@ -45,6 +48,7 @@ function App() {
           <Route path="/ReturnHome" element={<MainComponent />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/ProfilePage" element={<ProfilePage />} />
           <Route path="/gemini" element={<Gemini />} />
           <Route path="/questions-and-answers" element={<QuestionAnswer />} />
         </Routes>
