@@ -75,6 +75,10 @@ const ProfilePage = () => {
 
   return (
     <>
+
+    <div className="flex flex-col gap-y-4">
+        <Header/>
+
     
       <div className="profile-page bg-gradient-to-b from-[#F0D9C4] to-[#FF9797]">
         {/* Cover Photo */}
@@ -338,6 +342,8 @@ const ProfilePage = () => {
             <p>{interests}</p>
           )}
         </div>
+      </div>
+
       </div>
     </>
   );
