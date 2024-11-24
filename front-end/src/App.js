@@ -15,6 +15,7 @@ import QuestionsAndAnswers from "./Components/QuestionAnswer";
 import Login from "./Components/LoginSignUp/Login";
 import Test from "./Components/Test";
 import QuestionAnswer from "./Components/QuestionAnswer";
+import Comments from "./Components/comments/Comments"
 // import WidgetContent from './Components/WidgetContent';
 
 
@@ -48,6 +49,8 @@ function App() {
                <Route path="/questions-and-answers" element={<QuestionAnswer/>}/>
                <Route path='/test' element ={<Test/>}/>
           </Routes>  
+          {/* <Comments /> */}
+
         </div>
     </>
   );
