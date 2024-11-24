@@ -7,7 +7,7 @@ const SettingsPage = () => {
       <h2 className="text-2xl font-bold text-center mb-2">Settings</h2>
       <div className="space-y-2">
         {[
-          { name: "My Profile", link: "/CheckProfile" },
+          { name: "My Profile", link: "/ProfilePage" },
           { name: "Change Password", link: "/change-password" },
           { name: "Help", link: "/help" },
           { name: "Log Out", link: "/logout" },
