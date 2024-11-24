@@ -19,7 +19,9 @@ import Login from "./Components/LoginSignUp/Login";
 import CreateSpace from "./Components/CreateSpace";
 // import Test from "./Components/Test";
 import QuestionAnswer from "./Components/QuestionAnswer";
-import AddQuestion from "./Components/AddQuestion";
+import AddQuestion2 from "./Components/AddQue";
+// import AddQuestion2 from "./Components/AddQuestion";
+
 // import CreateSpace from "./Components/CreateSpace";
 // import WidgetContent from './Components/WidgetContent';
 
@@ -50,7 +52,9 @@ function App() {
               <Route path ="/login" element={<Login/>}/> 
                <Route path="/gemini" element={<Gemini />} /> 
                <Route path="/questions-and-answers" element={<QuestionAnswer/>}/>
-               <Route path='/test' element ={<Test/>}/>
+               {/* <Route path='/test' element ={<Test/>}/> */}
+               <Route path='/addque' element={<AddQuestion2/>}/>
+              
           </Routes>  
         </div>
     </>

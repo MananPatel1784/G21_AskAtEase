@@ -13,13 +13,14 @@ const SearchQuestion = () => {
       alert("Please enter a question.");
       return;
     }
+    console.log(question);
     setSubmittedQuestion(question); // Set the submitted question to trigger data fetching
   };
 
   useEffect(() => {
     const fetchData = async () => {
       if (!submittedQuestion) return;
-
+      // console.log(question);
       setLoading(true);
       setError(null);
 
@@ -27,7 +28,7 @@ const SearchQuestion = () => {
         console.log(submittedQuestion);
         // Fetch data from the backend with the submitted question
         const response = await axios.post("http://localhost:8000/api/search", {
-          questionName: submittedQuestion, // Send in the body, though it's not typical for GET
+          questionName: question, // Send in the body, though it's not typical for GET
         });
 
         setData(response.data); // Update state with fetched data
