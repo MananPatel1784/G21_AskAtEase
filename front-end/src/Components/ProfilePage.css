@@ -10,15 +10,17 @@
 
 .cover-photo-container {
     position: relative;
+    z-index: 1;
     width: 100%;
     height: 250px;
     margin-bottom: 40px;
 }
 
 .cover-photo {
+    z-index: 1;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     background: #F0D9C4;
 }
 

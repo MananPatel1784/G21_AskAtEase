@@ -4,30 +4,33 @@ import SignUp from "../src/Components/LoginSignUp/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
 import Leftpart from "./Components/mainleftpart";
 import Gemini from "./Components/Gemini";
-import ProfilePage from "./Components/ProfilePage";
-import AddPost from "./Components/AddPost";
+// import ProfilePage from "./Components/ProfilePage";
+import ProfilePage from "./Components/ProfilePage2";
+// if profile page not working then you may use the following command in your terminal
+// npm install @emotion/styled @mui/icons-material @radix-ui/react-dialog @radix-ui/react-scroll-area @radix-ui/react-tabs
+import AddPost from "./Components/AddQuestion";
 import MainComponent from "./Components/maincomponent";
 import Header from "./Components/MainHeader";
-import QuestionSidebar from "./Components/QuestionsSidebar"
+import QuestionSidebar from "./Components/QuestionsSidebar";
 import AnswerPage from "./Components/Answerpage";
-import { BrowserRouter , Routes , Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import QuestionsAndAnswers from "./Components/QuestionAnswer";
 import Login from "./Components/LoginSignUp/Login";
-import Test from "./Components/Test";
+import CreateSpace from "./Components/CreateSpace";
+// import Test from "./Components/Test";
 import QuestionAnswer from "./Components/QuestionAnswer";
-import Comments from "./Components/comments/Comments"
+import AddQuestion from "./Components/AddQuestion";
+// import CreateSpace from "./Components/CreateSpace";
 // import WidgetContent from './Components/WidgetContent';
-
 
 function App() {
   return (
     <>
-    
       <div>
         {/* <Login />  */}
         {/* <SignUp /> */}
         {/* <Sidebar /> */}
-          
+
         {/* <ProfilePage/> */}
         {/* <MainComponent/> */}
         {/* <AnswerPage/> */}
@@ -36,7 +39,7 @@ function App() {
         {/* <Login/>  */}
         {/* <SignUp />  */}
         {/* <Questionsforyou /> */}
-  
+
         {/* <QuestionAnswer questionName="Are you testing?" /> */}
         {/* <Test/> */}
          <Routes>
@@ -49,10 +52,8 @@ function App() {
                <Route path="/questions-and-answers" element={<QuestionAnswer/>}/>
                <Route path='/test' element ={<Test/>}/>
           </Routes>  
-          {/* <Comments /> */}
-
         </div>
     </>
   );
-};
+}
 export default App;

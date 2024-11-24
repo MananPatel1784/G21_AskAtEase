@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AskAtEaseLogo from "./Assets/AskAtEase.png";
 import SettingsPage from "./SettingsPage";
+import SearchQuestion from "./SearchQuestion";
 
 const Header = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false); // Track popup visibility
+  const [isSearchBarOpen, setSearchBar] = useState(false);
+
+  const openSearchBar = () => {
+    setSearchBar(true);
+  };
+  const closeSearchBar = () => {
+    setSearchBar(false);
+  };
 
   const openSettingsClick = () => {
     setIsSettingsOpen(true); // Open the popup
@@ -15,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <div className="qHeader sticky w-full bg-customGradient1 shadow-custom flex items-center justify-evenly">
+    <div className="font-lexend qHeader sticky w-full bg-customGradient1 shadow-custom flex items-center justify-evenly">
       {/* Logo */}
       <Link to="/ReturnHome">
         <div className="qHeader__logo flex items-center space-x-2">
@@ -89,8 +98,25 @@ const Header = () => {
           placeholder="Search"
           className="input-custom p-2 border-button border-4 rounded-md"
           id="searching"
+          onClick={openSearchBar}
         />
       </div>
+      {/* Open Search Bar */}
+      {isSearchBarOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="relative bg-white rounded-lg shadow-lg w-[90%] max-w-md p-6">
+            {/* Close Button */}
+            <button
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              onClick={closeSearchBar}
+            >
+              ✕
+            </button>
+            {/* Render Settings Page */}
+            <SearchQuestion />
+          </div>
+        </div>
+      )}
 
       {/* Profile Section */}
       <a
@@ -104,7 +130,7 @@ const Header = () => {
         />
       </a>
 
-      {/* Popup Settings */}
+      {/* Open Settings */}
       {isSettingsOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="relative bg-white rounded-lg shadow-lg w-[90%] max-w-md p-6">
@@ -113,7 +139,7 @@ const Header = () => {
               className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
               onClick={closeSettingsPopup}
             >
-              &times;
+              ✕
             </button>
             {/* Render Settings Page */}
             <SettingsPage />

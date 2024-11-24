@@ -24,7 +24,10 @@ const QuestionAnswer = ({ questionName }) => {
         setData(response.data); // Update state with fetched data
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching data:", err.response?.data || err.message);
+        console.error(
+          "Error fetching data:",
+          err.response?.data || err.message
+        );
         setError("Failed to fetch questions. Please try again later.");
         setLoading(false);
       }
@@ -63,7 +66,9 @@ const QuestionAnswer = ({ questionName }) => {
             }}
           >
             <h2>{item.question.questionName}</h2>
-            <p><strong>Similarity:</strong> {item.similarity.toFixed(2)}</p>
+            <p>
+              <strong>Similarity:</strong> {item.similarity.toFixed(2)}
+            </p>
             <h3>Answers:</h3>
             {item.question.answers.length > 0 ? (
               <ul>

@@ -1,50 +1,42 @@
 import React from "react";
-import Post from "./mainpagepost"; 
+import Post from "./mainpagepost";
 import SpacesToFollow from "./mainpagaright";
 import myphoto from "./Assets/myphoto.jpg";
 import TCS from "./Assets/download.png";
 import eyeopen from "./Assets/eye-open.png";
-import friedick from '../Components/Assets/friedick.jpeg';
-import CR7 from '../Components/Assets/cr7.jpg';
+import friedick from "../Components/Assets/friedick.jpeg";
+import CR7 from "../Components/Assets/cr7.jpg";
 import AnswerLeftSection from "../Components/AnswerLeftSection";
 import AnswerRightSection from "./AnswerRightSection";
-import AddPost from "../Components/AddPost"; // Import the AddPost component
+import AddQuestion from "./AddQuestion";
 
 const AnswerMainComponent = () => {
   return (
-    <div className="flex justify-evenly w-full gap-20 bg-white p-10">
+    <div className="flex justify-evenly w-full gap-2 bg-white p-2">
       {/* Left Section (20%) */}
-      <div className="w-1/5 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-10 rounded-2xl h-96">
+      <div className="w-1/5 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-2 m-2 rounded-2xl h-max">
         <AnswerLeftSection />
       </div>
 
       {/* Center Section (50%) */}
-      <div className="w-1/2 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-10 rounded-2xl">
+      <div className="w-2/3 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-2 rounded-2xl">
         {/* User Input Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 space-y-4 mb-6">
           <div className="flex items-center space-x-4">
-            <img src={myphoto} alt="User Name" className="h-12 w-12 rounded-full" />
+            <img
+              src={myphoto}
+              alt="User Name"
+              className="h-12 w-12 rounded-full"
+            />
             <h3 className="font-semibold">JIMIT MEHTA</h3>
           </div>
-          <p className="text-xl font-semibold mt-4">Ask Anything!</p>
 
-
-          <textarea
-            className="w-full mt-4 p-4 border border-gray-300 rounded-lg"
-            rows="4"
-            placeholder="Type your question or link here..."
-          ></textarea>
-
-
-
-            {/* Buttons Row */}
-          <div className="flex justify-around items-center mt-4 space-x-4">
-            <AddPost /> {/* Renders the Create Post and Ask Question buttons */}
-              <button className="bg-button text-white py-2 px-4 rounded-lg hover:bg-button">
-                Answer
-              </button>
-            </div>
+          {/* Buttons Row */}
+          <div className="flex-col justify-around items-center mt-4 space-x-4">
+            <AddQuestion />
+            {/* Renders the Create Post and Ask Question buttons */}
           </div>
+        </div>
 
         {/* Display Posts */}
         <div className="space-y-6">
