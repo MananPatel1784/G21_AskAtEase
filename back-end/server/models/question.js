@@ -13,7 +13,7 @@ const QuestionSchema = new mongoose.Schema({
   answers: [
     {
       type: String,
-      ref: "answers",
+      ref: "Answers",
     },
   ],
   spaceId: {

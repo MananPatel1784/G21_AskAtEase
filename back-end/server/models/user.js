@@ -32,11 +32,11 @@ const userSchema = new mongoose.Schema({
     },
     bookmarkedPost: [{
         type: String,
-        ref: "questions"
+        ref: "Questions"
     }],
     questionsAsked: [{
         type: String,
-        ref: "questions"
+        ref: "Questions"
     }]
 }, {timestamps: true});
 

@@ -4,7 +4,7 @@ const RepliesSchema = new mongoose.Schema({
     reply: String,
     answerId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "answers",
+        ref: "Answers",
         required: true
     },
     createdAt: {
