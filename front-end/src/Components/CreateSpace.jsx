@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { API_URL } from "../utils/constants";
 
 const CreateSpace = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -8,7 +10,18 @@ const CreateSpace = () => {
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const handleCreateSpace = () => {
-    console.log("Space Created:", { spaceName, spaceDescription });
+    axios
+      .post(`${API_URL}/api/spaces`, {
+        name: spaceName,
+        description: spaceDescription,
+      })
+      .then((response) => {
+        alert(`Space Created: ${spaceName}`);
+        // setSpaces(response.data);
+      })
+      .catch((error) => {
+        alert(error?.response?.data?.error);
+      });
     setSpaceName("");
     setSpaceDescription("");
     toggleModal();
