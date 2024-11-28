@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const SearchQuestion = () => {
   const [question, setQuestion] = useState("");
@@ -27,7 +28,7 @@ const SearchQuestion = () => {
       try {
         console.log(submittedQuestion);
         // Fetch data from the backend with the submitted question
-        const response = await axios.post("http://localhost:8000/api/search", {
+        const response = await axios.post(`${API_URL}/api/search`, {
           questionName: question, // Send in the body, though it's not typical for GET
         });
 
