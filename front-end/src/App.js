@@ -20,6 +20,9 @@ import CreateSpace from "./Components/CreateSpace";
 // import Test from "./Components/Test";
 import QuestionAnswer from "./Components/QuestionAnswer";
 import AddQuestion2 from "./Components/AddQue";
+import { SpaceContext, SpaceProvider } from "./contexts/SpaceContext";
+import { useContext } from "react";
+import { QuestionsProvider } from "./contexts/QuestionsContext";
 // import AddQuestion2 from "./Components/AddQuestion";
 
 // import CreateSpace from "./Components/CreateSpace";
@@ -27,37 +30,38 @@ import AddQuestion2 from "./Components/AddQue";
 
 function App() {
   return (
-    <>
-      <div>
-        {/* <Login />  */}
-        {/* <SignUp /> */}
-        {/* <Sidebar /> */}
+    <SpaceProvider>
+      <QuestionsProvider>
+        <div>
+          {/* <Login />  */}
+          {/* <SignUp /> */}
+          {/* <Sidebar /> */}
 
-        {/* <ProfilePage/> */}
-        {/* <MainComponent/> */}
-        {/* <AnswerPage/> */}
-        {/* <QuestionSidebar/> */}
-        {/* <Leftpart/>  */}
-        {/* <Login/>  */}
-        {/* <SignUp />  */}
-        {/* <Questionsforyou /> */}
+          {/* <ProfilePage/> */}
+          {/* <MainComponent/> */}
+          {/* <AnswerPage/> */}
+          {/* <QuestionSidebar/> */}
+          {/* <Leftpart/>  */}
+          {/* <Login/>  */}
+          {/* <SignUp />  */}
+          {/* <Questionsforyou /> */}
 
-        {/* <QuestionAnswer questionName="Are you testing?" /> */}
-        {/* <Test/> */}
-         <Routes>
-              <Route path="/" element={<MainComponent />}/>
-              <Route path="Answer" element={<AnswerPage/>}/> 
-              <Route path="ReturnHome" element={<MainComponent/>}/>
-               <Route path="/signup" element={<SignUp />} />
-              <Route path ="/login" element={<Login/>}/> 
-               <Route path="/gemini" element={<Gemini />} /> 
-               <Route path="/questions-and-answers" element={<QuestionAnswer/>}/>
-               {/* <Route path='/test' element ={<Test/>}/> */}
-               <Route path='/addque' element={<AddQuestion2/>}/>
-              
-          </Routes>  
+          {/* <QuestionAnswer questionName="Are you testing?" /> */}
+          {/* <Test/> */}
+          <Routes>
+            <Route path="/" element={<MainComponent />} />
+            <Route path="Answer" element={<AnswerPage />} />
+            <Route path="ReturnHome" element={<MainComponent />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/gemini" element={<Gemini />} />
+            <Route path="/questions-and-answers" element={<QuestionAnswer />} />
+            {/* <Route path='/test' element ={<Test/>}/> */}
+            <Route path="/addque" element={<AddQuestion2 />} />
+          </Routes>
         </div>
-    </>
+      </QuestionsProvider>
+    </SpaceProvider>
   );
 }
 export default App;

@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
+import { QuestionsContext } from "../contexts/QuestionsContext";
+import { SpaceContext } from "../contexts/SpaceContext";
 
 const AddQuestion2 = () => {
-  const [spaces, setSpaces] = useState([]);
+  const { spaces } = useContext(SpaceContext);
   const [questionName, setQuestionName] = useState("");
   const [spaceId, setSpaceId] = useState("");
-
-  // Fetch spaces when the component loads
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/api/spaces`)
-      .then((response) => setSpaces(response.data))
-      .catch((error) => console.error("Error fetching spaces:", error));
-  }, []);
+  const { dispatch } = useContext(QuestionsContext);
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -24,17 +19,22 @@ const AddQuestion2 = () => {
       return;
     }
 
-    try {
-      await axios.put(`${API_URL}/api/spaces/${spaceId}/questions`, {
+    axios
+      .put(`${API_URL}/api/spaces/${spaceId}/questions`, {
         questionName,
+      })
+      .then((response) => {
+        alert("Question added successfully!");
+        dispatch({
+          type: "add",
+          ...response.data,
+        });
+        setQuestionName("");
+        setSpaceId("");
+      })
+      .catch((error) => {
+        alert(error?.response?.data?.error);
       });
-      alert("Question added successfully!");
-      setQuestionName("");
-      setSpaceId("");
-    } catch (error) {
-      console.error("Error adding question:", error);
-      alert("Failed to add question. Please try again.");
-    }
   };
 
   return (
