@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { API_URL } from "../utils/constants";
 
-const CreateSpace = () => {
+const CreateSpace = ({ dispatch }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [spaceName, setSpaceName] = useState("");
   const [spaceDescription, setSpaceDescription] = useState("");
@@ -17,7 +17,10 @@ const CreateSpace = () => {
       })
       .then((response) => {
         alert(`Space Created: ${spaceName}`);
-        // setSpaces(response.data);
+        dispatch({
+          type: "add",
+          ...response.data,
+        });
       })
       .catch((error) => {
         alert(error?.response?.data?.error);

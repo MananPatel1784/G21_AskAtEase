@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Post from "./mainpagepost";
 import SpacesToFollow from "./mainpagaright";
 import myphoto from "./Assets/myphoto.jpg";
@@ -10,8 +10,11 @@ import LeftSection from "../Components/mainleftpart";
 import AddQuestion from "../Components/AddQuestion"; // Import the AddPost component
 import MainHeader from "../Components/MainHeader";
 import { Link } from "react-router-dom";
+import { QuestionsContext } from "../contexts/QuestionsContext";
 
 const MainComponent = () => {
+  const { questions } = useContext(QuestionsContext);
+  console.log(questions);
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Include the Header */}
@@ -46,27 +49,19 @@ const MainComponent = () => {
 
           {/* Display Posts */}
           <div className="space-y-6">
-            <Post
-              profileImg={myphoto}
-              name="JIMIT"
-              date="14th Nov, 2024"
-              question="What's your salary in TCS?"
-              description="Looking for insights on salary ranges at TCS..."
-              postImg={TCS}
-            />
-            <Post
-              profileImg={eyeopen}
-              name="Alex"
-              date="14th Nov, 2024"
-              question="What would you guys want to have in video tutorial"
-            />
-            <Post
-              profileImg={friedick}
-              name="Football_Fan"
-              date="14th Nov, 2024"
-              question="Who is the TOP Scorer of All Time?"
-              postImg={CR7}
-            />
+            {questions.map((question) => {
+              return (
+                <Post
+                  key={question._id}
+                  profileImg={myphoto}
+                  name="JIMIT"
+                  date="14th Nov, 2024"
+                  question={question.questionName}
+                  // description="Looking for insights on salary ranges at TCS..."
+                  // postImg={TCS}
+                />
+              );
+            })}
           </div>
         </div>
 
