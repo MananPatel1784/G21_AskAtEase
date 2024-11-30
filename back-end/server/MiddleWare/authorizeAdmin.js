@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const jwt = require("jsonwebtoken");
 
-function authorizeAdmin(req, res, next) {
+exports.authorizeAdmin = (req, res, next) => {
     const token = req.header.authorization?.split(" ")[1];
 
     if(!token) {
@@ -21,6 +21,4 @@ function authorizeAdmin(req, res, next) {
     catch (err) {
         res.status(400).json({ message: "Invalid token!!" });
     }
-}
-
-module.exports = authorizeAdmin;
+};

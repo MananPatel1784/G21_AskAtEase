@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
-async function authenticateAdmin(username, password) {
+exports.authenticateAdmin = async (username, password) => {
     try {
         const admin = await User.findOne({ username });
 
@@ -21,6 +21,4 @@ async function authenticateAdmin(username, password) {
         console.error("Error authenticating admin:", err);
         return false;
     }
-}
-
-module.exports = authenticateAdmin;
+};
