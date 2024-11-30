@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Get route parameters
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SpaceQuestion = () => {
@@ -20,13 +20,14 @@ const SpaceQuestion = () => {
       setError(null);
 
       try {
-        console.log(`Fetching questions for space ID: ${id}`); // Debugging
+        console.log(`Fetching questions for space ID: ${id}`);
         const response = await axios.get(
           `http://localhost:8000/api/spaces/${id}/questions`
         );
-        console.log(response);
+        console.log("API Response:", response.data);
 
-        setQuestions(response.data || []);
+        // Check the response structure and set questions
+        setQuestions(response.data.questions || []);
       } catch (err) {
         console.error("Error fetching questions:", err);
         setError("Failed to load questions. Please try again.");
@@ -43,6 +44,7 @@ const SpaceQuestion = () => {
     navigate(`/answer/${questionId}`);
   };
 
+  // Handle invalid space ID scenario
   if (!id) {
     return (
       <div className="p-6">
@@ -56,6 +58,7 @@ const SpaceQuestion = () => {
       <h1 className="text-2xl font-bold mb-4">Questions for Space</h1>
       {loading && <p>Loading questions...</p>}
       {error && <p className="text-red-500">{error}</p>}
+
       {questions.length > 0 ? (
         <ul className="space-y-4">
           {questions.map((question) => (
@@ -78,7 +81,7 @@ const SpaceQuestion = () => {
               <div className="mt-4">
                 <button
                   onClick={() => handleAddAnswerClick(question._id)}
-                  className="bg-button text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                  className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
                 >
                   Add Answer
                 </button>

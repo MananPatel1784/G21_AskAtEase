@@ -16,6 +16,7 @@
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "firebase": "^11.0.2",
+    "g21_askatease": "file:..",
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
