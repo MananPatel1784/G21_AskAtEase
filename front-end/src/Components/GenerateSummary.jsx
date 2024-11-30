@@ -40,7 +40,6 @@
 //       }, {
 //         headers: {
         
-//             "Authorization": `Bearer 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`,
 //              // Replace with your API key
 //           "Content-Type": "application/json",
 //         },
