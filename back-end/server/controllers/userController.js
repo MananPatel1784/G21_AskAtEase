@@ -1,7 +1,8 @@
 //Entire file by Manan
-const loadAuth = (req, res) => {
-    res.render('auth');
-}
+// const loadAuth = (req, res) => {
+//     res.render('auth');
+// }
+
 const connectToDatabase = async () => {
     try {
         await client.connect();
@@ -51,7 +52,7 @@ const failureGoogleLogin = (req , res) => {
 }
 
 module.exports = {
-    loadAuth,
+    // loadAuth,
     successGoogleLogin,
     failureGoogleLogin
 }
