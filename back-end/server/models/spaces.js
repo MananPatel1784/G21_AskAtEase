@@ -11,7 +11,7 @@ const spaceSchema = new mongoose.Schema({
     },
     questions: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "questions"
+        ref: "Questions"
     }],
     createdAt: {
         type: Date,

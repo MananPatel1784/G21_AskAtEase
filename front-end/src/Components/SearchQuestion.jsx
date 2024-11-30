@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const SearchQuestion = () => {
   const [question, setQuestion] = useState("");
@@ -13,21 +14,22 @@ const SearchQuestion = () => {
       alert("Please enter a question.");
       return;
     }
+    console.log(question);
     setSubmittedQuestion(question); // Set the submitted question to trigger data fetching
   };
 
   useEffect(() => {
     const fetchData = async () => {
       if (!submittedQuestion) return;
-
+      // console.log(question);
       setLoading(true);
       setError(null);
 
       try {
         console.log(submittedQuestion);
         // Fetch data from the backend with the submitted question
-        const response = await axios.post("http://localhost:8000/api/search", {
-          questionName: submittedQuestion, // Send in the body, though it's not typical for GET
+        const response = await axios.post(`${API_URL}/api/search`, {
+          questionName: question, // Send in the body, though it's not typical for GET
         });
 
         setData(response.data); // Update state with fetched data
@@ -97,6 +99,8 @@ const SearchQuestion = () => {
                     No answers available for this question.
                   </p>
                 )}
+                 {/* // <GenerateSummary data={data}/> */}
+
               </div>
             ))
           ) : (
