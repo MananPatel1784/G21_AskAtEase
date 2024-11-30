@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import GenerateSummary from "./GenerateSummary";
 
 const SearchQuestion = () => {
   const [question, setQuestion] = useState("");
@@ -98,6 +99,8 @@ const SearchQuestion = () => {
                     No answers available for this question.
                   </p>
                 )}
+                  <GenerateSummary data={data}/>
+
               </div>
             ))
           ) : (

@@ -20,6 +20,8 @@ import CreateSpace from "./Components/CreateSpace";
 // import Test from "./Components/Test";
 import QuestionAnswer from "./Components/QuestionAnswer";
 import AddQuestion2 from "./Components/AddQue";
+import SpaceQuestions from "./Components/SpaceQuestions";
+
 // import AddQuestion2 from "./Components/AddQuestion";
 
 // import CreateSpace from "./Components/CreateSpace";
@@ -54,7 +56,7 @@ function App() {
                <Route path="/questions-and-answers" element={<QuestionAnswer/>}/>
                {/* <Route path='/test' element ={<Test/>}/> */}
                <Route path='/addque' element={<AddQuestion2/>}/>
-              
+               <Route path='/spacequestions' element={<SpaceQuestions/>}/>
           </Routes>  
         </div>
     </>
