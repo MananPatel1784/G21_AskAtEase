@@ -10,7 +10,7 @@ router.use(passport.session());
 
 const userController = require('../controllers/userController');
 
-router.get('/', userController.loadAuth);
+//router.get('/', userController.loadAuth);
 
 // Auth 
 router.get('/auth/google' , passport.authenticate('google', { scope: 
