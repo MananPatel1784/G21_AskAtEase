@@ -58,24 +58,20 @@ exports.getSpaceQuestions = async (req, res) => {
     const _id = req.params.spaceId;
 
     try {
-<<<<<<< HEAD
         const space = await Space.findById(_id);
 
         if(!space) return res.status(404).json({ error: "Space not found!!" });
 
         const spaceWithQueAns = await space.populate({
-=======
-        const space = await Space.findById(_id).populate({
->>>>>>> upstream/main
             path: 'questions',
             populate: {
                 path: 'answers', // Assuming each question has an 'answers' field
             },
         });
 
-        if (!space) return res.status(404).json({ error: "Space not found!!" });
+        if(!space) return res.status(404).json({ error: "Space not found!!" });
 
-        res.status(200).json(space.questions);
+        res.status(200).json(spaceWithQueAns);
     } catch (err) {
         console.error("Error fetching questions:", err);
         res.status(500).json({ error: "Error fetching questions from space!!" });
