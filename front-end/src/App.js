@@ -53,34 +53,33 @@ function App() {
           {/* <QuestionAnswer questionName="Are you testing?" /> */}
           {/* <Test/> */}
           {/* <Routes> */}
-            {/* <Route path="/" element={<MainComponent />} /> */}
-            {/* <Route path="Answer" element={<AnswerPage />} /> */}
-            {/* <Route path="ReturnHome" element={<MainComponent />} /> */}
-            {/* <Route path="/signup" element={<SignUp />} /> */}
-            {/* <Route path="/login" element={<Login />} /> */}
-            {/* <Route path="/gemini" element={<Gemini />} /> */}
-            {/* <Route path="/questions-and-answers" element={<QuestionAnswer />} /> */}
-            {/* <Route path='/test' element ={<Test/>}/> */}
-            {/* <Route path="/addque" element={<AddQuestion2 />} /> */}
+          {/* <Route path="/" element={<MainComponent />} /> */}
+          {/* <Route path="Answer" element={<AnswerPage />} /> */}
+          {/* <Route path="ReturnHome" element={<MainComponent />} /> */}
+          {/* <Route path="/signup" element={<SignUp />} /> */}
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/gemini" element={<Gemini />} /> */}
+          {/* <Route path="/questions-and-answers" element={<QuestionAnswer />} /> */}
+          {/* <Route path='/test' element ={<Test/>}/> */}
+          {/* <Route path="/addque" element={<AddQuestion2 />} /> */}
           {/* </Routes> */}
-        {/* <QuestionAnswer questionName="Are you testing?" /> */}
-        {/* <Test/> */}
-         <Routes>
-              <Route path="/" element={<MainComponent />}/>
-              <Route path="Answer" element={<AnswerPage/>}/> 
-              <Route path="ReturnHome" element={<MainComponent/>}/>
-               <Route path="/signup" element={<SignUp />} />
-              <Route path ="/login" element={<Login/>}/> 
-               <Route path="/gemini" element={<Gemini />} /> 
-               <Route path="/questions-and-answers" element={<QuestionAnswer/>}/>
-               {/* <Route path='/test' element ={<Test/>}/> */}
-               <Route path='/addque' element={<AddQuestion2/>}/>
-               <Route path='/spacequestions' element={<SpaceQuestions/>}/>
-               <Route path="/answer/:questionId" element={<AnswerQuestion />} />
-               <Route path="/spaces/:id" element={<SpaceQuestion />} />
-               
-               
-          </Routes>  
+          {/* <QuestionAnswer questionName="Are you testing?" /> */}
+          {/* <Test/> */}
+          <Routes>
+            <Route path="/" element={<MainComponent />} />
+            <Route path="Answer" element={<AnswerPage />} />
+            <Route path="ReturnHome" element={<MainComponent />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/gemini" element={<Gemini />} />
+            <Route path="/questions-and-answers" element={<QuestionAnswer />} />
+            {/* <Route path='/test' element ={<Test/>}/> */}
+            <Route path="/addque" element={<AddQuestion2 />} />
+            <Route path="/spacequestions" element={<SpaceQuestions />} />
+            <Route path="/answer/:questionId" element={<AnswerQuestion />} />
+            <Route path="/spaces/:id" element={<SpaceQuestion />} />
+            <Route path="/profile" element={<ProfilePage />} />
+          </Routes>
         </div>
       </QuestionsProvider>
     </SpaceProvider>
