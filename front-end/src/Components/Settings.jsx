@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SettingsPage from "./SettingsPage"; 
+import SettingsPage from "./SettingsPage";
 import AskAtEaseLogo from "./Assets/AskAtEase.png"; // Import logo image
 
 export default function SettingsButton() {

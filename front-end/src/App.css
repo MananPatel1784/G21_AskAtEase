@@ -44,3 +44,11 @@ html,
 body {
   @apply overflow-x-hidden;
 }
+
+button {
+  @apply hover:bg-red-900 transition-colors duration-300 rounded-lg;
+}
+
+a {
+  @apply hover:underline hover:font-bold transition-all duration-300;
+}

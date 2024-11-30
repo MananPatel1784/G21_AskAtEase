@@ -5,9 +5,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        header: "#1A1A1A",
         customGradient1: "#F0D9C4",
         customGradient2: "#FF9797",
-        button: "#AD3B29",
+        button: "#380303",
         underline: "#FF0000",
         gradiantfull: "#FF9797",
         lightBlue: "#2b84ea",

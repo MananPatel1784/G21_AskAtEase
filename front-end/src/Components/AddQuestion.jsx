@@ -103,20 +103,12 @@ const AddQuestion2 = () => {
           {/* Modal Content */}
           <div className="fixed inset-0 flex items-center justify-center z-50 font-lexend">
             <div className="bg-white w-full max-w-lg mx-4 rounded-lg shadow-lg p-6 relative">
-              {/* Close Button */}
-              <button
-                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-                onClick={closeModal}
-              >
-                ✕
-              </button>
-
               {/* Modal Body */}
               <h2 className="text-xl font-bold mb-4">Add Question</h2>
 
               {/* Question Title Input */}
               <textarea
-                className="w-full border rounded-lg p-3 mb-4 text-gray-700 focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full border rounded-lg p-3 mb-4 text-gray-700  focus:outline-none focus:ring-2 focus:ring-red-950"
                 placeholder="Enter your question"
                 value={questionName}
                 onChange={(e) => setQuestionName(e.target.value)}
@@ -124,7 +116,7 @@ const AddQuestion2 = () => {
 
               {/* Space Dropdown */}
               <select
-                className="w-full border rounded-lg p-3 mb-4 text-gray-700 focus:outline-none focus:ring focus:border-blue-500"
+                className="w-full border rounded-lg p-3 mb-4 text-gray-700  focus:outline-none focus:ring-2 focus:ring-red-950"
                 value={spaceId}
                 onChange={(e) => setSpaceId(e.target.value)}
                 required

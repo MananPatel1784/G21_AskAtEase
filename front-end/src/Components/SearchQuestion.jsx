@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRef } from "react";
 import axios from "axios";
 import { API_URL } from "../utils/constants";
 
@@ -8,7 +9,13 @@ const SearchQuestion = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const textAreaRef = useRef(null); // Create a ref for the text area
 
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.focus(); // Set focus when the component is rendered
+    }
+  }, []);
   const handleSubmit = () => {
     if (!question.trim()) {
       alert("Please enter a question.");
@@ -52,13 +59,14 @@ const SearchQuestion = () => {
       <h1 className="text-2xl font-bold mb-4">Ask a Question</h1>
       <textarea
         placeholder="Enter your question here..."
+        ref={textAreaRef}
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
-        className="w-full h-24 mb-4 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+        className="w-full h-24 mb-4 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-950 "
       />
       <button
         onClick={handleSubmit}
-        className="bg-button text-white px-4 py-2 rounded-md hover:bg-red-800"
+        className="bg-button text-white px-4 py-2 rounded-md "
       >
         Ask
       </button>

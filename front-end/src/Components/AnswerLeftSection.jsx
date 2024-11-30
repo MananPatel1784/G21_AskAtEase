@@ -2,11 +2,11 @@ import React from "react";
 
 const AnswerLeftSection = () => {
   return (
-    <div className="bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] border-button border-4 rounded-xl w-full">
+    <div className=" border-gray-500 border-4 rounded-xl w-full">
       {/* Create Space Section */}
-      <div className="right_values bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] rounded-lg shadow overflow-hidden">
+      <div className="right_values rounded-lg shadow overflow-hidden">
         {/* Create Space Button */}
-        <h2 className="text-2xl font-bold p-4 text-button border-b-2 border-gray-400 text-center">
+        <h2 className="text-2xl font-bold p-4 text-button border-4 -m-2 border-gray-500 text-center">
           Questions
         </h2>
 
@@ -29,7 +29,7 @@ const AnswerLeftSection = () => {
             <div>
               <a
                 href={space.link}
-                className="font-bold hover:underline cursor-pointer"
+                className=" hover:underline cursor-pointer hover:font-bold"
               >
                 {space.name}
               </a>
