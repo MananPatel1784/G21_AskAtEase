@@ -1,11 +1,19 @@
 //This is the right part component of the main page
 
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom"; // React Router for navigation
 import Gemini from "../Components/Gemini";
 import { SpaceContext } from "../contexts/SpaceContext";
 
 function SpacesToFollow() {
   const { spaces } = useContext(SpaceContext);
+  const navigate = useNavigate(); // React Router's navigation hook
+
+  // Navigate to the space-specific route
+  const handleSpaceClick = (spaceId) => {
+    navigate(`/spaces/${spaceId}`); // Redirect to the space-specific route
+  };
+
   return (
     <div className="bg-white" style={{ width: "100%" }}>
       <div
@@ -19,6 +27,7 @@ function SpacesToFollow() {
           Spaces To Follow
         </h2>
 
+        {/* List of Spaces */}
         {spaces.map((space, index) => (
           <section
             key={space._id}
@@ -26,18 +35,13 @@ function SpacesToFollow() {
               index < spaces.length - 1 ? "border-b-2 border-white" : ""
             }`}
           >
-            {/* <img
-              src={space.imgSrc}
-              alt={space.title}
-              className="h-14 w-14 rounded-full"
-            /> */}
             <div>
-              <a
-                href={space.link}
+              <span
+                onClick={() => handleSpaceClick(space._id)}
                 className="font-bold hover:underline cursor-pointer"
               >
                 {space.name}
-              </a>
+              </span>
               <p className="text-black opacity-60 font-bold">
                 {space.description}
               </p>
