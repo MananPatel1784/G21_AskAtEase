@@ -25,7 +25,7 @@ const SpaceQuestion = () => {
           `http://localhost:8000/api/spaces/${id}/questions`
         );
         console.log(response);
-        
+
         setQuestions(response.data || []);
       } catch (err) {
         console.error("Error fetching questions:", err);
@@ -37,6 +37,11 @@ const SpaceQuestion = () => {
 
     fetchQuestions();
   }, [id]);
+
+  const handleAddAnswerClick = (questionId) => {
+    // Navigate to the page where users can add a new answer
+    navigate(`/answer/${questionId}`);
+  };
 
   if (!id) {
     return (
@@ -53,25 +58,33 @@ const SpaceQuestion = () => {
       {error && <p className="text-red-500">{error}</p>}
       {questions.length > 0 ? (
         <ul className="space-y-4">
-         {questions.map((question) => (
-  <li key={question._id} className="p-4 border rounded shadow">
-    <h3 className="text-lg font-bold">{question.questionName}</h3>
-    <h4 className="mt-2 font-semibold">Answers:</h4>
-    {question.answers && question.answers.length > 0 ? (
-      <ul className="list-disc ml-5">
-        {question.answers.map((answer, idx) => (
-          <li key={idx} className="text-gray-700">
-            {/* Render the 'answer' text instead of the whole object */}
-            {answer.answer}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p className="text-gray-500">No answers available.</p>
-    )}
-  </li>
-))}
+          {questions.map((question) => (
+            <li key={question._id} className="p-4 border rounded shadow">
+              <h3 className="text-lg font-bold">{question.questionName}</h3>
+              <h4 className="mt-2 font-semibold">Answers:</h4>
+              {question.answers && question.answers.length > 0 ? (
+                <ul className="list-disc ml-5">
+                  {question.answers.map((answer, idx) => (
+                    <li key={idx} className="text-gray-700">
+                      {answer.answer}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-gray-500">No answers available.</p>
+              )}
 
+              {/* Add Answer Button */}
+              <div className="mt-4">
+                <button
+                  onClick={() => handleAddAnswerClick(question._id)}
+                  className="bg-button text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                >
+                  Add Answer
+                </button>
+              </div>
+            </li>
+          ))}
         </ul>
       ) : (
         !loading && <p>No questions found for this space.</p>
