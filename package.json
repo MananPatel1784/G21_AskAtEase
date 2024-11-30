@@ -1,60 +1,39 @@
 {
+  "name": "vite-react-typescript-starter",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "axios": "^1.7.7",
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
-    "express-session": "^1.18.1",
-    "firebase": "^11.0.1",
-    "init": "^0.1.2",
-    "mongoose": "^8.8.1",
-    "nodemon": "^3.1.7",
-    "radix-ui": "^1.0.1",
+    "@tanstack/react-table": "^8.13.2",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^6.22.3",
+    "recharts": "^2.12.2",
+    "tailwind-merge": "^2.2.1",
+    "zustand": "^4.5.2"
   },
-  "name": "g21_askatease",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "nyc mocha",
-    "start": "node back-end/index.js",
-    "build": "npm install && npm install --prefix back-end && npm install --prefix front-end && npm run build --prefix front-end",
-    "client": "npm start --prefix front-end",
-    "server": "nodemon back-end/index"
-  },
-  "author": "G21",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/preset-react": "^7.25.9",
-    "babel-jest": "^27.5.1",
-    "chai": "^5.1.2",
-    "jest": "^27.5.1",
-    "mocha": "^10.8.2",
-    "nyc": "^17.1.0",
-    "sinon": "^11.1.2",
-    "supertest": "^7.0.0"
-  },
-  "nyc": {
-    "reporter": [
-      "text",
-      "html"
-    ],
-    "exclude": [
-      "test/**/*.test.js"
-    ],
-    "include": [
-      "back-end/server/controllers/**/*.js",
-      "back-end/server/models/**/*.js"
-    ],
-    "all": true
+    "@eslint/js": "^9.9.1",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^9.9.1",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "globals": "^15.9.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.3.0",
+    "vite": "^5.4.11"
   }
 }
