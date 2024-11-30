@@ -1,5 +1,6 @@
 const Space = require("../models/spaces");
 const Question = require("../models/question");
+const Answer = require("../models/answer");
 
 // Create a new space
 exports.createSpace = async (req, res) => {
@@ -57,7 +58,15 @@ exports.getSpaceQuestions = async (req, res) => {
     const _id = req.params.spaceId;
 
     try {
+<<<<<<< HEAD
+        const space = await Space.findById(_id);
+
+        if(!space) return res.status(404).json({ error: "Space not found!!" });
+
+        const spaceWithQueAns = await space.populate({
+=======
         const space = await Space.findById(_id).populate({
+>>>>>>> upstream/main
             path: 'questions',
             populate: {
                 path: 'answers', // Assuming each question has an 'answers' field
