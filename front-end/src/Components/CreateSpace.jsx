@@ -35,8 +35,8 @@ const CreateSpace = ({ dispatch }) => {
       {/* Button to Open Modal */}
       <button
         onClick={toggleModal}
-        className="text-2xl font-bold p-4 text-button border-b-2 border-black text-center flex mx-auto 
-                    items-center justify-center gap-6 hover:scale-110 transition-all duration-200 object-contain"
+        className="text-2xl font-bold p-4 text-button rounded-lg border-2 border-gray-500 hover:bg-gray-300 transition-colors duration-300 text-center flex mx-auto 
+                    items-center justify-center gap-6  object-contain"
       >
         Create Space
         <span>
@@ -70,14 +70,6 @@ const CreateSpace = ({ dispatch }) => {
           {/* Modal */}
           <div className="fixed inset-0 flex items-center justify-center z-50 font-lexend">
             <div className="bg-white w-full max-w-lg mx-4 rounded-lg shadow-lg p-6 relative">
-              {/* Close Button */}
-              <button
-                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-                onClick={toggleModal}
-              >
-                ✕
-              </button>
-
               {/* Modal Header */}
               <h2 className="text-xl font-bold mb-4 text-center text-button">
                 Create a New Space
@@ -95,7 +87,7 @@ const CreateSpace = ({ dispatch }) => {
                     value={spaceName}
                     onChange={(e) => setSpaceName(e.target.value)}
                     placeholder="Enter space name"
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-red-500 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-4 py-2 border rounded-lg  focus:outline-none focus:ring-2 focus:ring-red-950"
                   />
                 </div>
 
@@ -109,7 +101,7 @@ const CreateSpace = ({ dispatch }) => {
                     onChange={(e) => setSpaceDescription(e.target.value)}
                     placeholder="Enter space description"
                     rows={4}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-red-500 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-950"
                   ></textarea>
                 </div>
 
@@ -125,7 +117,7 @@ const CreateSpace = ({ dispatch }) => {
                   <button
                     type="button"
                     onClick={handleCreateSpace}
-                    className="bg-button text-white px-4 py-2 rounded hover:bg-red-600"
+                    className="bg-button text-white px-4 py-2 "
                   >
                     Create
                   </button>

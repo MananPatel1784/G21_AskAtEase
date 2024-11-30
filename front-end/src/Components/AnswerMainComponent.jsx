@@ -14,12 +14,12 @@ const AnswerMainComponent = () => {
   return (
     <div className="flex justify-evenly w-full gap-2 bg-white p-2">
       {/* Left Section (20%) */}
-      <div className="w-1/5 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-2 m-2 rounded-2xl h-max">
+      <div className="w-1/5 p-2 m-2 rounded-2xl h-max">
         <AnswerLeftSection />
       </div>
 
       {/* Center Section (50%) */}
-      <div className="w-2/3 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-2 rounded-2xl">
+      <div className="w-2/3 bg-gray-200 p-2 rounded-2xl">
         {/* User Input Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 space-y-4 mb-6">
           <div className="flex items-center space-x-4">
@@ -65,7 +65,7 @@ const AnswerMainComponent = () => {
       </div>
 
       {/* Right Section (30%) */}
-      <div className="w-3/10 bg-white rounded-2xl">
+      <div className="w-3/10 p-2 bg-white rounded-2xl">
         <AnswerRightSection />
       </div>
     </div>
