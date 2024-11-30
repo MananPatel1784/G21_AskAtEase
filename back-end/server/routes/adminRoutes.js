@@ -4,8 +4,8 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
-const authenticateAdmin = require("../controllers/authenticateAdmin");
-const authorizeAdmin = require("../MiddleWare/authorizeAdmin");
+const { authenticateAdmin } = require("../controllers/authenticateAdmin");
+const { authorizeAdmin } = require("../MiddleWare/authorizeAdmin");
 const user = require("./user");
 const User = require("../models/user");
 const Question = require("../models/question");
@@ -43,7 +43,7 @@ router.use("/signup", user);
 // Get all users
 router.get("/users", authorizeAdmin, async (req, res) => {
     try {
-        const allUsers = await user.find();
+        const allUsers = await User.find();
         res.json(allUsers);
     }
     catch (err) {
@@ -54,7 +54,7 @@ router.get("/users", authorizeAdmin, async (req, res) => {
 // Get a specific user by ID
 router.get("/users/:id", authorizeAdmin, async (req, res) => {
     try {
-        const userById = await user.findById(req.params.id);
+        const userById = await User.findById(req.params.id);
 
         if (!userById) return res.status(404).json({ error: "User not found!!" });
 
@@ -69,7 +69,7 @@ router.get("/users/:id", authorizeAdmin, async (req, res) => {
 // Update user details
 router.put("/users/:id", authorizeAdmin, async (req, res) => {
     try {
-        const updatedUser = await user.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
         if (!updatedUser) return res.status(404).json({ error: "User not found!!" });
 
@@ -83,7 +83,7 @@ router.put("/users/:id", authorizeAdmin, async (req, res) => {
 // Delete a user by ID
 router.delete("/users/:id", authorizeAdmin, async (req, res) => {
     try {
-        const deletedUser = await user.findByIdAndDelete(req.params.id);
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
 
         if (!deletedUser) return res.status(404).json({ error: "User not found!!" });
 
