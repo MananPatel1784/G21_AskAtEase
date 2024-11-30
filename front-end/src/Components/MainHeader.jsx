@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AskAtEaseLogo from "./Assets/AskAtEase.png";
+import AskAtEaseLogo from "./Assets/headerText.png";
+import image from "./Assets/google.png";
 import SettingsPage from "./SettingsPage";
 import SearchQuestion from "./SearchQuestion";
 
@@ -24,20 +25,31 @@ const Header = () => {
   };
 
   return (
-    <div className="font-lexend qHeader sticky w-full bg-customGradient1 shadow-custom flex items-center justify-evenly">
-      {/* Logo */}
-      <Link to="/ReturnHome">
+    <div className="font-lexend qHeader sticky w-full bg-header shadow-custom flex items-center h-16 px-4">
+      {/* Logo aligned to the left */}
+      <Link to="/ReturnHome" className="flex items-center">
         <div className="qHeader__logo flex items-center space-x-2">
-          <img src={AskAtEaseLogo} alt="Logo" className="h-20 w-30 m-2" />
+          <img src={AskAtEaseLogo} alt="Logo" className="h-12 w-auto m-2" />
         </div>
       </Link>
 
-      {/* Icons Section */}
-      <div className="qHeader__icons flex space-x-16">
+      {/* Icons Section aligned to the right */}
+      <div className="flex items-center space-x-8 ml-auto">
+        {/* Search Section */}
+        <div className="qHeader__input flex items-center px-2 ml-2">
+          <input
+            type="text"
+            placeholder="Search"
+            className="input-custom p-2 border-gray-500 border-2 rounded-md bg-transparent text-white"
+            id="searching"
+            onClick={openSearchBar}
+          />
+        </div>
+        
         <Link to="/ReturnHome">
           <span>
             <svg
-              className="h-8 w-8 text-button cursor-pointer"
+              className="h-8 w-8 text-gray-200 cursor-pointer"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -52,10 +64,9 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Other Icons */}
         <span>
           <svg
-            className="h-8 w-8 text-button cursor-pointer"
+            className="h-8 w-8 text-gray-200 cursor-pointer"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -73,7 +84,7 @@ const Header = () => {
         <Link to="/Answer">
           <span>
             <svg
-              className="h-8 w-8 text-button cursor-pointer"
+              className="h-8 w-8 text-gray-200 cursor-pointer"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -89,46 +100,36 @@ const Header = () => {
             </svg>
           </span>
         </Link>
+
+        {/* Profile Section */}
+        <a
+          className="qHeader__Rem flex items-center space-x-4 ml-4 cursor-pointer"
+          onClick={openSettingsClick}
+        >
+          <img
+            src={image}
+            alt="Logo"
+            className="h-12 w-12 border-gray-500 border-2 p-1 rounded-2xl"
+          />
+        </a>
       </div>
 
-      {/* Search Section */}
-      <div className="qHeader__input flex items-center px-2 ml-2">
-        <input
-          type="text"
-          placeholder="Search"
-          className="input-custom p-2 border-button border-4 rounded-md"
-          id="searching"
-          onClick={openSearchBar}
-        />
-      </div>
       {/* Open Search Bar */}
       {isSearchBarOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="relative bg-white rounded-lg shadow-lg w-[90%] max-w-md p-6">
             {/* Close Button */}
             <button
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-900"
               onClick={closeSearchBar}
             >
               ✕
             </button>
-            {/* Render Settings Page */}
+            {/* Render Search Page */}
             <SearchQuestion />
           </div>
         </div>
       )}
-
-      {/* Profile Section */}
-      <a
-        className="qHeader__Rem flex items-center space-x-4 ml-4 cursor-pointer"
-        onClick={openSettingsClick}
-      >
-        <img
-          src={AskAtEaseLogo}
-          alt="Logo"
-          className="h-16 w-16 m-2 border-button border-4 rounded-full"
-        />
-      </a>
 
       {/* Open Settings */}
       {isSettingsOpen && (
@@ -136,7 +137,7 @@ const Header = () => {
           <div className="relative bg-white rounded-lg shadow-lg w-[90%] max-w-md p-6">
             {/* Close Button */}
             <button
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 rounded-2xl h-auto w-auto"
               onClick={closeSettingsPopup}
             >
               ✕

@@ -5,7 +5,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Leftpart from "./Components/mainleftpart";
 import Gemini from "./Components/Gemini";
 // import ProfilePage from "./Components/ProfilePage";
-import ProfilePage from "./Components/ProfilePage2";
+import ProfilePage from "./Components/ProfilePage";
 // if profile page not working then you may use the following command in your terminal
 // npm install @emotion/styled @mui/icons-material @radix-ui/react-dialog @radix-ui/react-scroll-area @radix-ui/react-tabs
 import AddPost from "./Components/AddQuestion";
@@ -58,6 +58,7 @@ function App() {
             <Route path="/questions-and-answers" element={<QuestionAnswer />} />
             {/* <Route path='/test' element ={<Test/>}/> */}
             <Route path="/addque" element={<AddQuestion2 />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </div>
       </QuestionsProvider>

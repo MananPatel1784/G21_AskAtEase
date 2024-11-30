@@ -1,351 +1,167 @@
 import React, { useState } from "react";
-import "./ProfilePage.css";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-  FaCamera,
-  FaEdit,
-  FaSave,
-  FaBirthdayCake,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaLanguage,
-  FaHeart,
-  FaTransgender,
-  FaEnvelope,
-  FaUsers,
-  FaChevronRight,
-  FaChevronDown,
-} from "react-icons/fa";
 import Header from "./MainHeader";
 
 const ProfilePage = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [profilePhoto, setProfilePhoto] = useState(
-    "https://randomuser.me/api/portraits/men/41.jpg"
-  );
-  const [coverPhoto, setCoverPhoto] = useState(
-    "https://images.unsplash.com/photo-1518296071042-e2f9713408ac?crop=entropy&cs=tinysrgb&fit=max&ixid=M3wzNjY0NXwwfDF8c2VhcmNofDJ8fGZhdGV8ZW58MHx8fHwxNjg2OTQyMjM3&ixlib=rb-1.2.1&q=80&w=1080"
-  );
-  const [name, setName] = useState("Anonymous User");
-  const [bio, setBio] = useState("Tech Enthusiast | UI/UX designer");
-  const [email, setEmail] = useState("johndoe@example.com");
-  const [phone, setPhone] = useState("+1 234 567 890");
-  const [dob, setDob] = useState("1990-01-01");
-  const [gender, setGender] = useState("Male");
-
-  const [socialLinks, setSocialLinks] = useState({
-    facebook: "https://facebook.com",
-    twitter: "https://twitter.com",
-    instagram: "https://instagram.com",
-    linkedin: "https://linkedin.com/in",
+  const [isEditing, setIsEditing] = useState(false); // State to control modal visibility
+  const [profile, setProfile] = useState({
+    name: "John Doe",
+    bio: "Software Engineer | Tech Enthusiast",
+    joined: "January 2022",
   });
 
-  const [isEditingLanguages, setIsEditingLanguages] = useState(false);
-  const [isEditingPlaces, setIsEditingPlaces] = useState(false);
-  const [isEditingInterests, setIsEditingInterests] = useState(false);
+  const [tempProfile, setTempProfile] = useState({ ...profile }); // Temporary state for modal inputs
 
-  const [languages, setLanguages] = useState("English");
-  const [places, setPlaces] = useState("AskAtEase");
-  const [interests, setInterests] = useState("Internet Surfing");
-
-  const [communities, setCommunities] = useState(0);
-
-  const handlePhotoUpload = (e, setPhoto) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPhoto(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+  // Handle profile update
+  const handleSave = (e) => {
+    e.preventDefault();
+    setProfile(tempProfile); // Save the temporary profile to actual profile
+    setIsEditing(false); // Close the modal
   };
 
-  const toggleEditing = () => setIsEditing(!isEditing);
-
-  const handleSocialLinkChange = (e, platform) => {
-    setSocialLinks({
-      ...socialLinks,
-      [platform]: e.target.value,
-    });
+  const handleCancel = () => {
+    setTempProfile(profile); // Reset tempProfile to original profile
+    setIsEditing(false); // Close the modal
   };
 
   return (
-    <>
-
-    <div className="flex flex-col gap-y-4">
-        <Header/>
-
-    
-      <div className="profile-page bg-gradient-to-b from-[#F0D9C4] to-[#FF9797]">
-        {/* Cover Photo */}
-        <div className="cover-photo-container bg-gradient-to-b from-[#F0D9C4] to-[#FF9797]">
-          <img src={coverPhoto} alt="Cover" className="cover-photo" />
-          <label
-            className="upload-icon cover-upload-icon"
-            htmlFor="cover-upload"
-          >
-            <FaCamera />
-          </label>
-          <input
-            id="cover-upload"
-            type="file"
-            accept="image/*"
-            onChange={(e) => handlePhotoUpload(e, setCoverPhoto)}
-          />
-        </div>
-
-        {/* Profile Photo */}
-        <div className="profile-photo-container">
-          <img src={profilePhoto} alt="Profile" className="profile-photo" />
-          <label
-            className="upload-icon profile-upload-icon"
-            htmlFor="profile-upload"
-          >
-            <FaCamera />
-          </label>
-          <input
-            id="profile-upload"
-            type="file"
-            accept="image/*"
-            onChange={(e) => handlePhotoUpload(e, setProfilePhoto)}
-          />
-        </div>
-
-        {/* Profile Info */}
-        <div className="profile-info">
-          <div className="profile-stats-container">
-            <div className="community-count">
-              <FaUsers /> <span>{communities} Communities Joined</span>
+    <div className="bg-gray-50 min-h-screen font-['Lexend']">
+      <Header />
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto p-6">
+        {/* Profile Section */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 justify-between">
+            <div className="flex items-center space-x-4">
+              <img
+                src="https://via.placeholder.com/100"
+                alt="Profile"
+                className="w-24 h-24 rounded-full shadow"
+              />
+              <div>
+                <h2 className="text-3xl font-bold text-gray-800">
+                  {profile.name}
+                </h2>
+                <p className="text-gray-600">{profile.bio}</p>
+                <p className="text-gray-500 text-sm">Joined {profile.joined}</p>
+              </div>
             </div>
-            <button className="edit-profile-btn" onClick={toggleEditing}>
-              {isEditing ? <FaSave /> : <FaEdit />}{" "}
-              {isEditing ? "Save Changes" : "Edit Profile"}
+            <button
+              onClick={() => setIsEditing(true)}
+              className="mt-4 sm:mt-0 bg-button text-white py-2 px-6 rounded-lg shadow"
+            >
+              Edit Profile
             </button>
           </div>
+        </div>
 
-          <h2>{name}</h2>
-          <p className="profile-bio">{bio}</p>
-          <div className="social-links">
-            {isEditing ? (
-              <>
-                <div>
-                  <label>Facebook</label>
-                  <input
-                    type="text"
-                    value={socialLinks.facebook}
-                    onChange={(e) => handleSocialLinkChange(e, "facebook")}
-                  />
-                </div>
-                <div>
-                  <label>Twitter</label>
-                  <input
-                    type="text"
-                    value={socialLinks.twitter}
-                    onChange={(e) => handleSocialLinkChange(e, "twitter")}
-                  />
-                </div>
-                <div>
-                  <label>Instagram</label>
-                  <input
-                    type="text"
-                    value={socialLinks.instagram}
-                    onChange={(e) => handleSocialLinkChange(e, "instagram")}
-                  />
-                </div>
-                <div>
-                  <label>LinkedIn</label>
-                  <input
-                    type="text"
-                    value={socialLinks.linkedin}
-                    onChange={(e) => handleSocialLinkChange(e, "linkedin")}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                {socialLinks.facebook && (
-                  <a
-                    href={socialLinks.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaFacebook />
-                  </a>
-                )}
-                {socialLinks.twitter && (
-                  <a
-                    href={socialLinks.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaTwitter />
-                  </a>
-                )}
-                {socialLinks.instagram && (
-                  <a
-                    href={socialLinks.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaInstagram />
-                  </a>
-                )}
-                {socialLinks.linkedin && (
-                  <a
-                    href={socialLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaLinkedin />
-                  </a>
-                )}
-              </>
-            )}
+        {/* Stats Section */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="bg-white rounded-lg shadow p-4 text-center">
+            <h3 className="text-xl font-semibold text-gray-800">100</h3>
+            <p className="text-gray-500">Answers</p>
+          </div>
+          <div className="bg-white rounded-lg shadow p-4 text-center">
+            <h3 className="text-xl font-semibold text-gray-800">50</h3>
+            <p className="text-gray-500">Questions</p>
+          </div>
+          <div className="bg-white rounded-lg shadow p-4 text-center">
+            <h3 className="text-xl font-semibold text-gray-800">1.2k</h3>
+            <p className="text-gray-500">Followers</p>
           </div>
         </div>
 
-        {/* Personal Info */}
-        <div className="profile-section personal-info">
-          <h3>Personal Information</h3>
-          <div className="profile-items">
-            <div className="profile-item">
-              <label>
-                <FaBirthdayCake /> Date of Birth
-              </label>
-              {isEditing ? (
-                <input
-                  type="date"
-                  value={dob}
-                  onChange={(e) => setDob(e.target.value)}
-                />
-              ) : (
-                <p>{dob}</p>
-              )}
-            </div>
-            <div className="profile-item">
-              <label>
-                <FaEnvelope /> Email
-              </label>
-              {isEditing ? (
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              ) : (
-                <p>{email}</p>
-              )}
-            </div>
-            <div className="profile-item">
-              <label>
-                <FaTransgender /> Gender
-              </label>
-              {isEditing ? (
-                <select
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
+        {/* Activity Section */}
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">
+            Recent Activity
+          </h3>
+          <ul className="space-y-4">
+            <li className="border-b border-gray-200 pb-4">
+              <p className="text-gray-800">
+                <span className="font-semibold">Answered:</span> How to learn
+                React effectively?
+              </p>
+              <p className="text-gray-500 text-sm">2 days ago</p>
+            </li>
+            <li className="border-b border-gray-200 pb-4">
+              <p className="text-gray-800">
+                <span className="font-semibold">Asked:</span> What are the best
+                resources for learning Tailwind CSS?
+              </p>
+              <p className="text-gray-500 text-sm">5 days ago</p>
+            </li>
+            <li>
+              <p className="text-gray-800">
+                <span className="font-semibold">Answered:</span> What is the
+                difference between React and Angular?
+              </p>
+              <p className="text-gray-500 text-sm">1 week ago</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* Modal for editing profile */}
+      {isEditing && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-96">
+            <h2 className="text-xl font-bold text-gray-800 mb-4">
+              Edit Profile
+            </h2>
+            <form onSubmit={handleSave}>
+              <div className="mb-4">
+                <label
+                  htmlFor="name"
+                  className="block text-gray-600 font-medium mb-1"
                 >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              ) : (
-                <p>{gender}</p>
-              )}
-            </div>
-            <div className="profile-item">
-              <label>
-                <FaPhone /> Phone
-              </label>
-              {isEditing ? (
+                  Name
+                </label>
                 <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  type="text"
+                  id="name"
+                  value={tempProfile.name}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, name: e.target.value })
+                  }
+                  className="w-full border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-950"
                 />
-              ) : (
-                <p>{phone}</p>
-              )}
-            </div>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="bio"
+                  className="block text-gray-600 font-medium mb-1"
+                >
+                  Bio
+                </label>
+                <textarea
+                  id="bio"
+                  value={tempProfile.bio}
+                  onChange={(e) =>
+                    setTempProfile({ ...tempProfile, bio: e.target.value })
+                  }
+                  className="w-full border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-950"
+                />
+              </div>
+              <div className="flex justify-end space-x-4">
+                <button
+                  type="button"
+                  onClick={handleCancel}
+                  className=" bg-gray-300 py-2 px-4 rounded-lg "
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="bg-button text-white py-2 px-4 rounded-lg shadow "
+                >
+                  Save
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-
-        {/* Languages Section */}
-        <div className="profile-section">
-          <h3>
-            <FaLanguage /> Languages
-            <span
-              className="edit-icon"
-              onClick={() => setIsEditingLanguages(!isEditingLanguages)}
-            >
-              {isEditingLanguages ? <FaChevronDown /> : <FaChevronRight />}
-            </span>
-          </h3>
-          {isEditingLanguages ? (
-            <input
-              type="text"
-              value={languages}
-              onChange={(e) => setLanguages(e.target.value)}
-              onBlur={() => setIsEditingLanguages(false)}
-            />
-          ) : (
-            <p>{languages}</p>
-          )}
-        </div>
-
-        {/* Places Section */}
-        <div className="profile-section">
-          <h3>
-            <FaMapMarkerAlt /> Places
-            <span
-              className="edit-icon"
-              onClick={() => setIsEditingPlaces(!isEditingPlaces)}
-            >
-              {isEditingPlaces ? <FaChevronDown /> : <FaChevronRight />}
-            </span>
-          </h3>
-          {isEditingPlaces ? (
-            <input
-              type="text"
-              value={places}
-              onChange={(e) => setPlaces(e.target.value)}
-              onBlur={() => setIsEditingPlaces(false)}
-            />
-          ) : (
-            <p>{places}</p>
-          )}
-        </div>
-
-        {/* Interests Section */}
-        <div className="profile-section">
-          <h3>
-            <FaHeart /> Interests
-            <span
-              className="edit-icon"
-              onClick={() => setIsEditingInterests(!isEditingInterests)}
-            >
-              {isEditingInterests ? <FaChevronDown /> : <FaChevronRight />}
-            </span>
-          </h3>
-          {isEditingInterests ? (
-            <input
-              type="text"
-              value={interests}
-              onChange={(e) => setInterests(e.target.value)}
-              onBlur={() => setIsEditingInterests(false)}
-            />
-          ) : (
-            <p>{interests}</p>
-          )}
-        </div>
-      </div>
-
-      </div>
-    </>
+      )}
+    </div>
   );
 };
+
 export default ProfilePage;

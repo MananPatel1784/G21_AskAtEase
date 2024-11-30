@@ -48,7 +48,7 @@ const Gemini = () => {
 
   return (
     <div
-      className="font-lexend flex-col w-full bg-gradient-to-b from-customGradient1 to-customGradient2 rounded-md p-2"
+      className="font-lexend flex-col w-full  rounded-md p-2"
       style={{
         width: "100%", // Full width within the right section
         maxWidth: "100%", // Prevent it from exceeding the parent's width
@@ -63,7 +63,8 @@ const Gemini = () => {
         <textarea
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          className="p-2 mt-4 mb-2 border-4 w-full border-gray-700 hover:border-customGradient1 rounded-md bg-white hover:bg-customGradient1 transition-colors duration-300"
+          className="p-2 mt-4 mb-2 border-2 w-full border-gray-500 rounded-md bg-white "
+          placeholder="What's on your mind?"
           style={{
             width: "100%",
             maxHeight: "150px", // Limit question box height
@@ -74,11 +75,12 @@ const Gemini = () => {
       <div>
         <button
           onClick={GenerateAnswer}
-          className="hover:bg-black p-2 mb-2 rounded-md border-4 hover:text-white hover:border-gray-600 bg-button text-white border-customGradient2 transition-colors duration-300"
+          className="p-2 mb-2 rounded-md bg-button text-white "
         >
           Generate Answer
         </button>
       </div>
+
       <div
         className="size-full"
         style={{
@@ -88,7 +90,7 @@ const Gemini = () => {
         }}
       >
         <p
-          className="p-2 mt-2 mb-4 border-4 w-full border-gray-700 hover:border-customGradient1 rounded-md bg-slate-200 hover:bg-customGradient1 transition-colors duration-300"
+          className="p-2 mt-2 mb-4 border-2 w-full border-gray-500  rounded-md bg-gray-200 "
           style={{
             maxHeight: "100%", // Use the full height of the parent container
             overflowY: "auto", // Scroll when the content overflows

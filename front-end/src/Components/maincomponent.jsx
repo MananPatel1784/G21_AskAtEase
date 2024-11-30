@@ -21,14 +21,14 @@ const MainComponent = () => {
       <MainHeader />
 
       {/* Main content below the Header */}
-      <div className="flex justify-evenly w-full space-x-6 p-2">
+      <div className="flex justify-evenly w-full gap-2 p-2">
         {/* Left Section (20%) */}
         <div className="w-1/5 bg-white p-2 rounded-2xl">
           <LeftSection />
         </div>
 
         {/* Center Section (50%) */}
-        <div className="w-2/3 bg-gradient-to-b from-[#F0D9C4] to-[#FF9797] p-2 rounded-2xl">
+        <div className="w-2/3 bg-slate-200 p-2 rounded-2xl">
           {/* User Input Section */}
           <div className="bg-white rounded-lg shadow-lg p-6 space-y-4 mb-6">
             <div className="flex items-center space-x-4">
@@ -66,14 +66,7 @@ const MainComponent = () => {
         </div>
 
         {/* Right Section (30%) */}
-        <div
-          className="w-3/10 bg-white p-2 rounded-2xl"
-          style={{
-            maxWidth: "30%", // Ensures it doesn't expand beyond 30% of the parent
-            height: "100%", // Ensures it takes the full height of the parent
-            overflow: "hidden", // Prevents content from overflowing outside the container
-          }}
-        >
+        <div className="w-3/10 bg-white p-2 rounded-2xl">
           <SpacesToFollow />
         </div>
       </div>
