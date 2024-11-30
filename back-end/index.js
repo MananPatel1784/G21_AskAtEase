@@ -45,11 +45,11 @@ app.use("/api", router);
   // });
   
   // Session configuration
-  app.use(
-    session({
-      resave: false,
+app.use(
+  session({
+    resave: false,
     saveUninitialized: true,
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET
   })
 );
 

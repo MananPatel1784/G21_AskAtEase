@@ -23,7 +23,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node back-end/index.js",
-    "build": "npm install && npm install --prefix front-end && npm run build --prefix front-end",
+    "build": "npm install && npm install --prefix back-end && npm install --prefix front-end && npm run build --prefix front-end",
     "client": "npm start --prefix front-end",
     "server": "nodemon back-end/index"
   },
