@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { API_URL } from "../utils/constants";
+import { QuestionsContext } from "../contexts/QuestionsContext";
+import { SpaceContext } from "../contexts/SpaceContext";
 
 const AddQuestion2 = () => {
-  const [spaces, setSpaces] = useState([]);
-  const [questionName, setQuestionName] = useState('');
-  const [spaceId, setSpaceId] = useState('');
-
-  // Fetch spaces when the component loads
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/spaces')
-      .then((response) => setSpaces(response.data))
-      .catch((error) => console.error('Error fetching spaces:', error));
-  }, []);
+  const { spaces } = useContext(SpaceContext);
+  const [questionName, setQuestionName] = useState("");
+  const [spaceId, setSpaceId] = useState("");
+  const { dispatch } = useContext(QuestionsContext);
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!questionName || !spaceId) {
-      alert('Please select a space and provide a question.');
+      alert("Please select a space and provide a question.");
       return;
     }
 
-    try {
-      await axios.put(`http://localhost:5000/api/spaces/${spaceId}/questions`, {
+    axios
+      .put(`${API_URL}/api/spaces/${spaceId}/questions`, {
         questionName,
+      })
+      .then((response) => {
+        alert("Question added successfully!");
+        dispatch({
+          type: "add",
+          ...response.data,
+        });
+        setQuestionName("");
+        setSpaceId("");
+      })
+      .catch((error) => {
+        alert(error?.response?.data?.error);
       });
-      alert('Question added successfully!');
-      setQuestionName('');
-      setSpaceId('');
-    } catch (error) {
-      console.error('Error adding question:', error);
-      alert('Failed to add question. Please try again.');
-    }
   };
 
   return (
