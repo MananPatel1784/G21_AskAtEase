@@ -10,7 +10,7 @@ const Gemini = () => {
     try {
       setError(""); // Clear any previous errors
       const response = await axios({
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA9CZJmEIUHBuRmuCFOk_iDFW5e8f1FBso",
+        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyCyxN7orXehWiSHkvoo8NmmhDwxfI5C9LI",
         method: "post",
         data: {
           contents: [{ parts: [{ text: question }] }],
@@ -27,7 +27,7 @@ const Gemini = () => {
       ) {
         setAnswer(response.data.candidates[0].content.parts[0].text);
       } else {
-        setAnswer("No valid response received.");
+        setAnswer(`No valid response received.Error :${error}`);
       }
     } catch (err) {
       console.error("Error generating answer:", err);
