@@ -27,7 +27,7 @@ const Gemini = () => {
       ) {
         setAnswer(response.data.candidates[0].content.parts[0].text);
       } else {
-        setAnswer("No valid response received.");
+        setAnswer(`No valid response received. Error: ${error}`);
       }
     } catch (err) {
       console.error("Error generating answer:", err);
