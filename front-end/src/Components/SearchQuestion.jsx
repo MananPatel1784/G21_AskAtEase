@@ -107,6 +107,8 @@ const SearchQuestion = () => {
                     No answers available for this question.
                   </p>
                 )}
+                 {/* // <GenerateSummary data={data}/> */}
+
               </div>
             ))
           ) : (

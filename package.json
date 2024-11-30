@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
@@ -21,12 +22,39 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha",
+    "start": "node back-end/index.js",
+    "build": "npm install && npm install --prefix back-end && npm install --prefix front-end && npm run build --prefix front-end",
     "client": "npm start --prefix front-end",
-    "server": "nodemon back-end/index",
-    "start": "nodemon --watch back-end --exec node back-end/index.js"
+    "server": "nodemon back-end/index"
   },
   "author": "G21",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "babel-jest": "^27.5.1",
+    "chai": "^5.1.2",
+    "jest": "^27.5.1",
+    "mocha": "^10.8.2",
+    "nyc": "^17.1.0",
+    "sinon": "^11.1.2",
+    "supertest": "^7.0.0"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "test/**/*.test.js"
+    ],
+    "include": [
+      "back-end/server/controllers/**/*.js",
+      "back-end/server/models/**/*.js"
+    ],
+    "all": true
+  }
 }

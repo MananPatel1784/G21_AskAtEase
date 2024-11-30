@@ -1,5 +1,6 @@
 const Space = require("../models/spaces");
 const Question = require("../models/question");
+const Answer = require("../models/answer");
 
 // Create a new space
 exports.createSpace = async (req, res) => {
@@ -52,6 +53,7 @@ exports.addQuestionToSpace = async (req, res) => {
 };
 
 // Get all questions in a space
+// Get all questions in a space
 exports.getSpaceQuestions = async (req, res) => {
     const _id = req.params.spaceId;
 
@@ -60,16 +62,18 @@ exports.getSpaceQuestions = async (req, res) => {
 
         if(!space) return res.status(404).json({ error: "Space not found!!" });
 
-        const spaceWithQueAns = space.populate({
+        const spaceWithQueAns = await space.populate({
             path: 'questions',
             populate: {
-                path: 'answers'
-            }
+                path: 'answers', // Assuming each question has an 'answers' field
+            },
         });
 
-        res.json({ spaceWithQueAns });
-    }
-    catch (err) {
+        if(!space) return res.status(404).json({ error: "Space not found!!" });
+
+        res.status(200).json(spaceWithQueAns);
+    } catch (err) {
+        console.error("Error fetching questions:", err);
         res.status(500).json({ error: "Error fetching questions from space!!" });
     }
 };
