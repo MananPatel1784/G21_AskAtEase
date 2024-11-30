@@ -53,21 +53,25 @@ const SpaceQuestion = () => {
       {error && <p className="text-red-500">{error}</p>}
       {questions.length > 0 ? (
         <ul className="space-y-4">
-          {questions.map((question) => (
-            <li key={question._id} className="p-4 border rounded shadow">
-              <h3 className="text-lg font-bold">{question.questionName}</h3>
-              <h4 className="mt-2 font-semibold">Answers:</h4>
-              {question.answers && question.answers.length > 0 ? (
-                <ul className="list-disc ml-5">
-                  {question.answers.map((answer, idx) => (
-                    <li key={idx} className="text-gray-700">{answer}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-gray-500">No answers available.</p>
-              )}
-            </li>
-          ))}
+         {questions.map((question) => (
+  <li key={question._id} className="p-4 border rounded shadow">
+    <h3 className="text-lg font-bold">{question.questionName}</h3>
+    <h4 className="mt-2 font-semibold">Answers:</h4>
+    {question.answers && question.answers.length > 0 ? (
+      <ul className="list-disc ml-5">
+        {question.answers.map((answer, idx) => (
+          <li key={idx} className="text-gray-700">
+            {/* Render the 'answer' text instead of the whole object */}
+            {answer.answer}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p className="text-gray-500">No answers available.</p>
+    )}
+  </li>
+))}
+
         </ul>
       ) : (
         !loading && <p>No questions found for this space.</p>

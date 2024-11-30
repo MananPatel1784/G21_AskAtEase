@@ -49,20 +49,17 @@ const MainComponent = () => {
 
           {/* Display Posts */}
           <div className="space-y-6">
-            {questions.map((question) => {
-              return (
-                <Post
-                  key={question._id}
-                  profileImg={myphoto}
-                  name="JIMIT"
-                  date="14th Nov, 2024"
-                  question={question.questionName}
-                  // description="Looking for insights on salary ranges at TCS..."
-                  // postImg={TCS}
-                />
-              );
-            })}
-          </div>
+                {questions.map((question) => (
+                  <Post
+                    key={question._id}
+                    profileImg="/path/to/profile.jpg"
+                    name="JIMIT"
+                    date="14th Nov, 2024"
+                    question={question.questionName}
+                    questionId={question._id} // Pass questionId to Post
+                  />
+                ))}
+              </div>
         </div>
 
         {/* Right Section (30%) */}
