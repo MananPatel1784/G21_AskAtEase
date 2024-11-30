@@ -10,7 +10,6 @@ const session = require("express-session");
 const path = require("path");
 const user = require("./server/routes/user");
 const userRoute = require("./server/routes/userRoute");
-const adminRoute = require("./server/routes/adminRoutes");
 const homeRoute = require("./server/routes/homeRoutes");
 const PORT = process.env.PORT || 8000;
 
@@ -58,7 +57,6 @@ app.set("view engine", "ejs");
 
 // Routes
 app.use("/", userRoute);
-app.use("/admin", adminRoute);
 app.use("/signup", user);
 app.use("/login", userRoute);
 app.use("/home", homeRoute);
