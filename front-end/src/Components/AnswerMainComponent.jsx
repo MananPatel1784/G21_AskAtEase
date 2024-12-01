@@ -21,22 +21,11 @@ const AnswerMainComponent = () => {
       {/* Center Section (50%) */}
       <div className="w-2/3 bg-gray-200 p-2 rounded-2xl">
         {/* User Input Section */}
-        <div className="bg-white rounded-lg shadow-lg p-6 space-y-4 mb-6">
-          <div className="flex items-center space-x-4">
-            <img
-              src={myphoto}
-              alt="User Name"
-              className="h-12 w-12 rounded-full"
-            />
-            <h3 className="font-semibold">JIMIT MEHTA</h3>
-          </div>
-
-          {/* Buttons Row */}
-          <div className="flex-col justify-around items-center mt-4 space-x-4">
-            <AddQuestion />
-            {/* Renders the Create Post and Ask Question buttons */}
-          </div>
+        <div className="bg-white p-2 rounded-xl mb-2">
+          <AddQuestion />
         </div>
+
+        {/* Buttons Row */}
 
         {/* Display Posts */}
         <div className="space-y-6">

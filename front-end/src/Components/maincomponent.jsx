@@ -14,9 +14,10 @@ import { QuestionsContext } from "../contexts/QuestionsContext";
 
 const MainComponent = () => {
   const { questions } = useContext(QuestionsContext);
+
   console.log(questions);
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-slate-200 min-h-screen">
       {/* Include the Header */}
       <MainHeader />
 
@@ -28,38 +29,25 @@ const MainComponent = () => {
         </div>
 
         {/* Center Section (50%) */}
-        <div className="w-2/3 bg-slate-200 p-2 rounded-2xl">
+        <div className="w-2/3 bg-white p-2 rounded-2xl">
           {/* User Input Section */}
-          <div className="bg-white rounded-lg shadow-lg p-6 space-y-4 mb-6">
-            <div className="flex items-center space-x-4">
-              <img
-                src={myphoto}
-                alt="User Name"
-                className="h-12 w-12 rounded-full"
-              />
-              <h3 className="font-semibold">JIMIT MEHTA</h3>
-            </div>
 
-            {/* Buttons Row */}
-            <div className="flex-col justify-around items-center mt-4 space-x-4">
-              <AddQuestion />
-              {/* Renders the Create Post and Ask Question buttons */}
-            </div>
+          <div className="bg-white p-2 rounded-xl">
+            <AddQuestion />
           </div>
-
           {/* Display Posts */}
           <div className="space-y-6">
-                {questions.map((question) => (
-                  <Post
-                    key={question._id}
-                    profileImg="/path/to/profile.jpg"
-                    name="JIMIT"
-                    date="14th Nov, 2024"
-                    question={question.questionName}
-                    questionId={question._id} // Pass questionId to Post
-                  />
-                ))}
-              </div>
+            {questions.map((question) => (
+              <Post
+                key={question._id}
+                profileImg="/path/to/profile.jpg"
+                name="JIMIT"
+                date="14th Nov, 2024"
+                question={question.questionName}
+                questionId={question._id} // Pass questionId to Post
+              />
+            ))}
+          </div>
         </div>
 
         {/* Right Section (30%) */}

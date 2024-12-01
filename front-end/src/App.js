@@ -65,15 +65,15 @@ function App() {
           {/* </Routes> */}
           {/* <QuestionAnswer questionName="Are you testing?" /> */}
           {/* <Test/> */}
+          {/* <SpaceQuestions /> */}
           <Routes>
-            <Route path="/" element={<Login/>} />
+            <Route path="/" element={<Login />} />
             <Route path="Answer" element={<AnswerPage />} />
             <Route path="/ReturnHome" element={<MainComponent />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/gemini" element={<Gemini />} />
             <Route path="/questions-and-answers" element={<QuestionAnswer />} />
-            {/* <Route path='/test' element ={<Test/>}/> */}
             <Route path="/addque" element={<AddQuestion2 />} />
             <Route path="/spacequestions" element={<SpaceQuestions />} />
             <Route path="/answer/:questionId" element={<AnswerQuestion />} />
