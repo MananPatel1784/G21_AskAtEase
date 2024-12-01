@@ -61,16 +61,16 @@ app.use("/api", router);
 app.use("/home", homeRoute);
 
 // Static file serving
-app.use(express.static(path.join(__dirname, "../front-end/build")));
+// app.use(express.static(path.join(__dirname, "../front-end/build")));
 
 // Catch-all route to serve frontend's index.html
-app.get("*", (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, "../front-end/build/index.html"));
-    } catch (e) {
-        res.send("Oops! unexpected Error");
-    }
-});
+// app.get("*", (req, res) => {
+//     try {
+//         res.sendFile(path.join(__dirname, "../front-end/build/index.html"));
+//     } catch (e) {
+//         res.send("Oops! unexpected Error");
+//     }
+// });
 
 // Start server
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));
