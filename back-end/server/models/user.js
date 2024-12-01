@@ -34,6 +34,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         ref: "Questions"
     }],
+    followsSpaces: [{
+        type: mongoose.Schema.Types.ObjectId,
+    }],
     questionsAsked: [{
         type: String,
         ref: "Questions"

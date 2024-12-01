@@ -1,3 +1,4 @@
+require("dotenv").config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user');  // Ensure you import your user model
@@ -25,8 +26,6 @@ const login = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '2h' }  // Correct key for expiration
         );
-
-        req.session = { user: user.username };
 
         // Return success response
         res.status(201).json({
