@@ -9,13 +9,9 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const path = require("path");
 const user = require("./server/routes/user");
-<<<<<<< HEAD
 const login = require("./server/routes/login");
 // const userRoute = require("./server/routes/userRoute");
 
-=======
-const userRoute = require("./server/routes/userRoute");
->>>>>>> upstream/main
 const homeRoute = require("./server/routes/homeRoutes");
 const PORT = process.env.PORT || 8000;
 
@@ -55,14 +51,12 @@ app.use(
 app.set("view engine", "ejs");
 
 // Routes
-<<<<<<< HEAD
-=======
-app.use("/", userRoute);
->>>>>>> upstream/main
+
+// app.use("/", userRoute);
 app.use("/signup", user);
 app.use("/login", login);
 
-// app.use(isUserAuthenticated);
+app.use(isUserAuthenticated);
 // app.use("/", userRoute);
 app.use("/api", router);
 // app.use("/admin", adminRoute);
