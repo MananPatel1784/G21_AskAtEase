@@ -5,7 +5,7 @@ const Sponsor = require("../models/sponsors"); // Replace with your Sponsor mode
 const authorizeAdmin = require("../MiddleWare/authorizeAdmin");
 
 // Add a sponsor
-router.post("/", authorizeAdmin, async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const newSponsor = new Sponsor(req.body);
         await newSponsor.save();
@@ -17,7 +17,7 @@ router.post("/", authorizeAdmin, async (req, res) => {
 });
 
 // List all sponsors
-router.get("/", authorizeAdmin, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const sponsors = await Sponsor.find();
         res.json(sponsors);
@@ -28,7 +28,7 @@ router.get("/", authorizeAdmin, async (req, res) => {
 });
 
 // Update sponsor information
-router.put("/:id", authorizeAdmin, async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         const updatedSponsor = await Sponsor.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedSponsor) return res.status(404).json({ error: "Sponsor not found" });
@@ -40,7 +40,7 @@ router.put("/:id", authorizeAdmin, async (req, res) => {
 });
 
 // Delete a sponsor
-router.delete("/:id", authorizeAdmin, async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
         const deletedSponsor = await Sponsor.findByIdAndDelete(req.params.id);
         if (!deletedSponsor) return res.status(404).json({ error: "Sponsor not found" });

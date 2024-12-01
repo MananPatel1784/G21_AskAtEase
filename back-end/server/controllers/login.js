@@ -4,11 +4,11 @@ const UserModel = require('../models/user');  // Ensure you import your user mod
 
 const login = async (req, res) => {
     try {
-        const { emailID, password } = req.body;  // Extract email and password from request body
+        const { emailId, password } = req.body;  // Extract email and password from request body
         // const errorMsg = 'Authentication failed. Email or password is invalid';
 
         // Find user by email
-        const user = await UserModel.findOne({ email: emailID });
+        const user = await UserModel.findOne({ emailId: emailId });
         if (!user) {
             return res.status(403).json({ message: "Email Id not found!!", success: false });
         }
@@ -21,10 +21,12 @@ const login = async (req, res) => {
 
         // Generate JWT token
         const jwtToken = jwt.sign(
-            { email: user.email, _id: user._id },
+            { emailId: user.emailId, _id: user._id },
             process.env.JWT_SECRET,
             { expiresIn: '2h' }  // Correct key for expiration
         );
+
+        req.session = { user: user.username };
 
         // Return success response
         res.status(201).json({
@@ -41,6 +43,7 @@ const login = async (req, res) => {
         });
     }
 };
-module.exports={
+
+module.exports = {
     login
 };
