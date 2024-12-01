@@ -5,26 +5,25 @@ const questionDB = require('../models/question');
 const User = require('../models/user');
 
 router.post("/:userId/add", async (req, res) => {
-    const _id = req.params.userId;
-
+    
     try {
-        await questionDB.create({
+        const newQuestion = await questionDB.create({
             questionName: req.body.questionName,
             questionUrl: req.body.questionUrl
-        }).then(() => {
-            const user = User.findById(_id);
-            user.questionsAsked.push(req.body.questionName);
-
-            res.status(201).json({
-                status: true,
-                message: "Question added successfully"
-            });
-        }).catch((err) => {
-            res.status(400).json({
-                status: false,
-                message: "Bad format",
-            });
         });
+        
+        const _id = req.params.userId;
+        const user = await User.findById(_id);
+
+        newQuestion.userId = _id;
+        user.questionsAsked.push(req.body.questionName);
+        console.log(user);
+        await user.save();
+
+        res.status(201).json({
+            status: true,
+            message: "Question added successfully"
+        });           
     }
     catch (e) {
         res.status(500).json({
