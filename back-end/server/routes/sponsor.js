@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const Sponsor = require("../models/sponsors"); // Replace with your Sponsor model
-const authorizeAdmin = require("../MiddleWare/authorizeAdmin");
 
 // Add a sponsor
 router.post("/", async (req, res) => {
