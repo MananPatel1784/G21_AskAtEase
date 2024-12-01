@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 });
 
 // Update sponsor information
-router.put("/:id",  async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         const updatedSponsor = await Sponsor.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedSponsor) return res.status(404).json({ error: "Sponsor not found" });

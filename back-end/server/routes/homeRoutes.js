@@ -21,13 +21,13 @@ router.get("/:id/myProfile", showProfileAnalytics);
 router.put("/:id/myProfile/deactivate", deactivateAccount);
 
 // Delete user account
-router.delete("/:id/myprofile/delete",deleteAccount);
+router.delete("/:id/myprofile/delete", deleteAccount);
 
 // Reactivate account
-router.put("/:id/myprofile/reactivate",reactivateAccount);
+router.put("/:id/myprofile/reactivate", reactivateAccount);
 
 // Change password
-router.put("/:id/myprofile/changepassword",changePassword);
+router.put("/:id/myprofile/changepassword", changePassword);
 
 // Follow user
 router.put("/:followerId/:followingId/follow", followUser);

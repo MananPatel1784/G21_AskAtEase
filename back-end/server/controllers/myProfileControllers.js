@@ -13,8 +13,9 @@ exports.showProfileAnalytics = async (req, res) => {
 
         const followersCount = myProfile.followers.length;
         const followingCount = myProfile.following.length;
+        const questionsCount = myProfile.questionsAsked.length;
 
-        res.json({ followers: followersCount, following: followingCount });
+        res.json({ followers: followersCount, following: followingCount, questions: questionsCount });
     }
     catch (err) {
         res.status(500).json({ error: "Error Fetching Analytics!!" });
@@ -123,8 +124,15 @@ exports.followUser = async (req, res) => {
 
         if(!userToFollow) return res.status(404).json({ status: false, error: "Following user not found" });
 
+        if(userToFollow.followers.indexOf(followerId) !== -1) {
+            return res.json({ message: "You already follow this user!!!" });
+        }
+
         user.following.push(followingId);
         userToFollow.followers.push(followerId);
+
+        await user.save();
+        await userToFollow.save();
 
         res.json({ status: true, message: "User followed successfully" });
     }
@@ -138,20 +146,33 @@ exports.getTheFeed = async (req, res) => {
 
     try {
         const user = await User.findById({ _id: userId }).populate("following");
-
+        
         if(!user) return res.status(404).json({ status: false, error: "User not found!!" });
-
-        const followedUserIds = user.following;
+        
+        const followedUserIds = user.following.map((followedUser) => followedUser._id);
+        console.log(followedUserIds);
 
         if(!followedUserIds.length) {
             return res.status(200).json({ status: true, message: "No posts to display!!"});
         }
 
-        const followingQuestions = followedUserIds.map((followedUser) => followedUser.questionsAsked).flat();
+        const followingQuestions = await Question.find({
+            userId: { $in: followedUserIds }
+        }).populate('answers').sort({ createdAt: -1});
 
-        const questionsWithAnswers = await Question.find({ questionName: { $in: followingQuestions } }).sort({ createdAt: -1 });
+        if(!followingQuestions.length) {
+            return res.status(200).json({ status: true, message: "No questions found from the followed users!!" });
+        }
+        console.log(followingQuestions);
 
-        res.json({ feed: questionsWithAnswers });
+        const feed = followingQuestions.map((question) => {
+            return {
+                ...question.toObject(),
+                followingIds: followedUserIds
+            };
+        });
+
+        res.json({ status: true, feed: feed });
     }
     catch (err) {
         res.status(500).json({ status: false, error: "Failed to get the feed!!"});

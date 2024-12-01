@@ -59,6 +59,8 @@ async function handleSignUp(req, res) {
         role: userRole
     });
 
+    req.session.user = username;
+
     return res.status(201).json({msg: "Successfully signed up!!"});
 }
 
