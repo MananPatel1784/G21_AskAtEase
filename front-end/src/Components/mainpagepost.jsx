@@ -1,4 +1,4 @@
-// // post component for the main page 
+// // post component for the main page
 // import React from "react";
 // import { BrowserRouter , Routes , Route} from "react-router-dom";
 
@@ -74,11 +74,18 @@
 
 // export default Post;
 
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Post = ({ profileImg, name, date, question, description, postImg, questionId }) => {
+const Post = ({
+  profileImg,
+  name,
+  date,
+  question,
+  description,
+  postImg,
+  questionId,
+}) => {
   const navigate = useNavigate();
 
   const handleAnswerClick = () => {
@@ -87,7 +94,7 @@ const Post = ({ profileImg, name, date, question, description, postImg, question
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 space-y-4">
+    <div className="bg-white rounded-xl shadow-lg p-6 space-y-4 -border-slate-200 border-2">
       {/* Profile Info and Date */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
@@ -103,7 +110,9 @@ const Post = ({ profileImg, name, date, question, description, postImg, question
       <div className="mt-4 flex justify-between">
         <div className="w-3/4">
           <p className="text-lg font-semibold">{question}</p>
-          {description && <p className="mt-4 mb-4 text-gray-600">{description}</p>}
+          {description && (
+            <p className="mt-4 mb-4 text-gray-600">{description}</p>
+          )}
         </div>
         <div className="flex items-center justify-center w-1/4">
           <button
@@ -118,7 +127,11 @@ const Post = ({ profileImg, name, date, question, description, postImg, question
       {/* Optional Image Section */}
       {postImg && (
         <div className="w-full h-48">
-          <img src={postImg} alt={question} className="w-full h-full rounded-lg object-contain" />
+          <img
+            src={postImg}
+            alt={question}
+            className="w-full h-full rounded-lg object-contain"
+          />
         </div>
       )}
     </div>
