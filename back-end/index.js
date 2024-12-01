@@ -55,15 +55,14 @@ app.set("view engine", "ejs");
 
 // Routes
 
-// app.use("/", userRoute);
+app.use("/", login);
 app.use("/signup", user);
 app.use("/login", login);
 
-app.use(isUserAuthenticated);
 // app.use("/", userRoute);
-app.use("/api", router);
+app.use("/api", isUserAuthenticated, router);
 // app.use("/admin", adminRoute);
-app.use("/home", homeRoute);
+app.use("/home", isUserAuthenticated, homeRoute);
 
 // Static file serving
 app.use(express.static(path.join(__dirname, "../front-end/build")));
