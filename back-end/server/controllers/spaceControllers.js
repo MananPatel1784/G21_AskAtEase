@@ -1,6 +1,7 @@
 const Space = require("../models/spaces");
 const Question = require("../models/question");
 const Answer = require("../models/answer");
+const User = require("../models/user");
 
 // Create a new space
 exports.createSpace = async (req, res) => {
@@ -75,5 +76,34 @@ exports.getSpaceQuestions = async (req, res) => {
     } catch (err) {
         console.error("Error fetching questions:", err);
         res.status(500).json({ error: "Error fetching questions from space!!" });
+    }
+};
+
+exports.followSpace = async (req, res) => {
+    const spaceId = req.params.spaceId;
+    const userId = req.params.userId;
+
+    try {
+        const space = await Space.findById({ _id: spaceId });
+        if(!space) return res.status(404).json({ error: "Space not found!!" });
+
+        const user = await User.findById({ _id: userId });
+        if(!user) return res.status(404).json({ error: "User not found!!" });
+
+        if(space.followers.indexOf(userId) !== -1) {
+            return res.json({ message: "You already follow this space!!!" });
+        }
+
+        user.followSpaces.push(spaceId);
+        await user.save();
+
+        space.followers.push(userId);
+        await space.save();
+
+        res.json({ status: true, message: "Space followed successfully" });
+
+    }
+    catch (err) {
+        res.status(500).json({ error: "Error following space!!" });
     }
 };

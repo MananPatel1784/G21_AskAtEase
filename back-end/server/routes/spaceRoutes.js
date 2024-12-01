@@ -3,7 +3,8 @@ const {
     createSpace,
     getAllSpaces,
     addQuestionToSpace,
-    getSpaceQuestions
+    getSpaceQuestions,
+    followSpace
 } = require("../controllers/spaceControllers");
 
 const router = express.Router();
@@ -19,5 +20,8 @@ router.put("/:spaceId/questions", addQuestionToSpace);
 
 // Get all questions in a space
 router.get("/:spaceId/questions", getSpaceQuestions);
+
+// Follow a space
+router.put("/:spaceId/:userId", followSpace);
 
 module.exports = router;

@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 
 const db = require("./db");
 const router = require("./server/routes");
-const isUserAuthenticated = require("./server/MiddleWare/authenticateUser");
+const authenticateToken = require("./server/MiddleWare/authenticateToken");
 
 // MongoDB connection
 db.connect();
@@ -56,21 +56,9 @@ app.use("/signup", user);
 app.use("/login", login);
 
 // app.use("/", userRoute);
-app.use("/api", router);
+app.use("/api", authenticateToken, router);
 // app.use("/admin", adminRoute);
-app.use("/home", homeRoute);
-
-// Static file serving
-// app.use(express.static(path.join(__dirname, "../front-end/build")));
-
-// Catch-all route to serve frontend's index.html
-// app.get("*", (req, res) => {
-//     try {
-//         res.sendFile(path.join(__dirname, "../front-end/build/index.html"));
-//     } catch (e) {
-//         res.send("Oops! unexpected Error");
-//     }
-// });
+app.use("/home", authenticateToken, homeRoute);
 
 // Start server
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));

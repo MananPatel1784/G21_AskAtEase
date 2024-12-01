@@ -1,6 +1,7 @@
 // Whole done by Dishant and Sunay
-
+require("dotenv").config();
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 
 function validatePassword(password) {
@@ -52,16 +53,20 @@ async function handleSignUp(req, res) {
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(password, salt);
 
-    await User.create({
+    const newUser = await User.create({
         username: username,
         password: secPass,
         emailId: emailId,
         role: userRole
     });
 
-    req.session.user = username;
+    const jwtToken = jwt.sign(
+        { emailId: newUser.emailId, _id: newUser._id },
+        process.env.JWT_SECRET,
+        { expiresIn: '2h' }  // Correct key for expiration
+    );
 
-    return res.status(201).json({msg: "Successfully signed up!!"});
+    return res.status(201).json({msg: "Successfully signed up!!", token: jwtToken});
 }
 
 module.exports = {

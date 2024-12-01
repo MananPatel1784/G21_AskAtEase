@@ -13,6 +13,9 @@ const spaceSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Questions"
     }],
+    followers: [{
+        type: mongoose.Schema.Types.ObjectId,
+    }],
     createdAt: {
         type: Date,
         default: Date.now()
