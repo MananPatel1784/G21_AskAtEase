@@ -66,9 +66,9 @@ function App() {
           {/* <QuestionAnswer questionName="Are you testing?" /> */}
           {/* <Test/> */}
           <Routes>
-            <Route path="/" element={<MainComponent />} />
+            <Route path="/" element={<Login/>} />
             <Route path="Answer" element={<AnswerPage />} />
-            <Route path="ReturnHome" element={<MainComponent />} />
+            <Route path="/ReturnHome" element={<MainComponent />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/gemini" element={<Gemini />} />
