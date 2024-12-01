@@ -9,6 +9,7 @@ import CR7 from "../Components/Assets/cr7.jpg";
 import LeftSection from "../Components/mainleftpart";
 import AddQuestion from "../Components/AddQuestion"; // Import the AddPost component
 import MainHeader from "../Components/MainHeader";
+import Gemini from "./Gemini";
 import { Link } from "react-router-dom";
 import { QuestionsContext } from "../contexts/QuestionsContext";
 
@@ -28,31 +29,35 @@ const MainComponent = () => {
           <LeftSection />
         </div>
 
-        {/* Center Section (50%) */}
-        <div className="w-2/3 bg-white p-2 rounded-2xl">
-          {/* User Input Section */}
-
-          <div className="bg-white p-2 rounded-xl">
+        <div className="flex-col w-2/3">
+          <div className="bg-white p-2 rounded-xl mb-4">
             <AddQuestion />
           </div>
-          {/* Display Posts */}
-          <div className="space-y-6">
-            {questions.map((question) => (
-              <Post
-                key={question._id}
-                profileImg="/path/to/profile.jpg"
-                name="JIMIT"
-                date="14th Nov, 2024"
-                question={question.questionName}
-                questionId={question._id} // Pass questionId to Post
-              />
-            ))}
+          {/* Center Section (50%) */}
+          <div className=" bg-white p-2 rounded-2xl">
+            {/* User Input Section */}
+
+            {/* Display Posts */}
+            <div className="space-y-6">
+              {questions.map((question) => (
+                <Post
+                  key={question._id}
+                  profileImg="/path/to/profile.jpg"
+                  name="JIMIT"
+                  date="14th Nov, 2024"
+                  question={question.questionName}
+                  questionId={question._id} // Pass questionId to Post
+                />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Right Section (30%) */}
-        <div className="w-3/10 bg-white p-2 rounded-2xl">
-          <SpacesToFollow />
+        <div className="bg-white rounded-2xl h-fit" style={{ width: "30%" }}>
+          <div className="rounded-2xl">
+            <Gemini />
+          </div>
         </div>
       </div>
     </div>

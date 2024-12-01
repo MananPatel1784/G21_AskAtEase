@@ -27,6 +27,9 @@ const AddQuestion2 = () => {
       return;
     }
     await handleAddQuestion();
+    setModal(false);
+    setQuestionName("");
+    setSpaceId("");
   };
 
   async function handleAddQuestion() {

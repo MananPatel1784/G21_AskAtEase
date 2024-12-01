@@ -23,9 +23,10 @@ import AddQuestion2 from "./Components/AddQue";
 import { SpaceContext, SpaceProvider } from "./contexts/SpaceContext";
 import { useContext } from "react";
 import { QuestionsProvider } from "./contexts/QuestionsContext";
-import SpaceQuestions from "./Components/SpaceQuestions";
+// import SpaceQuestions from "./Components/SpaceQuestions";
 import AnswerQuestion from "./Components/AnswerQuestion";
 import SpaceQuestion from "./Components/SpaceQuestion";
+import AnswerMainComponent from "./Components/AnswerMainComponent";
 
 // import AddQuestion2 from "./Components/AddQuestion";
 
@@ -68,16 +69,18 @@ function App() {
           {/* <SpaceQuestions /> */}
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="Answer" element={<AnswerPage />} />
+            <Route path="/answer" element={<AnswerPage />} />
             <Route path="/ReturnHome" element={<MainComponent />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/gemini" element={<Gemini />} />
             <Route path="/questions-and-answers" element={<QuestionAnswer />} />
             <Route path="/addque" element={<AddQuestion2 />} />
-            <Route path="/spacequestions" element={<SpaceQuestions />} />
+            {/* <Route path="/spacequestions" element={<SpaceQuestions />} /> */}
             <Route path="/answer/:questionId" element={<AnswerQuestion />} />
-            <Route path="/spaces/:id" element={<SpaceQuestion />} />
+            {/* <Route path="/spaces/:id" element={<SpaceQuestion />} /> */}
+            {/* <Route path="/spaces/:id" element={<AnswerMainComponent />} /> */}
+            <Route path="/:id/questions" element={<AnswerMainComponent />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </div>

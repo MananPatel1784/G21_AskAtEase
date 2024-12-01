@@ -1,14 +1,21 @@
 import React, { useContext } from "react";
 import CreateSpace from "./CreateSpace";
+import { useNavigate } from "react-router-dom";
 import { SpaceContext } from "../contexts/SpaceContext";
 
 const LeftSection = () => {
   const { spaces, dispatch } = useContext(SpaceContext);
+  const navigate = useNavigate(); // React Router's navigation hook
+
+  // Navigate to the space-specific route
+  const handleSpaceClick = (spaceId) => {
+    navigate(`/${spaceId}/questions`); // Redirect to the space-specific route
+  };
   console.log(spaces);
   return (
     <div className="w-1/5" style={{ width: "100%" }}>
       {/* Create Space Section */}
-      <div className="right_values rounded-lg shadow overflow-hidden">
+      <div className="rounded-lg overflow-hidden">
         {/* CreateSpace Component */}
         <CreateSpace dispatch={dispatch} />
 
@@ -19,12 +26,13 @@ const LeftSection = () => {
             className=" p-4 mt-2 mr-1 ml-1 flex items-start space-x-4 border border-gray-300 rounded-md mb-2"
           >
             <div>
-              <a
+              <button
+                onClick={() => handleSpaceClick(space._id)}
                 // href={space.link}
-                className="font-bold hover:underline cursor-pointer"
+                className="hover:bg-slate-500 text-base font-bold hover:underline cursor-pointer block size-max"
               >
                 {space.name}
-              </a>
+              </button>
             </div>
           </section>
         ))}
