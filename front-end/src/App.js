@@ -26,45 +26,15 @@ import { QuestionsProvider } from "./contexts/QuestionsContext";
 import SpaceQuestions from "./Components/SpaceQuestions";
 import AnswerQuestion from "./Components/AnswerQuestion";
 import SpaceQuestion from "./Components/SpaceQuestion";
+import Logout from "./Components/logout";
+import ChangePassword from "./Components/changepassword";
 
-// import AddQuestion2 from "./Components/AddQuestion";
-
-// import CreateSpace from "./Components/CreateSpace";
-// import WidgetContent from './Components/WidgetContent';
 
 function App() {
   return (
     <SpaceProvider>
       <QuestionsProvider>
         <div>
-          {/* <Login />  */}
-          {/* <SignUp /> */}
-          {/* <Sidebar /> */}
-
-          {/* <ProfilePage/> */}
-          {/* <MainComponent/> */}
-          {/* <AnswerPage/> */}
-          {/* <QuestionSidebar/> */}
-          {/* <Leftpart/>  */}
-          {/* <Login/>  */}
-          {/* <SignUp />  */}
-          {/* <Questionsforyou /> */}
-
-          {/* <QuestionAnswer questionName="Are you testing?" /> */}
-          {/* <Test/> */}
-          {/* <Routes> */}
-          {/* <Route path="/" element={<MainComponent />} /> */}
-          {/* <Route path="Answer" element={<AnswerPage />} /> */}
-          {/* <Route path="ReturnHome" element={<MainComponent />} /> */}
-          {/* <Route path="/signup" element={<SignUp />} /> */}
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/gemini" element={<Gemini />} /> */}
-          {/* <Route path="/questions-and-answers" element={<QuestionAnswer />} /> */}
-          {/* <Route path='/test' element ={<Test/>}/> */}
-          {/* <Route path="/addque" element={<AddQuestion2 />} /> */}
-          {/* </Routes> */}
-          {/* <QuestionAnswer questionName="Are you testing?" /> */}
-          {/* <Test/> */}
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="Answer" element={<AnswerPage />} />
@@ -73,12 +43,12 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/gemini" element={<Gemini />} />
             <Route path="/questions-and-answers" element={<QuestionAnswer />} />
-            {/* <Route path='/test' element ={<Test/>}/> */}
             <Route path="/addque" element={<AddQuestion2 />} />
             <Route path="/spacequestions" element={<SpaceQuestions />} />
-            <Route path="/answer/:questionId" element={<AnswerQuestion />} />
             <Route path="/spaces/:id" element={<SpaceQuestion />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/Logout" element={<Logout/>}/>
+            <Route path="/ChangePassword" element={<ChangePassword/>}/>
           </Routes>
         </div>
       </QuestionsProvider>

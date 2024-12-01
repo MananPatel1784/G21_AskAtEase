@@ -2,16 +2,16 @@ import React from "react";
 
 const Logout = () => {
   return (
-    <div style={styles.overlay}>
-      <div style={styles.box}>
-        <div style={styles.icon}>
+    <div className="bg-black bg-opacity-50 fixed top-0 left-0 w-full h-full flex justify-center items-center">
+      <div className="bg-white rounded-lg w-[500px] h-[500px] p-10 text-center shadow-lg space-y-16">
+        <div className="flex justify-center items-center mb-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="black"
-            style={styles.iconSvg}
+            className="w-[80px] h-[80px]"
           >
             <path
               strokeLinecap="round"
@@ -20,78 +20,28 @@ const Logout = () => {
             />
           </svg>
         </div>
-        <p style={styles.text}>Oh no! You're leaving...<br />Are you sure?</p>
-        <div style={styles.buttons}>
-          <button style={{ ...styles.button, ...styles.noButton }}>
-            No, keep me in
-          </button>
-          <button style={{ ...styles.button, ...styles.logoutButton }}>
-            Yes, log me out
-          </button>
+        <p className="text-lg text-gray-800 mb-5 leading-relaxed">
+          Oh no! You're leaving...<br />Are you sure?
+        </p>
+        <div className="flex justify-between gap-5">
+
+          
+              <button className="bg-button text-white rounded-full py-4 px-4 text-md font-bold cursor-pointer">
+                No, keep me in
+              </button>
+        
+          
+
+         
+              <button className="bg-button text-white border rounded-full p-6 text-sm font-bold cursor-pointer">
+                Yes, log me out
+              </button>
+        
+          
         </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  box: {
-    backgroundColor: "#ffffff",
-    borderRadius: "8px",
-    width: "300px",
-    padding: "20px",
-    textAlign: "center",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-  },
-  icon: {
-    display: "flex",
-    justifyContent: "center", 
-    alignItems: "center", 
-    marginBottom: "16px",
-  },
-  iconSvg: {
-    width: "40px",
-    height: "40px",
-  },
-  text: {
-    fontSize: "18px",
-    color: "#333",
-    marginBottom: "20px",
-    lineHeight: "1.5",
-  },
-  buttons: {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "20px", 
-  },
-  button: {
-    borderRadius: "20px",
-    padding: "10px 16px",
-    fontSize: "14px",
-    fontWeight: "bold",
-    cursor: "pointer",
-    border: "none",
-  },
-  noButton: {
-    backgroundColor: "#AD3B29", 
-    color: "#ffffff",
-  },
-  logoutButton: {
-    backgroundColor: "#ffffff",
-    color: "#AD3B29", 
-    border: "1px solid #AD3B29", 
-  },
 };
 
 export default Logout;

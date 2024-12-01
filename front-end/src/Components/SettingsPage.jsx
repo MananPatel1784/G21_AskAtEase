@@ -7,11 +7,10 @@ const SettingsPage = () => {
       <h2 className="text-2xl text-white font-bold text-center mb-2">
         Settings
       </h2>
-      <div className="space-y-2">
+      <div className="space-y-4 p-2">
         {[
           { name: "My Profile", link: "/profile" },
-          { name: "Change Password", link: "/change-password" },
-          { name: "Help", link: "/help" },
+          { name: "Change Password", link: "/ChangePassword" },
           { name: "Log Out", link: "/logout" },
         ].map((item, index) => (
           <Link
