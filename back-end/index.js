@@ -9,12 +9,19 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const path = require("path");
 const user = require("./server/routes/user");
+<<<<<<< HEAD
+const login = require("./server/routes/login");
+// const userRoute = require("./server/routes/userRoute");
+
+=======
 const userRoute = require("./server/routes/userRoute");
+>>>>>>> upstream/main
 const homeRoute = require("./server/routes/homeRoutes");
 const PORT = process.env.PORT || 8000;
 
 const db = require("./db");
 const router = require("./server/routes");
+const isUserAuthenticated = require("./server/MiddleWare/authenticateUser");
 
 // MongoDB connection
 db.connect();
@@ -33,22 +40,14 @@ app.use((req, res, next) => {
 
 app.use(cors()); // Use cors middleware for CORS handling
 
-// Routes
-app.use("/api", router);
 
-
-
-// MongoDB Connection
-// connectToMongoDB(process.env.MONGODB_URI || "mongodb://localhost:27017/AskAtEase").then(() => {
-  //     console.log("MongoDB connected successfully!!");
-  // });
-  
-  // Session configuration
+// Session configuration
 app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    secret: process.env.SESSION_SECRET
+    secret: process.env.SESSION_SECRET,
+    cookie: { secure: true }
   })
 );
 
@@ -56,9 +55,17 @@ app.use(
 app.set("view engine", "ejs");
 
 // Routes
+<<<<<<< HEAD
+=======
 app.use("/", userRoute);
+>>>>>>> upstream/main
 app.use("/signup", user);
-app.use("/login", userRoute);
+app.use("/login", login);
+
+// app.use(isUserAuthenticated);
+// app.use("/", userRoute);
+app.use("/api", router);
+// app.use("/admin", adminRoute);
 app.use("/home", homeRoute);
 
 // Static file serving
