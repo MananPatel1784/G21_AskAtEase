@@ -8,7 +8,7 @@ import AnswerMainComponent from "./AnswerMainComponent";
 const AnswerPage = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
-      <Header />
+      {/* <Header /> */}
       {/* Integrate the MainComponent */}
       {/* <MainComponent /> */}
       {/* <AnswerLeftSection/> */}

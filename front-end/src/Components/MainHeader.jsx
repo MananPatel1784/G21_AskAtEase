@@ -45,7 +45,7 @@ const Header = () => {
             onClick={openSearchBar}
           />
         </div>
-        
+
         <Link to="/ReturnHome">
           <span>
             <svg

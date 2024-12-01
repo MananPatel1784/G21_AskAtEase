@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const AnswerQuestion = () => {
   const { questionId } = useParams(); // Get question ID from the URL
@@ -15,7 +16,7 @@ const AnswerQuestion = () => {
 
     try {
       // Make a POST request to your backend
-      const response = await axios.post("http://localhost:8000/api/answers", {
+      const response = await axios.post(API_URL + "/api/answers ", {
         answer,
         questionId,
       });
@@ -36,7 +37,7 @@ const AnswerQuestion = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Answer Question</h1>
       <p className="mb-6">Question ID: {questionId}</p>
-        console.log({questionId})
+      console.log({questionId})
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="answer" className="block font-semibold mb-2">
@@ -61,9 +62,12 @@ const AnswerQuestion = () => {
           {loading ? "Submitting..." : "Submit Answer"}
         </button>
       </form>
-
       {message && (
-        <p className={`mt-4 ${message.includes("success") ? "text-green-500" : "text-red-500"}`}>
+        <p
+          className={`mt-4 ${
+            message.includes("success") ? "text-green-500" : "text-red-500"
+          }`}
+        >
           {message}
         </p>
       )}
