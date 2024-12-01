@@ -12,7 +12,9 @@ const user = require("./server/routes/user");
 const login = require("./server/routes/login");
 // const userRoute = require("./server/routes/userRoute");
 
+
 // const userRoute = require("./server/routes/userRoute");
+
 const homeRoute = require("./server/routes/homeRoutes");
 const PORT = process.env.PORT || 8000;
 
@@ -52,11 +54,12 @@ app.use(
 app.set("view engine", "ejs");
 
 // Routes
+
 // app.use("/", userRoute);
 app.use("/signup", user);
 app.use("/login", login);
 
-// app.use(isUserAuthenticated);
+app.use(isUserAuthenticated);
 // app.use("/", userRoute);
 app.use("/api", router);
 // app.use("/admin", adminRoute);
