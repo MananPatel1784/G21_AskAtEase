@@ -28,10 +28,6 @@ import AnswerQuestion from "./Components/AnswerQuestion";
 import SpaceQuestion from "./Components/SpaceQuestion";
 import AnswerMainComponent from "./Components/AnswerMainComponent";
 
-// import AddQuestion2 from "./Components/AddQuestion";
-
-// import CreateSpace from "./Components/CreateSpace";
-// import WidgetContent from './Components/WidgetContent';
 
 function App() {
   return (

@@ -23,7 +23,7 @@ const LeftSection = () => {
         {spaces.map((space) => (
           <section
             key={space._id}
-            className=" p-4 mt-2 mr-1 ml-1 flex items-start space-x-4 border border-gray-300 rounded-md mb-2"
+            className=" p-4 mt-2 mr-1 ml-1 flex items-start space-x-4 border border-gray-600 rounded-md mb-2"
           >
             <div>
               <button

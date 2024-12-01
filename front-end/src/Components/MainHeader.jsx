@@ -101,17 +101,17 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Profile Section */}
-        <a
+        {/* Profile Section - Use div instead of Link */}
+        <div
           className="qHeader__Rem flex items-center space-x-4 ml-4 cursor-pointer"
-          onClick={openSettingsClick}
+          onClick={openSettingsClick} // Open settings modal on click
         >
           <img
             src={image}
             alt="Logo"
             className="h-12 w-12 border-gray-500 border-2 p-1 rounded-2xl"
           />
-        </a>
+        </div>
       </div>
 
       {/* Open Search Bar */}
