@@ -67,7 +67,11 @@ function App() {
           {/* <Test/> */}
           {/* <SpaceQuestions /> */}
           <Routes>
+<<<<<<< HEAD
             <Route path="/" element={<Login />} />
+=======
+            <Route path="/" element={<Login/>} />
+>>>>>>> upstream/main
             <Route path="Answer" element={<AnswerPage />} />
             <Route path="/ReturnHome" element={<MainComponent />} />
             <Route path="/signup" element={<SignUp />} />
