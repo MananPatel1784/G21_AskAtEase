@@ -1,4 +1,4 @@
-const bcrypt=require("bcrypt");
+const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const Question = require("../models/question");
 const { handleSignUp, validatePassword } = require("./signup");
