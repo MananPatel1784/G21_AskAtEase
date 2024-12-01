@@ -11,6 +11,13 @@ const path = require("path");
 const user = require("./server/routes/user");
 const login = require("./server/routes/login");
 // const userRoute = require("./server/routes/userRoute");
+<<<<<<< HEAD
+=======
+
+
+// const userRoute = require("./server/routes/userRoute");
+
+>>>>>>> upstream/main
 const homeRoute = require("./server/routes/homeRoutes");
 const PORT = process.env.PORT || 8000;
 
@@ -51,16 +58,19 @@ app.set("view engine", "ejs");
 
 // Routes
 
+<<<<<<< HEAD
 // app.use("/", userRoute);
 
+=======
+app.use("/", login);
+>>>>>>> upstream/main
 app.use("/signup", user);
 app.use("/login", login);
 
-// app.use(isUserAuthenticated);
 // app.use("/", userRoute);
-app.use("/api", router);
+app.use("/api", isUserAuthenticated, router);
 // app.use("/admin", adminRoute);
-app.use("/home", homeRoute);
+app.use("/home", isUserAuthenticated, homeRoute);
 
 // Static file serving
 app.use(express.static(path.join(__dirname, "../front-end/build")));

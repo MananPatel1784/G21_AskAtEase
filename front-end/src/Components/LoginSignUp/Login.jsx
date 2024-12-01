@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import {
   doSignInWithEmailandPassword,
@@ -13,6 +13,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (userLoggedIn) {
+      navigate("/ReturnHome");
+    }
+  }, [userLoggedIn, navigate]);
+
+  const handleRedirectToSignup = () => {
+    navigate("/signup"); // Replace "/signup" with your desired route
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +32,7 @@ const Login = () => {
       setIsSigningIn(true);
       try {
         await doSignInWithEmailandPassword(email, password);
+        navigate("/ReturnHome"); // Redirect after successful login
       } catch (error) {
         setErrorMessage(error.message);
       } finally {
@@ -34,6 +47,7 @@ const Login = () => {
       setIsSigningIn(true);
       try {
         await doSignInWithGoogle();
+        navigate("/ReturnHome"); // Redirect after successful login
       } catch (error) {
         setErrorMessage(error.message);
       } finally {
@@ -41,10 +55,7 @@ const Login = () => {
       }
     }
   };
-  const navigate = useNavigate();
-  const handleRedirect = () => {
-      navigate("/signup"); // Replace "/signup" with your desired route
-  };
+
   return (
     <main className="font-lexend flex justify-center items-center bg-gradient-to-b from-customGradient1 to-customGradient2 min-h-screen w-full p-6">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg flex flex-col md:flex-row p-8 space-y-6 md:space-y-0 md:space-x-8">
@@ -53,12 +64,11 @@ const Login = () => {
           <h3 className="text-2xl font-bold text-gray-800 text-center mb-4">
             Login
           </h3>
-          {userLoggedIn && (
-            <p className="justify-center text-center text-green-600">
-              You're already logged in!
+          {userLoggedIn ? (
+            <p className="text-center text-green-600">
+              Redirecting to home...
             </p>
-          )}
-          {!userLoggedIn && (
+          ) : (
             <form onSubmit={onSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -103,8 +113,14 @@ const Login = () => {
               >
                 {isSigningIn ? "Signing in..." : "Sign in with Google"}
               </button>
-              {/* // added new user option that will direct it to the sign up page */}
-              <button onClick={handleRedirect}>New User?</button>
+              {/* New User Button */}
+              <button
+                type="button"
+                onClick={handleRedirectToSignup}
+                className="w-full text-center text-blue-500 hover:text-blue-600 mt-2"
+              >
+                New User? Sign up here
+              </button>
             </form>
           )}
         </div>
