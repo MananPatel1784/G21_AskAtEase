@@ -173,6 +173,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const AnswerQuestion = ({ showModal, setShowModal, questionId, questionText }) => {
   const [answer, setAnswer] = useState("");
@@ -186,7 +187,7 @@ const AnswerQuestion = ({ showModal, setShowModal, questionId, questionText }) =
 
     try {
       // Make a POST request to your backend
-      const response = await axios.post("http://localhost:8000/api/answers", {
+      const response = await axios.post(API_URL + "/api/answers ", {
         answer,
         questionId,
       });

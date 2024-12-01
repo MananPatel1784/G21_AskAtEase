@@ -35,8 +35,8 @@ const CreateSpace = ({ dispatch }) => {
       {/* Button to Open Modal */}
       <button
         onClick={toggleModal}
-        className="text-2xl font-bold p-4 text-button rounded-lg border-2 border-gray-500 hover:bg-gray-300 transition-colors duration-300 text-center flex mx-auto 
-                    items-center justify-center gap-4  object-contain"
+        className="text-xl font-bold p-4 text-button rounded-lg border-2 border-gray-500 hover:bg-gray-300 transition-colors duration-300 text-center flex mx-auto 
+                    items-center justify-center gap-6  object-contain"
       >
         Create Space
         <span>

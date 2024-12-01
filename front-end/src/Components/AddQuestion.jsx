@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
+import myphoto from "./Assets/myphoto.jpg";
+
 import { API_URL } from "../utils/constants";
 import { SpaceContext } from "../contexts/SpaceContext";
 import { QuestionsContext } from "../contexts/QuestionsContext";
@@ -10,7 +12,12 @@ const AddQuestion2 = () => {
   const [spaceId, setSpaceId] = useState("");
   const [modal, setModal] = useState(false);
   const { dispatch } = useContext(QuestionsContext);
-
+  const textAreaRef = useRef(null);
+  useEffect(() => {
+    if (modal && textAreaRef.current) {
+      textAreaRef.current.focus(); // Focus on text area when modal opens
+    }
+  }, [modal]);
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +27,9 @@ const AddQuestion2 = () => {
       return;
     }
     await handleAddQuestion();
+    setModal(false);
+    setQuestionName("");
+    setSpaceId("");
   };
 
   async function handleAddQuestion() {
@@ -69,23 +79,16 @@ const AddQuestion2 = () => {
   return (
     <>
       {/* Trigger Section */}
-      <div className="flex-col m-2 gap-5 font-lexend">
-        <p
-          className="text-xl font-semibold mt-4 cursor-pointer"
-          onClick={openModal}
-        >
-          Ask Anything!
-        </p>
-
+      <div className="flex items-center justify-between m-2 gap-5 w-full font-lexend">
+        <img src={myphoto} alt="User Name" className="h-12 w-12 rounded-full" />
         <textarea
-          className="w-full mt-4 p-4 border border-gray-300 rounded-lg cursor-pointer"
-          rows="4"
-          placeholder="Type your question"
+          className="flex-1 w-fit p-4 h-min border bg-slate-200 border-gray-300 rounded-lg cursor-pointer"
+          placeholder="What do you want to ask?"
           onClick={openModal}
         ></textarea>
         <button
           onClick={openModal}
-          className="bg-button text-white px-4 py-2 rounded"
+          className="mr-4 bg-button text-white px-4 py-2 rounded"
         >
           Add Question
         </button>
@@ -110,6 +113,7 @@ const AddQuestion2 = () => {
               <textarea
                 className="w-full border rounded-lg p-3 mb-4 text-gray-700  focus:outline-none focus:ring-2 focus:ring-red-950"
                 placeholder="Enter your question"
+                ref={textAreaRef}
                 value={questionName}
                 onChange={(e) => setQuestionName(e.target.value)}
               />
