@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Post from "./mainpagepost";
 import SpacesToFollow from "./mainpagaright";
 import myphoto from "./Assets/myphoto.jpg";
@@ -16,7 +16,36 @@ import { QuestionsContext } from "../contexts/QuestionsContext";
 const MainComponent = () => {
   const { questions } = useContext(QuestionsContext);
 
-  console.log(questions);
+  const [visibleQuestions, setVisibleQuestions] = useState(7); // Initially show 15 questions
+  const [showScrollTop, setShowScrollTop] = useState(false); // State to control visibility of the scroll-to-top button
+
+  // Function to handle 'Show More' button click
+  const handleShowMore = () => {
+    setVisibleQuestions((prevVisible) => prevVisible + 5); // Show 15 more questions
+  };
+
+  // Handle the scroll position and show/hide the "Scroll to Top" button
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setShowScrollTop(true); // Show the button after scrolling 300px
+    } else {
+      setShowScrollTop(false); // Hide the button if scrolled back to the top
+    }
+  };
+
+  // Scroll to the top
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
+  };
+
+  // Add scroll event listener when component mounts and cleanup when unmounts
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="bg-slate-200 min-h-screen">
       {/* Include the Header */}
@@ -34,15 +63,15 @@ const MainComponent = () => {
             <AddQuestion />
           </div>
           {/* Center Section (50%) */}
-          <div className=" bg-white p-2 rounded-2xl">
+          <div className="bg-white p-2 rounded-2xl">
             {/* User Input Section */}
 
             {/* Display Posts */}
             <div className="space-y-6">
-              {questions.map((question) => (
+              {questions.slice(0, visibleQuestions).map((question) => (
                 <Post
                   key={question._id}
-                  profileImg="/path/to/profile.jpg"
+                  profileImg="myphoto"
                   name="JIMIT"
                   date="14th Nov, 2024"
                   question={question.questionName}
@@ -50,6 +79,18 @@ const MainComponent = () => {
                 />
               ))}
             </div>
+
+            {/* Show More Button */}
+            {visibleQuestions < questions.length && (
+              <div className="text-center mt-4">
+                <button
+                  onClick={handleShowMore}
+                  className="bg-button text-white p-4 rounded-lg"
+                >
+                  Show More
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -60,8 +101,20 @@ const MainComponent = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <div
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 bg-button text-white p-6 rounded-full shadow-lg cursor-pointer"
+        >
+          ↑
+        </div>
+      )}
     </div>
   );
 };
 
 export default MainComponent;
+
+
