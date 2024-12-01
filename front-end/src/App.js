@@ -78,8 +78,6 @@ function App() {
             {/* <Route path="/spaces/:id" element={<AnswerMainComponent />} /> */}
             <Route path="/:id/questions" element={<AnswerMainComponent />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/Logout" element={<Logout/>}/>
-            <Route path="/ChangePassword" element={<ChangePassword/>}/>
           </Routes>
         </div>
       </QuestionsProvider>
