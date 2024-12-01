@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 
 const db = require("./db");
 const router = require("./server/routes");
-const authenticateToken = require("./server/MiddleWare/authenticateToken");
+// const authenticateToken = require("./server/MiddleWare/authenticateToken");
 
 // MongoDB connection
 db.connect();
@@ -56,9 +56,9 @@ app.use("/signup", user);
 app.use("/login", login);
 
 // app.use("/", userRoute);
-app.use("/api", authenticateToken, router);
+app.use("/api", router);
 // app.use("/admin", adminRoute);
-app.use("/home", authenticateToken, homeRoute);
+app.use("/home", homeRoute);
 
 // Start server
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));
