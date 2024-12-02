@@ -77,7 +77,7 @@ const MainComponent = () => {
 
             {/* Display Posts */}
             {console.log(questions)}
-            <div className="space-y-6">
+            {/* <div className="space-y-6">
               {questions.slice(0, visibleQuestions).map((question) => {
                 const formattedDate = formatDate(question.createdAt);
                 return(
@@ -91,7 +91,27 @@ const MainComponent = () => {
                   answers={question.answers}
                 />
               )})}
-            </div>
+            </div> */}
+            <div className="space-y-6">
+  {questions
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort in descending order by createdAt
+    .slice(0, visibleQuestions)
+    .map((question) => {
+      const formattedDate = formatDate(question.createdAt);
+      return (
+        <Post
+          key={question._id}
+          // profileImg="myphoto"
+          // name="JIMIT"
+          date={formattedDate}
+          question={question.questionName}
+          questionId={question._id} // Pass questionId to Post
+          answers={question.answers}
+        />
+      );
+    })}
+</div>
+
 
             {/* Show More Button */}
             {visibleQuestions < questions.length && (

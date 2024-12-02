@@ -58,42 +58,45 @@ const SpaceQuestion = () => {
       <h1 className="text-2xl font-bold mb-4">Questions for Space</h1>
       {loading && <p>Loading questions...</p>}
       {error && <p className="text-red-500">{error}</p>}
-
+  
       {questions.length > 0 ? (
         <ul className="space-y-4">
-          {questions.map((question) => (
-            <li key={question._id} className="p-4 border rounded shadow">
-              <h3 className="text-lg font-bold">{question.questionName}</h3>
-              <h4 className="mt-2 font-semibold">Answers:</h4>
-              {question.answers && question.answers.length > 0 ? (
-                <ul className="list-disc ml-5">
-                  {question.answers.map((answer, idx) => (
-                    <li key={idx} className="text-gray-700">
-                      {answer.answer}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-gray-500">No answers available.</p>
-              )}
-
-              {/* Add Answer Button */}
-              <div className="mt-4">
-                <button
-                  onClick={() => handleAddAnswerClick(question._id)}
-                  className="bg-button text-white py-2 px-4 rounded-lg "
-                >
-                  Add Answer
-                </button>
-              </div>
-            </li>
-          ))}
+          {questions
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort in descending order
+            .map((question) => (
+              <li key={question._id} className="p-4 border rounded shadow">
+                <h3 className="text-lg font-bold">{question.questionName}</h3>
+                <h4 className="mt-2 font-semibold">Answers:</h4>
+                {question.answers && question.answers.length > 0 ? (
+                  <ul className="list-disc ml-5">
+                    {question.answers.map((answer, idx) => (
+                      <li key={idx} className="text-gray-700">
+                        {answer.answer}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-500">No answers available.</p>
+                )}
+  
+                {/* Add Answer Button */}
+                <div className="mt-4">
+                  <button
+                    onClick={() => handleAddAnswerClick(question._id)}
+                    className="bg-button text-white py-2 px-4 rounded-lg "
+                  >
+                    Add Answer
+                  </button>
+                </div>
+              </li>
+            ))}
         </ul>
       ) : (
         !loading && <p>No questions found for this space.</p>
       )}
     </div>
   );
+  
 };
 
 export default SpaceQuestion;
