@@ -1,4 +1,5 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Firebase/firebase";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
@@ -22,8 +23,8 @@ const SignUp = () => {
     if (!isRegistering) {
       setIsRegistering(true);
       try {
-        await createUserWithEmailAndPassword(email, password);
-        navigate('/home');
+        await createUserWithEmailAndPassword(auth, email, password); // Use the auth instance here
+        navigate('/ReturnHome');
       } catch (error) {
         setErrorMessage(error.message);
       } finally {
@@ -34,7 +35,7 @@ const SignUp = () => {
 
   return (
     <>
-      {userLoggedIn && <Navigate to="/home" replace={true} />}
+      {userLoggedIn && <Navigate to="/ReturnHome" replace={true} />}
 
       <main className="font-lexend flex justify-center items-center bg-gradient-to-b from-customGradient1 to-customGradient2 min-h-screen w-full p-6">
         <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg flex flex-col md:flex-row p-8 space-y-6 md:space-y-0 md:space-x-8">

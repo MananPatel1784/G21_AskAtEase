@@ -117,9 +117,9 @@ const Post = ({
       {/* Profile Info and Date */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <img src={profileImg} alt={name} className="h-12 w-12 rounded-full" />
+          {/* <img src={profileImg} alt={name} className="h-12 w-12 rounded-full" /> */}
           <div>
-            <h3 className="font-semibold">{name}</h3>
+            {/* <h3 className="font-semibold">{name}</h3> */}
             <p className="text-sm text-gray-500">Posted on: {date}</p>
           </div>
         </div>

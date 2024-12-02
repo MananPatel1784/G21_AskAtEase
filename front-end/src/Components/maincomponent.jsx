@@ -46,6 +46,15 @@ const MainComponent = () => {
     };
   }, []);
 
+  function formatDate(dateString) {
+    const date = new Date(dateString); // Convert the input string to a Date object
+    const day = String(date.getDate()).padStart(2, '0'); // Get the day and add leading zero
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Get the month (0-indexed) and add leading zero
+    const year = date.getFullYear(); // Get the full year
+  
+    return `${day}/${month}/${year}`; // Format in DD/MM/YYYY
+  }
+
   return (
     <div className="bg-slate-200 min-h-screen">
       {/* Include the Header */}
@@ -69,17 +78,19 @@ const MainComponent = () => {
             {/* Display Posts */}
             {console.log(questions)}
             <div className="space-y-6">
-              {questions.slice(0, visibleQuestions).map((question) => (
+              {questions.slice(0, visibleQuestions).map((question) => {
+                const formattedDate = formatDate(question.createdAt);
+                return(
                 <Post
                   key={question._id}
-                  profileImg="myphoto"
-                  name="JIMIT"
-                  date="14th Nov, 2024"
+                  // profileImg="myphoto"
+                  // name="JIMIT"
+                  date={formattedDate}
                   question={question.questionName}
                   questionId={question._id} // Pass questionId to Post
                   answers={question.answers}
                 />
-              ))}
+              )})}
             </div>
 
             {/* Show More Button */}
