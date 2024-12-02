@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
         }
 
         // Add the answer's _id to the question's answers array
-        question.answers.push(newAnswer._id);
+        question.answers.push(newAnswer.answer);
         await question.save();
 
         res.status(201).json({
