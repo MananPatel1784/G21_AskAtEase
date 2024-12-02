@@ -35,13 +35,13 @@ const CreateSpace = ({ dispatch }) => {
       {/* Button to Open Modal */}
       <button
         onClick={toggleModal}
-        className="text-xl font-bold p-4 text-button rounded-lg border-2 border-gray-500 hover:bg-gray-300 transition-colors duration-300 text-center flex mx-auto 
-                    items-center justify-center gap-6  object-contain"
+        className="text-xl font-bold p-4 text-white rounded-lg  transition-colors duration-300 text-center flex mx-auto 
+                    items-center justify-center gap-6  object-contain bg-button"
       >
         Create Space
         <span>
           <svg
-            className="h-8 w-8 text-button"
+            className="h-8 w-8 text-white"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -71,7 +71,7 @@ const CreateSpace = ({ dispatch }) => {
           <div className="fixed inset-0 flex items-center justify-center z-50 font-lexend">
             <div className="bg-white w-full max-w-lg mx-4 rounded-lg shadow-lg p-6 relative">
               {/* Modal Header */}
-              <h2 className="text-xl font-bold mb-4 text-center text-button">
+              <h2 className="text-xl font-bold mb-4 text-center text-white">
                 Create a New Space
               </h2>
 

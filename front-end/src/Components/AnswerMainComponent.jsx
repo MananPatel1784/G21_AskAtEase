@@ -24,16 +24,13 @@ const AnswerMainComponent = () => {
   );
 
   return (
-    <div className="bg-slate-200 min-h-screen">
+    <div className="bg-slate-200 min-h-screen space-y-4">
       {/* Include the Header */}
       <Header />
 
       {/* Main content below the Header */}
       <div className="flex justify-evenly w-full gap-2 p-2">
         {/* Left Section (20%) */}
-        <div className="w-1/5 bg-white p-2 rounded-2xl">
-          {/* <LeftSection /> */}
-        </div>
 
         <div className="flex-col w-2/3">
           <div className="bg-white p-2 rounded-xl mb-4">

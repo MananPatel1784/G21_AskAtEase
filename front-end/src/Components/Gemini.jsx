@@ -56,7 +56,7 @@ const Gemini = () => {
         overflow: "hidden", // Prevent the outer container from expanding
       }}
     >
-      <h1 className="flex font-bold text-2xl place-self-center">
+      <h1 className="flex font-bold text-2xl place-self-center ">
         Gemini AI by Google
       </h1>
       <div>
@@ -67,7 +67,7 @@ const Gemini = () => {
           placeholder="What's on your mind?"
           style={{
             width: "100%",
-            maxHeight: "150px", // Limit question box height
+            maxHeight: "200px", // Limit question box height
             overflowY: "auto", // Scroll for long questions
           }}
         ></textarea>
@@ -85,7 +85,7 @@ const Gemini = () => {
         className="size-full"
         style={{
           flex: "1", // Make this section take the remaining space
-          maxHeight: "300px", // Limit the height of the answer container
+          maxHeight: "350px", // Limit the height of the answer container
           overflowY: "auto", // Enable scrolling for long answers
         }}
       >

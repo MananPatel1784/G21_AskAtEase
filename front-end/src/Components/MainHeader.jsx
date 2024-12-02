@@ -64,42 +64,6 @@ const Header = () => {
           </span>
         </Link>
 
-        <span>
-          <svg
-            className="h-8 w-8 text-gray-200 cursor-pointer"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </span>
-
-        <Link to="/Answer">
-          <span>
-            <svg
-              className="h-8 w-8 text-gray-200 cursor-pointer"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z"></path>
-              <polyline points="9 11 12 14 20 6"></polyline>
-              <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
-            </svg>
-          </span>
-        </Link>
 
         {/* Profile Section - Use div instead of Link */}
         <div
