@@ -63,7 +63,7 @@ const MainComponent = () => {
       {/* Main content below the Header */}
       <div className="flex justify-evenly w-full gap-5 p-4">
         {/* Left Section (20%) */}
-        <div className="w-1/4 bg-slate-200 p-2 rounded-2xl">
+        <div className="w-1/4 bg-white p-2 rounded-2xl">
           <LeftSection />
         </div>
 
