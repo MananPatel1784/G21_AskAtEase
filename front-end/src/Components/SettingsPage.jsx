@@ -24,7 +24,7 @@ const SettingsPage = () => {
         {[
           { name: "My Profile", link: "/profile" },
           { name: "Change Password", link: "/ChangePassword"},
-          { name: "Log Out", link: "/logout" },
+          //{ name: "Log Out", link: "/logout" },
         ].map((item, index) => (
           <Link
             key={index}

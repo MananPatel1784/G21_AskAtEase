@@ -40,9 +40,9 @@ const AnswerQuestion = ({ showModal, setShowModal, questionId, questionText }) =
             <h2 className="text-xl font-semibold mb-4">Answer Question</h2>
             
             {/* Question ID and Question Text */}
-            <p className="mb-4">
+            {/* <p className="mb-4">
               <strong>Question ID:</strong> {questionId}
-            </p>
+            </p> */}
             <p className="mb-4">
               <strong>Question:</strong> {questionText}
             </p>
