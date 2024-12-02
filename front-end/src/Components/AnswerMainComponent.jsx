@@ -1,14 +1,13 @@
 import React from "react";
 // import { useParams } from "react-router-dom";
 import Post from "./mainpagepost";
-import SpacesToFollow from "./mainpagaright";
 import myphoto from "./Assets/myphoto.jpg";
 import TCS from "./Assets/download.png";
 import eyeopen from "./Assets/eye-open.png";
 import friedick from "../Components/Assets/friedick.jpeg";
 import CR7 from "../Components/Assets/cr7.jpg";
-import AnswerLeftSection from "../Components/AnswerLeftSection";
-import AnswerRightSection from "./AnswerRightSection";
+// import AnswerLeftSection from "../Components/AnswerLeftSection";
+// import AnswerRightSection from "./AnswerRightSection";
 import AddQuestion from "./AddQuestion";
 import Gemini from "./Gemini";
 import Header from "./MainHeader";
@@ -21,7 +20,7 @@ const AnswerMainComponent = () => {
   const { id } = useParams();
 
   const filteredQuestions = questions.filter(
-    (question) => question.spaceId == id
+    (question) => question.spaceId === id
   );
 
   return (
@@ -51,11 +50,12 @@ const AnswerMainComponent = () => {
                   {filteredQuestions.map((question) => (
                     <Post
                       key={question._id}
-                      profileImg="/path/to/profile.jpg"
+                      profileImg="eyeopen"
                       name="User Name"
                       date="Date"
                       question={question.questionName}
                       questionId={question._id}
+                      answers={question.answers}
                     />
                   ))}
                 </div>
