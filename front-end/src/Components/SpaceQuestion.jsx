@@ -22,7 +22,7 @@ const SpaceQuestion = () => {
       try {
         console.log(`Fetching questions for space ID: ${id}`);
         const response = await axios.get(
-          `http://localhost:8000/api/spaces/${id}/questions`
+          `https://g21-askatease.onrender.com/${id}/questions`
         );
         console.log("API Response:", response.data);
 

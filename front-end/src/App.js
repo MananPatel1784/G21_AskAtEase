@@ -27,6 +27,7 @@ import { QuestionsProvider } from "./contexts/QuestionsContext";
 import AnswerQuestion from "./Components/AnswerQuestion";
 import SpaceQuestion from "./Components/SpaceQuestion";
 import AnswerMainComponent from "./Components/AnswerMainComponent";
+import ChangePassword from "./Components/changepassword";
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
             {/* <Route path="/spaces/:id" element={<AnswerMainComponent />} /> */}
             <Route path="/:id/questions" element={<AnswerMainComponent />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/ChangePassword" element={<ChangePassword/>}/>
           </Routes>
         </div>
       </QuestionsProvider>
