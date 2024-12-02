@@ -13,7 +13,7 @@ export const SpaceProvider = ({ children }) => {
   // Fetch all spaces (called once)
   const fetchSpaces = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/spaces");
+      const response = await axios.get("https://g21-askatease.onrender.com/api/spaces");
       setSpaces(response.data); // Assume API returns an array of spaces
     } catch (err) {
       console.error("Error fetching spaces:", err);
@@ -29,7 +29,7 @@ export const SpaceProvider = ({ children }) => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/spaces/${spaceId}/questions`
+        `https://g21-askatease.onrender.com/api/spaces/${spaceId}/questions`
       );
       setQuestions(response.data || []); // Assume API returns an array of questions
     } catch (err) {

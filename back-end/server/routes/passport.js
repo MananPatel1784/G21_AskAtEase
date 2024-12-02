@@ -13,7 +13,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GoogleStrategy({ 
 	clientID:process.env.CLIENT_ID, // Your Credentials here. 
 	clientSecret:process.env.CLIENT_SECRET, // Your Credentials here. 
-	callbackURL:"http://localhost:8000/auth/google/callback", 
+	callbackURL:"https://g21-askatease.onrender.com/auth/google/callback", 
 	passReqToCallback:true
 }, 
 function(request, accessToken, refreshToken, profile, done) { 
