@@ -67,6 +67,7 @@ const MainComponent = () => {
             {/* User Input Section */}
 
             {/* Display Posts */}
+            {console.log(questions)}
             <div className="space-y-6">
               {questions.slice(0, visibleQuestions).map((question) => (
                 <Post
@@ -76,6 +77,7 @@ const MainComponent = () => {
                   date="14th Nov, 2024"
                   question={question.questionName}
                   questionId={question._id} // Pass questionId to Post
+                  answers={question.answers}
                 />
               ))}
             </div>
