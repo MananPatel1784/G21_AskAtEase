@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import Header from "./MainHeader";
+import { getAuth } from "firebase/auth";
 
 const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false); // State to control modal visibility
   const [profile, setProfile] = useState({
-    name: "John Doe",
     bio: "Software Engineer | Tech Enthusiast",
     joined: "January 2022",
   });
+  const auth = getAuth();
+  const user = auth.currentUser;
+  console.log(user)
 
   const [tempProfile, setTempProfile] = useState({ ...profile }); // Temporary state for modal inputs
 
@@ -33,13 +36,13 @@ const ProfilePage = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 justify-between">
             <div className="flex items-center space-x-4">
               <img
-                src="https://via.placeholder.com/100"
+                src={user.photoURL}
                 alt="Profile"
                 className="w-24 h-24 rounded-full shadow"
               />
               <div>
                 <h2 className="text-3xl font-bold text-gray-800">
-                  {profile.name}
+                  {user.displayName}
                 </h2>
                 <p className="text-gray-600">{profile.bio}</p>
                 <p className="text-gray-500 text-sm">Joined {profile.joined}</p>
@@ -108,23 +111,6 @@ const ProfilePage = () => {
               Edit Profile
             </h2>
             <form onSubmit={handleSave}>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-gray-600 font-medium mb-1"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={tempProfile.name}
-                  onChange={(e) =>
-                    setTempProfile({ ...tempProfile, name: e.target.value })
-                  }
-                  className="w-full border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-950"
-                />
-              </div>
               <div className="mb-4">
                 <label
                   htmlFor="bio"
