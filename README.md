@@ -2,6 +2,14 @@
 
 Welcome to the AskAtEase project repository! This project aims to create an efficient and user-friendly platform to streamline query management and assistance in various domains.
 
+# AskAtEase_AdminPage
+Welcome to the AskAtEase Admin Page repository! This project provides an intuitive and user-friendly admin interface for managing and overseeing platform activities. The admin page ensures seamless administration of user data, queries, and platform configurations.
+
+GITHUB : https://github.com/Vivek-Chaudhari30/AskAtEase_AdminPage
+WEBSITE HOSTED AT: https://askatease-adminpage-frontend.onrender.com/
+EMAIL ID: admin@askatease.com
+PASSWORD : admin123
+
 ## Table of Contents
 
 - About the Project
